@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# remove /bin link
+rm "/usr/local/bin/java"
+
+# return successfully
+exit 0

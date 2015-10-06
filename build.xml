@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project name="java-manager" default="spk">
+	<!-- include default inputs (optional) -->
+	<property file="package.properties" />
+	<property file="profile.properties" />
+
+	<!-- define source dirs -->
+	<property name="dir.package" location="${basedir}/package" />
+	<property name="dir.release" location="${basedir}/release" />
+
+	<path id="jars.classpath">
+		<fileset dir="${basedir}/lib" includes="**/*.jar" />
+	</path>
+
+	<taskdef name="spk" classname="net.filebot.ant.spk.PackageTask" classpathref="jars.classpath" />
+	<taskdef name="package-source" classname="net.filebot.ant.spk.RepositoryTask" classpathref="jars.classpath" />
+
+
+	<target name="spk" description="Build Synology Package">
+		<spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch">
+			<info name="displayname" value="${title}" />
+			<info name="description" value="${title} will help you installing the Oracle JDK ${version} your Synology NAS." />
+			<info name="maintainer" value="Oracle Corporation" />
+			<info name="maintainer_url" value="http://www.oracle.com/technetwork/java/javase/overview/" />
+			<info name="distributor" value="rednoah/java-installer" />
+			<info name="distributor_url" value="https://github.com/rednoah/java-installer" />
+			<info name="support_url" value="https://github.com/rednoah/java-installer/issues" />
+			<info name="startable" value="no" />
+			<info name="silent_install" value="no" />
+			<info name="silent_upgrade" value="yes" />
+			<info name="silent_uninstall" value="yes" />
+			<info name="thirdparty" value="yes" />
+			<info name="firmware" value="5.0" />
+
+			<icon size="72" file="${dir.package}/synology/images/thumb_72.png" />
+			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
+
+			<package dir="${dir.package}/synology/package" includes="*.sh" filemode="755" />
+			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
+
+			<codesign keyid="${gpg.key}" password="${gpg.pwd}" pubring="${dir.package}/gpg/pubring.gpg" secring="${dir.package}/gpg/secring.gpg" />
+		</spk>
+	</target>
+
+
+	<target name="update-spksrc" description="Update Synology Package Source">
+		<package-source file="${basedir}/spksrc.json">
+			<keyring file="${dir.package}/gpg/FileBot.pub" />
+			<spk file="${dir.release}/${package}-${version}-noarch.spk">
+				<info name="link" value="https://raw.githubusercontent.com/rednoah/java-installer/master/release/${package}-${version}-noarch.spk" />
+				<thumbnail url="http://i.imgur.com/o8VXIZe.png" />
+				<snapshot url="http://i.imgur.com/dHgkqjq.png" />
+			</spk>
+		</package-source>
+	</target>
+
+</project>
