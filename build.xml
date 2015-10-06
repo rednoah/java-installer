@@ -19,7 +19,7 @@
 	<target name="spk" description="Build Synology Package">
 		<spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/BCL.txt">
 			<info name="displayname" value="${title}" />
-			<info name="description" value="${title} will help you installing the Oracle JDK ${version} your Synology NAS." />
+			<info name="description" value="${title} will help you install Oracle JDK ${version} on your Synology NAS." />
 			<info name="maintainer" value="Oracle Corporation" />
 			<info name="maintainer_url" value="http://www.oracle.com/technetwork/java/javase/overview/" />
 			<info name="distributor" value="rednoah/java-installer" />
