@@ -37,7 +37,6 @@
 
 			<package dir="${dir.package}/synology/package" includes="*.sh" filemode="755" />
 			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
-
 		</spk>
 	</target>
 
