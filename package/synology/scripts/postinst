@@ -5,7 +5,5 @@ cd "$SYNOPKG_PKGDEST"
 
 . "$SYNOPKG_PKGDEST/install-jdk.sh" 2>&1 | tee "$SYNOPKG_PKGDEST/install-jdk.log"
 
-java -version 2>&1 | tee -a "$SYNOPKG_PKGDEST/install-jdk.log" "$SYNOPKG_TEMP_LOGFILE"
-
 # return successfully
 exit 0
