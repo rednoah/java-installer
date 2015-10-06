@@ -18,10 +18,10 @@
             "qupgrade":true,
             "thirdparty":true,
             "thumbnail":[
-                "http://i.imgur.com/keYTy0E.png"
+                "http://i.imgur.com/o8VXIZe.png"
             ],
             "snapshot":[
-                "http://i.imgur.com/dHgkqjq.png"
+                "http://i.imgur.com/keYTy0E.png"
             ],
             "link":"https://raw.githubusercontent.com/rednoah/java-installer/master/release/oracle-java-installer-1.8.0_60-noarch.spk",
             "md5":"7d7829f9428a989e80d9e7df7e7f84d8",

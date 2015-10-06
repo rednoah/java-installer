@@ -38,7 +38,6 @@
 			<package dir="${dir.package}/synology/package" includes="*.sh" filemode="755" />
 			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
 
-			<codesign keyid="${gpg.key}" password="${gpg.pwd}" pubring="${dir.package}/gpg/pubring.gpg" secring="${dir.package}/gpg/secring.gpg" />
 		</spk>
 	</target>
 
@@ -48,8 +47,8 @@
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
 			<spk file="${dir.release}/${package}-${version}-noarch.spk">
 				<info name="link" value="https://raw.githubusercontent.com/rednoah/java-installer/master/release/${package}-${version}-noarch.spk" />
-				<thumbnail url="http://i.imgur.com/keYTy0E.png" />
-				<snapshot url="http://i.imgur.com/dHgkqjq.png" />
+				<thumbnail url="http://i.imgur.com/o8VXIZe.png" />
+				<snapshot url="http://i.imgur.com/keYTy0E.png" />
 			</spk>
 		</package-source>
 	</target>
