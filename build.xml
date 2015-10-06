@@ -46,7 +46,7 @@
 		<package-source file="${basedir}/spksrc.json">
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
 			<spk file="${dir.release}/${package}-${version}-noarch.spk">
-				<info name="link" value="https://raw.githubusercontent.com/rednoah/java-installer/master/release/${package}-${version}-noarch.spk" />
+				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
 				<thumbnail url="http://i.imgur.com/o8VXIZe.png" />
 				<snapshot url="http://i.imgur.com/keYTy0E.png" />
 			</spk>
