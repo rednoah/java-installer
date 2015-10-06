@@ -23,7 +23,7 @@ case "$CPU_ARCH" in
 esac
 
 JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-$JDK_ARCH.tar.gz"
-JDK_TAR="jdk_$SYNOPKG_PKGVER_$CPU_ARCH.tar.gz"
+JDK_TAR="jdk_$SYNOPKG_PKGVER-$CPU_ARCH.tar.gz"
 
 echo "Download $JDK_URL"
 curl -v -L -o "$JDK_TAR" --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
