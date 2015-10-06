@@ -18,10 +18,7 @@
             "qupgrade":true,
             "thirdparty":true,
             "thumbnail":[
-                "http://i.imgur.com/o8VXIZe.png"
-            ],
-            "snapshot":[
-                "http://i.imgur.com/keYTy0E.png"
+                "http://global.download.synology.com/download/pkg_img/JavaManager/7.0.51-0030/thumb_256.png"
             ],
             "link":"https://github.com/rednoah/java-installer/releases/download/1.8.0_60/oracle-java-installer-1.8.0_60-noarch.spk",
             "md5":"7d7829f9428a989e80d9e7df7e7f84d8",
