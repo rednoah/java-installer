@@ -1,4 +1,4 @@
-# Unofficial Java Manager
+# Unofficial Java Installer
 
 Introduction
 ------------
