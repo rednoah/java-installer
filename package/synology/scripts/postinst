@@ -6,7 +6,7 @@ cd "$SYNOPKG_PKGDEST"
 . "$SYNOPKG_PKGDEST/install-jdk.sh" 2>&1 | tee "$SYNOPKG_PKGDEST/install-jdk.log"
 
 # self-test
-/usr/local/bin/java -version 2>&1 | tee "$SYNOPKG_TEMP_LOGFILE"
+/usr/local/bin/java -version 2>&1 | head -n1 | tee "$SYNOPKG_TEMP_LOGFILE"
 
 # return successfully
 exit 0
