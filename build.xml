@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<project name="java-manager" default="spk">
-	<!-- include default inputs (optional) -->
+<project name="java-manager" default="spk" xmlns:syno="antlib:net.filebot.ant.spk">
 	<property file="package.properties" />
 	<property file="profile.properties" />
 
-	<!-- define source dirs -->
 	<property name="dir.package" location="${basedir}/package" />
 	<property name="dir.release" location="${basedir}/release" />
 
-	<path id="jars.classpath">
-		<fileset dir="${basedir}/lib" includes="**/*.jar" />
-	</path>
-
-	<taskdef name="spk" classname="net.filebot.ant.spk.PackageTask" classpathref="jars.classpath" />
-	<taskdef name="package-source" classname="net.filebot.ant.spk.RepositoryTask" classpathref="jars.classpath" />
-
 
 	<target name="spk" description="Build Synology Package">
-		<spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/BCL.txt">
+		<syno:spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/BCL.txt">
 			<info name="displayname" value="${title}" />
 			<info name="description" value="${title} will help you install Oracle JDK ${version} on your Synology NAS." />
 			<info name="maintainer" value="Oracle" />
@@ -39,18 +30,18 @@
 			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
 
 			<codesign keyid="${gpg.key}" password="${gpg.pwd}" pubring="${dir.package}/gpg/pubring.gpg" secring="${dir.package}/gpg/secring.gpg" />
-		</spk>
+		</syno:spk>
 	</target>
 
 
-	<target name="update-spksrc" description="Update Synology Package Source">
-		<package-source file="${basedir}/spksrc.json">
+	<target name="package-source" description="Update Synology Package Source">
+		<syno:package-source file="${basedir}/spksrc.json">
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
 			<spk file="${dir.release}/${package}-${version}-noarch.spk">
 				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
 				<thumbnail url="http://global.download.synology.com/download/pkg_img/JavaManager/7.0.51-0030/thumb_256.png" />
 			</spk>
-		</package-source>
+		</syno:package-source>
 	</target>
 
 </project>
