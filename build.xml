@@ -12,7 +12,7 @@
 			<info name="displayname" value="${title}" />
 			<info name="description" value="${title} will help you install Oracle JDK ${version} on your Synology NAS." />
 			<info name="maintainer" value="Oracle" />
-			<info name="maintainer_url" value="http://www.oracle.com/technetwork/java/javase/overview/" />
+			<info name="maintainer_url" value="http://www.oracle.com/technetwork/java/javase/downloads/index.html" />
 			<info name="distributor" value="rednoah/java-installer" />
 			<info name="distributor_url" value="https://github.com/rednoah/java-installer" />
 			<info name="support_url" value="https://github.com/rednoah/java-installer/issues" />
@@ -22,6 +22,7 @@
 			<info name="silent_uninstall" value="yes" />
 			<info name="thirdparty" value="yes" />
 			<info name="firmware" value="5.0" />
+			<info name="extractsize" value="209715200" />	<!-- 200 MB for good measure -->
 
 			<icon size="72" file="${dir.package}/synology/images/thumb_72.png" />
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />

@@ -3,10 +3,11 @@
 # set working dir
 cd "$SYNOPKG_PKGDEST"
 
+# fetch JDK
 . "$SYNOPKG_PKGDEST/install-jdk.sh" 2>&1 | tee "$SYNOPKG_PKGDEST/install-jdk.log"
 
-# self-test
-/usr/local/bin/java -version 2>&1 | head -n1 | tee "$SYNOPKG_TEMP_LOGFILE"
+# test
+/usr/local/bin/java -version 2>&1 | tee "$SYNOPKG_TEMP_LOGFILE"
 
 # return successfully
 exit 0

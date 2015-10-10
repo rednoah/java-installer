@@ -1,7 +1,8 @@
 #!/bin/sh
 
-# remove /bin link
+# remove symlinks
 rm "/usr/local/bin/java"
+rm "/usr/local/java"
 
 # return successfully
 exit 0

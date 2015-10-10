@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 # fetch JDK for this architecture
 CPU_ARCH=`uname -m`
 
@@ -22,6 +23,7 @@ case "$CPU_ARCH" in
 	;;
 esac
 
+# fetch JDK
 JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-$JDK_ARCH.tar.gz"
 JDK_TAR="jdk_$SYNOPKG_PKGVER-$CPU_ARCH.tar.gz"
 
@@ -34,9 +36,14 @@ tar -v -zxf "$JDK_TAR"
 # find latest java executable
 JAVA_EXE=`find "$PWD" -name "java" -type f -print0 | xargs -0 ls -Alt1 | head -n 1  | sed -e 's/\s\+/\s /g' | cut -d' ' -f7-`
 
-# link executable into /usr/local/bin
+# link executable into /usr/local/bin/java
 mkdir -p "/usr/local/bin"
 ln -s -f "$JAVA_EXE" "/usr/local/bin/java"
+
+# link java home to /usr/local/java
+JAVA_BIN=`dirname $JAVA_EXE`
+JAVA_HOME=`dirname $JAVA_BIN`
+ln -s -f "$JAVA_HOME" "/usr/local/java"
 
 # test
 echo "Execute $JAVA_EXE -version"
