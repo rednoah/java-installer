@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# JDK version identifiers
+JDK_VERSION="8u60"
+JDK_BUILD="b27"
 
 # fetch JDK for this architecture
 CPU_ARCH=`uname -m`
@@ -24,8 +27,8 @@ case "$CPU_ARCH" in
 esac
 
 # fetch JDK
-JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-$JDK_ARCH.tar.gz"
-JDK_TAR="jdk-$SYNOPKG_PKGVER-$CPU_ARCH.tar.gz"
+JDK_TAR="jdk-$JDK_VERSION-$JDK_ARCH.tar.gz"
+JDK_URL="http://download.oracle.com/otn-pub/java/jdk/$JDK_VERSION-$JDK_BUILD/$JDK_TAR"
 
 echo "Download $JDK_URL"
 curl -v -L -o "$JDK_TAR" --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
