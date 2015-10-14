@@ -26,10 +26,15 @@ case "$CPU_ARCH" in
 	;;
 esac
 
-# fetch JDK
 JDK_TAR="jdk-$JDK_VERSION-$JDK_ARCH.tar.gz"
 JDK_URL="http://download.oracle.com/otn-pub/java/jdk/$JDK_VERSION-$JDK_BUILD/$JDK_TAR"
 
+
+# enter version-specific working directory
+mkdir -p "jdk-$JDK_VERSION-$JDK_ARCH"
+cd "jdk-$JDK_VERSION-$JDK_ARCH"
+
+# fetch JDK
 echo "Download $JDK_URL"
 curl -v -L -o "$JDK_TAR" --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
 
