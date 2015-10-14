@@ -22,7 +22,7 @@
 			<info name="silent_uninstall" value="yes" />
 			<info name="thirdparty" value="yes" />
 			<info name="firmware" value="5.0" />
-			<info name="extractsize" value="209715200" />	<!-- 200 MB for good measure -->
+			<info name="extractsize" value="524288000" />	<!-- 500 MB for good measure -->
 
 			<icon size="72" file="${dir.package}/synology/images/thumb_72.png" />
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
