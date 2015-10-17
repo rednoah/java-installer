@@ -6,10 +6,10 @@
         {
             "package":"oracle-java-installer",
             "version":"1.8.0_60",
-            "dname":"Unofficial Java Manager",
-            "desc":"Unofficial Java Manager will help you install Oracle JDK 1.8.0_60 on your Synology NAS.",
-            "maintainer":"Oracle Corporation",
-            "maintainer_url":"http://www.oracle.com/technetwork/java/javase/overview/",
+            "dname":"Unofficial Java Installer",
+            "desc":"Unofficial Java Installer will help you install Oracle JDK 1.8.0_60 on your Synology NAS.",
+            "maintainer":"Oracle",
+            "maintainer_url":"http://www.oracle.com/technetwork/java/javase/downloads/index.html",
             "distributor":"rednoah/java-installer",
             "distributor_url":"https://github.com/rednoah/java-installer",
             "start":false,
@@ -21,7 +21,7 @@
                 "http://global.download.synology.com/download/pkg_img/JavaManager/7.0.51-0030/thumb_256.png"
             ],
             "link":"https://github.com/rednoah/java-installer/releases/download/1.8.0_60/oracle-java-installer-1.8.0_60-noarch.spk",
-            "md5":"7d7829f9428a989e80d9e7df7e7f84d8",
+            "md5":"6e9208475f429c1d76ab06e00fd174c6",
             "size":51200
         }
     ]
