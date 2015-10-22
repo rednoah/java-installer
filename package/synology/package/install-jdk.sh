@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # JDK version identifiers
-JDK_VERSION="8u60"
-JDK_BUILD="b27"
+JDK_VERSION="8u65"
+JDK_BUILD="b17"
 
 # fetch JDK for this architecture
 CPU_ARCH=`uname -m`
