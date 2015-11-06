@@ -10,7 +10,7 @@
 	<target name="spk" description="Build Synology Package">
 		<syno:spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/BCL.txt">
 			<info name="displayname" value="${title}" />
-			<info name="description" value="${title} will help you install Oracle Java SE Development Kit ${version} on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models." />
+			<info name="description" value="${title} will help you install Java ${version} on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest Oracle Java SE Development Kit (180 MB) for your platform. This may take a while." />
 			<info name="maintainer" value="Oracle" />
 			<info name="maintainer_url" value="http://www.oracle.com/technetwork/java/javase/downloads/index.html" />
 			<info name="distributor" value="rednoah/java-installer" />
