@@ -30,7 +30,7 @@
 			<package dir="${dir.package}/synology/package" includes="*.sh" filemode="755" />
 			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
 
-			<codesign keyid="${gpg.key}" password="${gpg.pwd}" pubring="${dir.package}/gpg/pubring.gpg" secring="${dir.package}/gpg/secring.gpg" />
+			<codesign secring="${dir.package}/gpg/secring.gpg" keyid="${gpg.key}" password="${gpg.pwd}" />
 		</syno:spk>
 	</target>
 
