@@ -55,4 +55,4 @@ ln -s -f "$JAVA_HOME" "/usr/local/java"
 
 # test
 echo "Execute $JAVA_EXE -version"
-"$JAVA_EXE" -version
+"$JAVA_EXE" -XshowSettings -version
