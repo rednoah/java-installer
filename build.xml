@@ -71,6 +71,7 @@
 
 	<target name="update-jdk" description="Update JDK build properties">
 		<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy" />
+		<delete file="build-jdk.properties" />
 		<groovy src="build-jdk.groovy" />
 	</target>
 

@@ -3,32 +3,20 @@
 # JDK version identifiers
 case `uname -m` in
 	armv7l)
-		JDK_ARCH    = "@{jdk.armv7l}"
-		JDK_VERSION = "@{jdk.armv7l.version}"
-		JDK_BUILD   = "@{jdk.armv7l.build}"
-		JDK_TAR_GZ  = "@{jdk.armv7l.tar.gz}"
-		JDK_SHA256  = "@{jdk.armv7l.sha256}"
+		JDK_URL="@{jdk.armv7l.url}"
+		JDK_SHA256="@{jdk.armv7l.sha256}"
 	;;
 	armv8)
-		JDK_ARCH    = "@{jdk.armv8}"
-		JDK_VERSION = "@{jdk.armv8.version}"
-		JDK_BUILD   = "@{jdk.armv8.build}"
-		JDK_TAR_GZ  = "@{jdk.armv8.tar.gz}"
-		JDK_SHA256  = "@{jdk.armv8.sha256}"
+		JDK_URL="@{jdk.armv8.url}"
+		JDK_SHA256="@{jdk.armv8.sha256}"
 	;;
 	i686)
-		JDK_ARCH    = "@{jdk.i686}"
-		JDK_VERSION = "@{jdk.i686.version}"
-		JDK_BUILD   = "@{jdk.i686.build}"
-		JDK_TAR_GZ  = "@{jdk.i686.tar.gz}"
-		JDK_SHA256  = "@{jdk.i686.sha256}"
+		JDK_URL="@{jdk.i686.url}"
+		JDK_SHA256="@{jdk.i686.sha256}"
 	;;
 	x86_64)
-		JDK_ARCH    = "@{jdk.x86_64}"
-		JDK_VERSION = "@{jdk.x86_64.version}"
-		JDK_BUILD   = "@{jdk.x86_64.build}"
-		JDK_TAR_GZ  = "@{jdk.x86_64.tar.gz}"
-		JDK_SHA256  = "@{jdk.x86_64.sha256}"
+		JDK_URL="@{jdk.x86_64.url}"
+		JDK_SHA256="@{jdk.x86_64.sha256}"
 	;;
 	*)
 		echo "Unkown CPU architecture: `uname -m`"
@@ -36,14 +24,8 @@ case `uname -m` in
 	;;
 esac
 
-
-
-# enter version-specific working directory
-mkdir -p "jdk-$JDK_VERSION-$JDK_ARCH"
-cd "jdk-$JDK_VERSION-$JDK_ARCH"
-
 # fetch JDK
-JDK_URL="http://download.oracle.com/otn-pub/java/jdk/$JDK_VERSION-$JDK_BUILD/$JDK_TAR_GZ"
+JDK_TAR_GZ=`basename $JDK_URL`
 echo "Download $JDK_URL"
 curl -v -L -o "$JDK_TAR_GZ" --retry 5 --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
 
