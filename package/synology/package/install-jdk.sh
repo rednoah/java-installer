@@ -41,7 +41,7 @@ cd "jdk-$JDK_VERSION-$JDK_ARCH"
 # fetch JDK
 JDK_URL="http://download.oracle.com/otn-pub/java/jdk/$JDK_VERSION-$JDK_BUILD/$JDK_TAR_GZ"
 echo "Download $JDK_URL"
-curl -v -L -o "$JDK_TAR_GZ" --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
+curl -v -L -o "$JDK_TAR_GZ" --retry 5 --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
 
 # verify archive via SHA-256 checksum
 JDK_SHA256_ACTUAL=`openssl dgst -sha256 -hex -r "$JDK_TAR_GZ" | cut -d' ' -f1`
