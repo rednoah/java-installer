@@ -1,1 +1,1 @@
-ant spk package-source -lib "lib"
+ant update-checksums spk package-source -lib "lib"

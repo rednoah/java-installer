@@ -3,11 +3,11 @@
 	<property file="package.properties" />
 	<property file="profile.properties" />
 
+	<property name="dir.build" location="${basedir}/build" />
 	<property name="dir.package" location="${basedir}/package" />
 	<property name="dir.release" location="${basedir}/release" />
 
-
-	<target name="spk" description="Build Synology Package">
+	<target name="spk" description="Build Synology Package" depends="build">
 		<syno:spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/BCL.txt">
 			<info name="displayname" value="${title}" />
 			<info name="description" value="${title} will help you install Java ${version} on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest Oracle Java SE Development Kit (180 MB) for your platform. This may take a while." />
@@ -27,8 +27,8 @@
 			<icon size="72" file="${dir.package}/synology/images/thumb_72.png" />
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
 
-			<package dir="${dir.package}/synology/package" includes="*.sh" filemode="755" />
 			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
+			<package dir="${dir.build}" includes="*.sh" filemode="755" />
 
 			<codesign secring="${dir.package}/gpg/secring.gpg" keyid="${gpg.key}" password="${gpg.pwd}" />
 		</syno:spk>
@@ -43,6 +43,29 @@
 				<thumbnail url="http://global.download.synology.com/download/pkg_img/JavaManager/7.0.51-0030/thumb_256.png" />
 			</spk>
 		</syno:package-source>
+	</target>
+
+
+	<target name="build">
+		<property file="checksum.properties" />
+		<delete dir="${dir.build}" />
+		<copy todir="${dir.build}" overwrite="yes" encoding="UTF-8" verbose="true">
+			<fileset dir="${dir.package}/synology/package">
+				<include name="*.sh" />
+			</fileset>
+			<filterset begintoken="@{" endtoken="}">
+				<propertyset>
+					<propertyref builtin="all" />
+				</propertyset>
+			</filterset>
+		</copy>
+	</target>
+
+
+	<target name="update-checksums" description="Update JDK checksums">
+		<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy" />
+		<delete file="checksum.properties" />
+		<groovy src="checksum.groovy" />
 	</target>
 
 </project>
