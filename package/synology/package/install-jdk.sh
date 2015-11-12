@@ -1,30 +1,34 @@
 #!/bin/sh
 
 # JDK version identifiers
-JDK_VERSION="@{jdk.version}"
-JDK_BUILD="@{jdk.build}"
-
-# JDK supported architectures
 case `uname -m` in
 	armv7l)
-		JDK_ARCH="@{jdk.armv7l}"
-		JDK_TAR_GZ="@{jdk.armv7l.tar.gz}"
-		JDK_SHA256="@{jdk.armv7l.sha256}"
+		JDK_ARCH    = "@{jdk.armv7l}"
+		JDK_VERSION = "@{jdk.armv7l.version}"
+		JDK_BUILD   = "@{jdk.armv7l.build}"
+		JDK_TAR_GZ  = "@{jdk.armv7l.tar.gz}"
+		JDK_SHA256  = "@{jdk.armv7l.sha256}"
 	;;
 	armv8)
-		JDK_ARCH="@{jdk.armv8}"
-		JDK_TAR_GZ="@{jdk.armv8.tar.gz}"
-		JDK_SHA256="@{jdk.armv8.sha256}"
+		JDK_ARCH    = "@{jdk.armv8}"
+		JDK_VERSION = "@{jdk.armv8.version}"
+		JDK_BUILD   = "@{jdk.armv8.build}"
+		JDK_TAR_GZ  = "@{jdk.armv8.tar.gz}"
+		JDK_SHA256  = "@{jdk.armv8.sha256}"
 	;;
 	i686)
-		JDK_ARCH="@{jdk.i686}"
-		JDK_TAR_GZ="@{jdk.i686.tar.gz}"
-		JDK_SHA256="@{jdk.i686.sha256}"
+		JDK_ARCH    = "@{jdk.i686}"
+		JDK_VERSION = "@{jdk.i686.version}"
+		JDK_BUILD   = "@{jdk.i686.build}"
+		JDK_TAR_GZ  = "@{jdk.i686.tar.gz}"
+		JDK_SHA256  = "@{jdk.i686.sha256}"
 	;;
 	x86_64)
-		JDK_ARCH="@{jdk.x86_64}"
-		JDK_TAR_GZ="@{jdk.x86_64.tar.gz}"
-		JDK_SHA256="@{jdk.x86_64.sha256}"
+		JDK_ARCH    = "@{jdk.x86_64}"
+		JDK_VERSION = "@{jdk.x86_64.version}"
+		JDK_BUILD   = "@{jdk.x86_64.build}"
+		JDK_TAR_GZ  = "@{jdk.x86_64.tar.gz}"
+		JDK_SHA256  = "@{jdk.x86_64.sha256}"
 	;;
 	*)
 		echo "Unkown CPU architecture: `uname -m`"

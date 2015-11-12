@@ -1,1 +1,1 @@
-ant update-checksums spk package-source -lib "lib" && ant clean
+ant update-jdk spk package-source -lib "lib" && ant clean

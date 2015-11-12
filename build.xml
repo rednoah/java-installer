@@ -50,7 +50,7 @@
 
 
 	<target name="build">
-		<property file="checksum.properties" />
+		<property file="build-jdk.properties" />
 		<copy todir="${dir.build}" overwrite="yes" encoding="UTF-8" verbose="true">
 			<fileset dir="${dir.package}/synology/package">
 				<include name="*.sh" />
@@ -69,9 +69,9 @@
 	</target>
 
 
-	<target name="update-checksums" description="Update JDK checksums">
+	<target name="update-jdk" description="Update JDK build properties">
 		<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy" />
-		<groovy src="checksum.groovy" />
+		<groovy src="build-jdk.groovy" />
 	</target>
 
 </project>
