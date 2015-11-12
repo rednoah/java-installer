@@ -1,5 +1,5 @@
-def version = '8u65'
-def build   = 'b17'
+def version  = '8u65'
+def build    = 'b17'
 
 def binaries = [
 	armv7l: 'linux-arm32-vfp-hflt',
