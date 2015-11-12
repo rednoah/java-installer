@@ -7,6 +7,7 @@
 	<property name="dir.package" location="${basedir}/package" />
 	<property name="dir.release" location="${basedir}/release" />
 
+
 	<target name="spk" description="Build Synology Package" depends="build">
 		<syno:spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/BCL.txt">
 			<info name="displayname" value="${title}" />
@@ -22,7 +23,9 @@
 			<info name="silent_uninstall" value="yes" />
 			<info name="thirdparty" value="yes" />
 			<info name="firmware" value="5.0" />
-			<info name="extractsize" value="524288000" />	<!-- 500 MB for good measure -->
+
+			<!-- 500 MB for good measure -->
+			<info name="extractsize" value="524288000" />
 
 			<icon size="72" file="${dir.package}/synology/images/thumb_72.png" />
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
@@ -48,7 +51,6 @@
 
 	<target name="build">
 		<property file="checksum.properties" />
-		<delete dir="${dir.build}" />
 		<copy todir="${dir.build}" overwrite="yes" encoding="UTF-8" verbose="true">
 			<fileset dir="${dir.package}/synology/package">
 				<include name="*.sh" />
@@ -62,9 +64,13 @@
 	</target>
 
 
+	<target name="clean">
+		<delete dir="${dir.build}" />
+	</target>
+
+
 	<target name="update-checksums" description="Update JDK checksums">
 		<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy" />
-		<delete file="checksum.properties" />
 		<groovy src="checksum.groovy" />
 	</target>
 
