@@ -1,5 +1,3 @@
-build/
-dist/
-release/
 profile.properties
+release/*.spk
 *.DS_Store

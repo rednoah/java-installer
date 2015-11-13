@@ -3,7 +3,7 @@
 	<property file="package.properties" />
 	<property file="profile.properties" />
 
-	<property name="dir.build" location="${basedir}/build" />
+	<property name="dir.source" location="${basedir}/src" />
 	<property name="dir.package" location="${basedir}/package" />
 	<property name="dir.release" location="${basedir}/release" />
 
@@ -31,7 +31,7 @@
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
 
 			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
-			<package dir="${dir.build}" includes="*.sh" filemode="755" />
+			<package dir="${dir.release}" includes="*.sh" filemode="755" />
 
 			<codesign secring="${dir.package}/gpg/secring.gpg" keyid="${gpg.key}" password="${gpg.pwd}" />
 		</syno:spk>
@@ -51,8 +51,8 @@
 
 	<target name="build">
 		<property file="build-jdk.properties" />
-		<copy todir="${dir.build}" overwrite="yes" encoding="UTF-8" verbose="true">
-			<fileset dir="${dir.package}/synology/package">
+		<copy todir="${dir.release}" overwrite="yes" encoding="UTF-8" verbose="true">
+			<fileset dir="${dir.source}">
 				<include name="*.sh" />
 			</fileset>
 			<filterset begintoken="@{" endtoken="}">
@@ -61,11 +61,6 @@
 				</propertyset>
 			</filterset>
 		</copy>
-	</target>
-
-
-	<target name="clean">
-		<delete dir="${dir.build}" />
 	</target>
 
 
