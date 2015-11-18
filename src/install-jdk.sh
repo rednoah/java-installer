@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# @{title} for @{product} @{version}
+# Example: curl -O https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jdk.sh && sh -x install-jdk.sh
+
 # JDK version identifiers
 case `uname -m` in
 	armv7l)
