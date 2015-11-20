@@ -14,7 +14,7 @@
 			<info name="description" value="${title} will help you install ${product} ${version} on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest ${product} Development Kit (180 MB) for your platform. This may take a while." />
 			<info name="maintainer" value="Oracle" />
 			<info name="maintainer_url" value="http://www.oracle.com/technetwork/java/javase/downloads/index.html" />
-			<info name="distributor" value="rednoah/java-installer" />
+			<info name="distributor" value="rednoah" />
 			<info name="distributor_url" value="https://github.com/rednoah/java-installer" />
 			<info name="support_url" value="https://github.com/rednoah/java-installer/issues" />
 			<info name="startable" value="no" />
