@@ -1,7 +1,22 @@
 #!/bin/sh
 
+PKG_LOG="$SYNOPKG_PKGDEST/install-jdk.log"
+SYS_PROFILE="/etc/profile"
+COMMENT="# added by Unofficial Java Installer"
+
+
 case "$1" in
 	start)
+		if [ `grep -c "$COMMENT" $SYS_PROFILE` == "0" ]; then
+			if [ -x "/usr/local/java/bin/java" ]; then
+				echo "Add environment variables to $SYS_PROFILE" >> "$PKG_LOG"
+
+				# add environment variables to /etc/profile
+				echo "JAVA_HOME=/usr/local/java    ${COMMENT}" >> "$SYS_PROFILE"
+				echo "LANG=en_US.utf8              ${COMMENT}" >> "$SYS_PROFILE"
+				echo "export JAVA_HOME LANG        ${COMMENT}" >> "$SYS_PROFILE"
+			fi
+		fi
 		exit 0
 	;;
 
@@ -14,7 +29,7 @@ case "$1" in
 	;;
 
 	log)
-		echo "$SYNOPKG_PKGDEST/install-jdk.log"
+		echo "$PKG_LOG"
 		exit 0
 	;;
 
