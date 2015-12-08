@@ -1,13 +1,30 @@
 #!/bin/sh
 
+
 # set working dir
 cd "$SYNOPKG_PKGDEST"
 
 # fetch JDK
 . "$SYNOPKG_PKGDEST/install-jdk.sh" 2>&1 | tee "$SYNOPKG_PKGDEST/install-jdk.log"
 
-# test
-/usr/local/bin/java -version 2>&1 | tee "$SYNOPKG_TEMP_LOGFILE"
+
+# make sure that `java` is working
+if [ -x "/usr/local/java/bin/java" ]; then
+	# add environment variables to /etc/profile
+	SYS_PROFILE="/etc/profile"
+	COMMENT="# added by Unofficial Java Installer"
+
+	echo "JAVA_HOME=/usr/local/java ${COMMENT}" >> "$SYS_PROFILE"
+	echo "LANG=en_US.utf8 ${COMMENT}" >> "$SYS_PROFILE"
+	echo "export JAVA_HOME LANG ${COMMENT}" >> "$SYS_PROFILE"
+
+	# display success message
+	"/usr/local/java/bin/java" -version 2>&1 | tee "$SYNOPKG_TEMP_LOGFILE"
+else
+	# display error message
+	echo "Ooops, something went wrong... View Log for details." | tee "$SYNOPKG_TEMP_LOGFILE"
+fi
+
 
 # return successfully
 exit 0
