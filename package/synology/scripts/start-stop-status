@@ -12,9 +12,8 @@ case "$1" in
 				echo "Add environment variables to $SYS_PROFILE" >> "$PKG_LOG"
 
 				# add environment variables to /etc/profile
-				echo "JAVA_HOME=/usr/local/java    ${COMMENT}" >> "$SYS_PROFILE"
-				echo "LANG=en_US.utf8              ${COMMENT}" >> "$SYS_PROFILE"
-				echo "export JAVA_HOME LANG        ${COMMENT}" >> "$SYS_PROFILE"
+				echo "export JAVA_HOME=/usr/local/java    ${COMMENT}" >> "$SYS_PROFILE"
+				echo "export LANG=en_US.utf8              ${COMMENT}" >> "$SYS_PROFILE"
 			fi
 		fi
 		exit 0
