@@ -11,7 +11,7 @@
 	<target name="spk" description="Build Synology Package" depends="build">
 		<syno:spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/BCL.txt">
 			<info name="displayname" value="${product}" />
-			<info name="description" value="${title} will help you install ${product} ${version} on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest ${product} Development Kit (180 MB) for your platform. This may take a while." />
+			<info name="description" value="Oracle Java SE lets you develop and deploy Java applications on desktops and servers, as well as in embedded environments. Java offers performance, versatility and portability." />
 			<info name="maintainer" value="rednoah" />
 			<info name="maintainer_url" value="https://github.com/rednoah/java-installer" />
 			<info name="distributor" value="rednoah" />
@@ -43,6 +43,7 @@
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
 			<spk file="${dir.release}/${package}-${version}-noarch.spk">
 				<info name="dname" value="${title}" />
+				<info name="desc" value="${title} will help you install ${product} ${version} on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest ${product} Development Kit (180 MB) for your platform. This may take a while." />
 				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
 				<thumbnail url="https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png" />
 			</spk>
