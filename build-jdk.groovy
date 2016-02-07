@@ -16,7 +16,7 @@ def build   = release[0][4]
 def digest = new URL("https://www.oracle.com/webfolder/s/digest/${update}checksum.html").readLines()
 
 // generate properties file
-ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} binaries") {
+ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${update} binaries") {
 	entry(key:"jdk.name", value: name)
 	entry(key:"jdk.version", value: version)
 
