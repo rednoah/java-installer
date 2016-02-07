@@ -6,13 +6,14 @@ def binaries = [
 ]
 
 // parse version/update/build from release string
-def name = properties.product
-def release = (properties.release =~ /\d.(?<version>\d).\d_(?<update>\d+)-(?<build>b\d+)/)
-def version  = release[0][1..2].join('u')
-def build    = release[0][3]
+def name    = properties.product
+def release = properties.release =~ /(?<version>\d.(?<major>\d).\d_(?<update>\d+))-(?<build>b\d+)/
+def version = release[0][1]
+def update  = release[0][2..3].join('u')
+def build   = release[0][4]
 
 // grep SHA-256 checksums from Oracle
-def digest = new URL("https://www.oracle.com/webfolder/s/digest/${version}checksum.html").readLines()
+def digest = new URL("https://www.oracle.com/webfolder/s/digest/${update}checksum.html").readLines()
 
 // generate properties file
 ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} binaries") {
@@ -20,8 +21,8 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 	entry(key:"jdk.version", value: version)
 
 	binaries.each{ arch, pkg ->
-		def filename = "jdk-${version}-${pkg}.tar.gz"
-		def url = "http://download.oracle.com/otn-pub/java/jdk/${version}-${build}/${filename}"
+		def filename = "jdk-${update}-${pkg}.tar.gz"
+		def url = "http://download.oracle.com/otn-pub/java/jdk/${update}-${build}/${filename}"
 		def checksum = digest.grep{ it =~ filename }.findResult{ it.find(/sha256: (\p{XDigit}{64})/ ){ match, checksum -> checksum.toLowerCase() } }
 
 		entry(key:"jdk.${arch}.url", value: url)
