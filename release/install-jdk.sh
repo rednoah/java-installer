@@ -22,7 +22,7 @@ case `uname -m` in
 		JDK_SHA256="46a8149efaf9d87a147b244e503f1d7791ec8abbc35a5011c99ed909edb2e3e6"
 	;;
 	*)
-		echo "Unkown CPU architecture: `uname -m`"
+		echo "CPU architecture not supported: `uname -m`"
 		exit 1
 	;;
 esac
