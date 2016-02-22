@@ -14,6 +14,10 @@ case "$1" in
 				# add environment variables to /etc/profile
 				echo "export JAVA_HOME=/usr/local/java    ${COMMENT}" >> "$SYS_PROFILE"
 				echo "export LANG=en_US.utf8              ${COMMENT}" >> "$SYS_PROFILE"
+
+				# set -Xmx to 0.7 of physical memory
+				JAVA_MAX_MEMORY=`free | awk -vm=1024 -vp=0.7 '/Mem:/ {printf "-Xmx%dm", ($2*p)/m; exit}'`
+				echo "export JAVA_OPTS=\"${JAVA_MAX_MEMORY}\"         ${COMMENT}" >> "$SYS_PROFILE"
 			fi
 		fi
 		exit 0
