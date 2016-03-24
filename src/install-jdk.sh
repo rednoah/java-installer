@@ -45,8 +45,8 @@ fi
 echo "Extract $JDK_TAR_GZ"
 tar -v -zxf "$JDK_TAR_GZ"
 
-# find latest java executable
-JAVA_EXE=`find "$PWD" -name "java" -type f -print0 | xargs -0 ls -Alt1 | head -n 1  | sed -e 's/\s\+/\s /g' | cut -d' ' -f7-`
+# find java executable
+JAVA_EXE=`find "$PWD" -name "java" -type f | head -n 1`
 
 # link executable into /usr/local/bin/java
 mkdir -p "/usr/local/bin"
