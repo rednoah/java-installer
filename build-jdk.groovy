@@ -23,7 +23,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${update} binar
 	binaries.each{ arch, pkg ->
 		def filename = "jdk-${update}-${pkg}.tar.gz"
 		def url = "http://download.oracle.com/otn-pub/java/jdk/${update}-${build}/${filename}"
-		def checksum = digest.grep{ it =~ filename }.findResult{ it.find(/sha256: (\p{XDigit}{64})/ ){ match, checksum -> checksum.toLowerCase() } }
+		def checksum = digest.grep{ it =~ /\b/+filename+/\b/ }.findResult{ it.find(/sha256: (\p{XDigit}{64})/ ){ match, checksum -> checksum.toLowerCase() } }
 
 		entry(key:"jdk.${arch}.url", value: url)
 		entry(key:"jdk.${arch}.sha256", value: checksum)
