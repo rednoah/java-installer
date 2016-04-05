@@ -27,16 +27,12 @@ case "$1" in
 		if [ -x "/usr/local/bin/java" ] && [ -x "/usr/local/java/bin/java" ]; then
 			exit 0
 		else
-			exit 1
+			exit 150
 		fi
 	;;
 
 	log)
 		echo "$PKG_LOG"
 		exit 0
-	;;
-
-	*)
-		exit 1
 	;;
 esac
