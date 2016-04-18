@@ -1,4 +1,5 @@
 # Unofficial Java Installer
+[![Github Releases](https://img.shields.io/github/downloads/rednoah/java-installer/total.svg)](https://github.com/rednoah/java-installer/releases)
 
 ## Introduction
 Synology DSM package for installing the latest Oracle Java binaries on Synology NAS devices.
