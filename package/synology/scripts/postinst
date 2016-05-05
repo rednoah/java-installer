@@ -11,9 +11,9 @@ cd "$SYNOPKG_PKGDEST"
 
 
 # make sure that `java` is working
-if [ -x "/usr/local/bin/java" ]; then
+if [ -x "/usr/local/java/bin/java" ]; then
 	# display success message
-	"/usr/local/bin/java" -version 2>&1 | tee "$SYNOPKG_TEMP_LOGFILE"
+	"/usr/local/java/bin/java" -version 2>&1 | tee "$SYNOPKG_TEMP_LOGFILE"
 else
 	# display error message
 	echo "Ooops, something went wrong... View Log for details." | tee "$SYNOPKG_TEMP_LOGFILE"
