@@ -27,7 +27,7 @@ case "$1" in
 		if [ -x "/usr/local/bin/java" ] && [ -x "/usr/local/java/bin/java" ]; then
 			exit 0
 		else
-			exit 4	# package status is unknown
+			exit 0	# force "Running" status even if java is not installed correctly to avoid DSM dependency issues (e.g. on ppc and armv5 devices)
 		fi
 	;;
 
