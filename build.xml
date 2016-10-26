@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<project name="java-installer" default="spk" xmlns:syno="antlib:net.filebot.ant.spk">
+<project name="java-installer" default="spk" xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:syno="antlib:net.filebot.ant.spk">
 	<property file="package.properties" />
 	<property file="profile.properties" />
 
 	<property file="build-jdk.properties" />
 
 	<property name="dir.source" location="${basedir}/src" />
+	<property name="dir.lib" location="${basedir}/lib" />
 	<property name="dir.package" location="${basedir}/package" />
 	<property name="dir.release" location="${basedir}/release" />
 
@@ -61,6 +62,12 @@
 				</propertyset>
 			</filterset>
 		</copy>
+	</target>
+
+
+	<target name="resolve" description="Retrieve dependencies with Apache Ivy">
+		<delete dir="${dir.lib}" />
+		<ivy:retrieve pattern="${dir.lib}/[artifact]-[type].[ext]" />
 	</target>
 
 

@@ -1,2 +1,2 @@
 #/bin/sh
-ant update-jdk -lib "lib" && ant spk package-source -lib "lib"
+ant resolve && ant update-jdk -lib "lib" && ant spk package-source -lib "lib"

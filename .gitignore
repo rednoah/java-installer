@@ -1,3 +1,4 @@
-profile.properties
-release/*.spk
-*.DS_Store
+release
+lib
+
+*.properties
