@@ -1,25 +1,25 @@
 #!/bin/sh
 
-# Unofficial Java Installer for Oracle Java SE 1.8.0_101
+# Unofficial Java Installer for Oracle Java SE 1.8.0_111
 # Example: curl -O https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jdk.sh && sh -x install-jdk.sh
 
 # JDK version identifiers
 case `uname -m` in
 	armv7l)
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-arm32-vfp-hflt.tar.gz"
-		JDK_SHA256="9819bd28af551589c8ea599c5b8b5cdf1aa86dacc9a75c31dd611bda27ae38a4"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-arm32-vfp-hflt.tar.gz"
+		JDK_SHA256="add3f9685161337fd31e433ea9b19231d6b40561dc40826057930fa2d76d7925"
 	;;
 	armv8)
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-arm64-vfp-hflt.tar.gz"
-		JDK_SHA256="795df50a2991e84866ccd251111cfa1cf72d1859aa77d4cc1a8fa2419d254bcf"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-arm64-vfp-hflt.tar.gz"
+		JDK_SHA256="8fd6be278b1d312c53897de66e9bd2e6eb5ce0d5b62da8bbd9b1333dc190ed15"
 	;;
 	i686)
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-i586.tar.gz"
-		JDK_SHA256="b11212ef06235296cad2f9b80a22f2d853a2d2f66ce55b993eb686e5a2da365d"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-i586.tar.gz"
+		JDK_SHA256="9a8e8fcf7b6fbe53d6312195be87ce00f3beaab9dfbaa020b96e305174f39e1f"
 	;;
 	x86_64)
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz"
-		JDK_SHA256="467f323ba38df2b87311a7818bcbf60fe0feb2139c455dfa0e08ba7ed8581328"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-x64.tar.gz"
+		JDK_SHA256="187eda2235f812ddb35c352b5f9aa6c5b184d611c2c9d0393afb8031d8198974"
 	;;
 	*)
 		echo "CPU architecture not supported: `uname -m`"
