@@ -1,5 +1,5 @@
 # Unofficial Java Installer for Oracle Java SE 1.8.0_111
-# Example: Invoke-WebRequest "https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1" | Invoke-Expression
+# Example: Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1 | Invoke-Expression
 
 # JDK version identifiers
 $JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jre-8u111-windows-x64.tar.gz"

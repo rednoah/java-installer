@@ -1,5 +1,5 @@
 # @{title} for @{jdk.name} @{jdk.version}
-# Example: Invoke-WebRequest "https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1" | Invoke-Expression
+# Example: Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1 | Invoke-Expression
 
 # JDK version identifiers
 $JDK_URL = "@{jre.windows.x64.url}"
