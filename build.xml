@@ -53,9 +53,7 @@
 
 	<target name="build">
 		<copy todir="${dir.release}" overwrite="yes" encoding="UTF-8" verbose="true">
-			<fileset dir="${dir.source}">
-				<include name="*.sh" />
-			</fileset>
+			<fileset dir="${dir.source}" />
 			<filterset begintoken="@{" endtoken="}">
 				<propertyset>
 					<propertyref builtin="all" />

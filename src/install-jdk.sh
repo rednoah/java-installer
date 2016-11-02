@@ -6,20 +6,20 @@
 # JDK version identifiers
 case `uname -m` in
 	armv7l)
-		JDK_URL="@{jdk.armv7l.url}"
-		JDK_SHA256="@{jdk.armv7l.sha256}"
+		JDK_URL="@{jdk.linux.arm32.url}"
+		JDK_SHA256="@{jdk.linux.arm32.sha256}"
 	;;
 	armv8)
-		JDK_URL="@{jdk.armv8.url}"
-		JDK_SHA256="@{jdk.armv8.sha256}"
+		JDK_URL="@{jdk.linux.arm64.url}"
+		JDK_SHA256="@{jdk.linux.arm64.sha256}"
 	;;
 	i686)
-		JDK_URL="@{jdk.i686.url}"
-		JDK_SHA256="@{jdk.i686.sha256}"
+		JDK_URL="@{jdk.linux.x86.url}"
+		JDK_SHA256="@{jdk.linux.x86.sha256}"
 	;;
 	x86_64)
-		JDK_URL="@{jdk.x86_64.url}"
-		JDK_SHA256="@{jdk.x86_64.sha256}"
+		JDK_URL="@{jdk.linux.x64.url}"
+		JDK_SHA256="@{jdk.linux.x64.sha256}"
 	;;
 	*)
 		echo "CPU architecture not supported: `uname -m`"
