@@ -24,10 +24,8 @@ $JDK_SHA256_ACTUAL = (Get-FileHash -Algorithm SHA256 $JDK_TAR_GZ).hash.toLower()
 echo "Expected SHA256 checksum: $JDK_SHA256"
 echo "Actual SHA256 checksum: $JDK_SHA256_ACTUAL"
 
-if ( $JDK_SHA256 -ne $JDK_SHA256_ACTUAL ) {
-	echo "ERROR: SHA256 checksum mismatch"
-	exit 1
+if ($JDK_SHA256 -ne $JDK_SHA256_ACTUAL) {
+	throw "ERROR: SHA256 checksum mismatch"
 }
 
 echo "OK"
-exit 0
