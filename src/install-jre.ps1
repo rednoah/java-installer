@@ -1,6 +1,10 @@
 # @{title} for @{jdk.name} @{jdk.version}
 # Example: Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1 | Invoke-Expression
 
+
+$ErrorActionPreference = "Stop"													# abort on error
+
+
 # JDK version identifiers
 Switch ($ENV:PROCESSOR_ARCHITECTURE) {
 	AMD64 {
@@ -16,6 +20,7 @@ Switch ($ENV:PROCESSOR_ARCHITECTURE) {
 	}
 }
 
+
 # fetch JDK
 $JDK_TAR_GZ = Split-Path -Leaf $JDK_URL
 Write-Output "Download $JDK_TAR_GZ"
@@ -30,6 +35,7 @@ if (!(test-path $JDK_TAR_GZ)) {
 	Invoke-WebRequest -WebSession $session -Uri $JDK_URL -OutFile $JDK_TAR_GZ
 }
 
+
 # verify archive via SHA-256 checksum
 $JDK_SHA256_ACTUAL = (Get-FileHash -Algorithm SHA256 $JDK_TAR_GZ).hash.toLower()
 Write-Output "Expected SHA256 checksum: $JDK_SHA256"
@@ -39,10 +45,12 @@ if ($JDK_SHA256 -ne $JDK_SHA256_ACTUAL) {
 	throw "ERROR: SHA256 checksum mismatch"
 }
 
+
 # use 7-Zip to extract tar
 Write-Output "Extract $JDK_TAR_GZ"
-7z e -aos $JDK_TAR_GZ														# extract *.tar.gz
-7z x -aos ([System.IO.Path]::GetFileNameWithoutExtension($JDK_TAR_GZ))		# extract *.tar
+& 7z e -aos $JDK_TAR_GZ															# extract *.tar.gz
+& 7z x -aos ([System.IO.Path]::GetFileNameWithoutExtension($JDK_TAR_GZ))		# extract *.tar
+
 
 # find java executable
 $JAVA_EXE = Get-ChildItem -recurse -include java.exe | Sort-Object LastWriteTime | Select-Object -ExpandProperty FullName -Last 1
@@ -50,6 +58,7 @@ $JAVA_EXE = Get-ChildItem -recurse -include java.exe | Sort-Object LastWriteTime
 # test
 Write-Output "Execute ""$JAVA_EXE"" -XshowSettings -version"
 & $JAVA_EXE -XshowSettings -version
+
 
 # set %JAVA_HOME% and add java to %PATH%
 $JAVA_HOME = Split-Path -Parent (Split-Path -Parent $JAVA_EXE)
