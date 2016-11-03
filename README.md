@@ -16,7 +16,7 @@ On install, the package will download the latest [Oracle Java SE Development Kit
 
 
 ## Installation on Linux
-The [install-jdk.sh](https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jdk.sh) shell script should work on any Linux device:
+The [install-jdk.sh](https://github.com/rednoah/java-installer/blob/master/release/install-jdk.sh) shell script should work on any Linux device:
 
 ```
 # Download the latest JDK into the current directory & link java to /usr/local/bin
@@ -26,13 +26,13 @@ sh -x install-jdk.sh
 
 
 ## Installation on Windows
-The [install-jre.ps1](https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1) PowerShell script requires Windows 8 or higher:
+The [install-jre.ps1](https://github.com/rednoah/java-installer/blob/master/release/install-jre.ps1) PowerShell script requires Windows 8 or higher:
 
 ```cmd
 powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1 | Invoke-Expression"
 ```
 
-The script uses `7z` to extract the `*.tar.gz` archive, but it will not modify `JAVA_HOME` or the `PATH`.
+The script uses `7z` to extract the `*.tar.gz` archive, but it will _not_ modify `JAVA_HOME` or the `PATH`.
 
 
 ## Supported Platforms
