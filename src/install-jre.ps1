@@ -2,8 +2,19 @@
 # Example: Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1 | Invoke-Expression
 
 # JDK version identifiers
-$JDK_URL = "@{jre.windows.x64.url}"
-$JDK_SHA256 = "@{jre.windows.x64.sha256}"
+Switch ($ENV:PROCESSOR_ARCHITECTURE) {
+	AMD64 {
+		$JDK_URL = "@{jre.windows.x64.url}"
+		$JDK_SHA256 = "@{jre.windows.x64.sha256}"
+	}
+	x86 {
+		$JDK_URL = "@{jre.windows.x86.url}"
+		$JDK_SHA256 = "@{jre.windows.x86.sha256}"
+	}
+	default {
+		throw "CPU architecture not supported: $ENV:PROCESSOR_ARCHITECTURE"
+	}
+}
 
 # fetch JDK
 $JDK_TAR_GZ = Split-Path -Leaf $JDK_URL
