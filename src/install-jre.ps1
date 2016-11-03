@@ -39,4 +39,22 @@ if ($JDK_SHA256 -ne $JDK_SHA256_ACTUAL) {
 	throw "ERROR: SHA256 checksum mismatch"
 }
 
-Write-Output "OK"
+# use 7-Zip to extract tar
+Write-Output "Extract $JDK_TAR_GZ"
+7z e -aos $JDK_TAR_GZ														# extract *.tar.gz
+7z x -aos ([System.IO.Path]::GetFileNameWithoutExtension($JDK_TAR_GZ))		# extract *.tar
+
+# find java executable
+$JAVA_EXE = Get-ChildItem -recurse -include java.exe | Sort-Object LastWriteTime | Select-Object -ExpandProperty FullName -Last 1
+
+# test
+Write-Output "Execute ""$JAVA_EXE"" -XshowSettings -version"
+& $JAVA_EXE -XshowSettings -version
+
+# set %JAVA_HOME% and add java to %PATH%
+$JAVA_HOME = Split-Path -Parent (Split-Path -Parent $JAVA_EXE)
+
+Write-Output "`nPlease add JAVA_HOME\bin to the PATH if you have not done so already:"
+Write-Output "`n`t%JAVA_HOME%\bin"
+Write-Output "`nPlease set JAVA_HOME:"
+Write-Output "`n`tsetx JAVA_HOME ""$JAVA_HOME"""
