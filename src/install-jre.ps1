@@ -1,9 +1,7 @@
 # @{title} for @{jdk.name} @{jdk.version}
 # Example: Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1 | Invoke-Expression
 
-
-$ErrorActionPreference = "Stop"													# abort on error
-
+$ErrorActionPreference = "Stop"
 
 # JDK version identifiers
 Switch ($ENV:PROCESSOR_ARCHITECTURE) {
@@ -48,8 +46,8 @@ if ($JDK_SHA256 -ne $JDK_SHA256_ACTUAL) {
 
 # use 7-Zip to extract tar
 Write-Output "Extract $JDK_TAR_GZ"
-& 7z e -aos $JDK_TAR_GZ															# extract *.tar.gz
-& 7z x -aos ([System.IO.Path]::GetFileNameWithoutExtension($JDK_TAR_GZ))		# extract *.tar
+& 7z e -aos $JDK_TAR_GZ
+& 7z x -aos ([System.IO.Path]::GetFileNameWithoutExtension($JDK_TAR_GZ))
 
 
 # find java executable
