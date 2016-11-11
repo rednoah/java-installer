@@ -28,8 +28,8 @@ sh -x install-jdk.sh
 ## Installation on Windows
 The [install-jre.ps1](https://github.com/rednoah/java-installer/blob/master/release/install-jre.ps1) PowerShell script requires Windows 8 or higher:
 
-```cmd
-powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1 | Invoke-Expression"
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1 -UseBasicParsing | Invoke-Expression
 ```
 
 The script uses `7z` to extract the `*.tar.gz` archive, but it will _not_ modify `JAVA_HOME` or the `PATH`.
