@@ -16,20 +16,21 @@ On install, the package will download the latest [Oracle Java SE Development Kit
 
 
 ## Installation on Linux
-The [install-jdk.sh](https://github.com/rednoah/java-installer/blob/master/release/install-jdk.sh) shell script should work on any Linux device:
+The [get-java.sh](https://github.com/rednoah/java-installer/blob/master/release/get-java.sh) shell script should work on any Linux device:
 
 ```
 # Download the latest JDK into the current directory & link java to /usr/local/bin
-curl -O https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jdk.sh
-sh -x install-jdk.sh
+curl -O https://raw.githubusercontent.com/rednoah/java-installer/master/release/get-java.sh
+sh -x get-java.sh
 ```
 
 
 ## Installation on Windows
-The [install-jre.ps1](https://github.com/rednoah/java-installer/blob/master/release/install-jre.ps1) PowerShell script requires Windows 8 or higher:
+The [get-java.ps1](https://github.com/rednoah/java-installer/blob/master/release/get-java.ps1) PowerShell script requires Windows 8 or higher:
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1 -UseBasicParsing | Invoke-Expression
+Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/get-java.ps1 -UseBasicParsing -OutFile get-java.ps1
+get-java.ps1 install
 ```
 
 The script uses `7z` to extract the `*.tar.gz` archive, but it will _not_ modify `JAVA_HOME` or the `PATH`.
@@ -42,3 +43,4 @@ The script uses `7z` to extract the `*.tar.gz` archive, but it will _not_ modify
 * Linux x64 (`x86_64`)
 * Windows x86	(`x86`)
 * Windows x64	(`AMD64`)
+* macOS x64(`x86_64`)

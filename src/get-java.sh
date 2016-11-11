@@ -1,39 +1,50 @@
 #!/bin/sh
 
 # @{title} for @{jdk.name} @{jdk.version}
-# Example: curl -O https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jdk.sh && sh -x install-jdk.sh
+# Example: curl -O https://raw.githubusercontent.com/rednoah/java-installer/master/release/get-java.sh && sh -x get-java.sh install
+
 
 # JDK version identifiers
-case `uname -m` in
-	armv7l)
+JDK_ARCH=`uname -sm`
+
+case "$JDK_ARCH" in
+	"Linux armv7l")
 		JDK_URL="@{jdk.linux.arm32.url}"
 		JDK_SHA256="@{jdk.linux.arm32.sha256}"
 	;;
-	armv8)
+	"Linux armv8")
 		JDK_URL="@{jdk.linux.arm64.url}"
 		JDK_SHA256="@{jdk.linux.arm64.sha256}"
 	;;
-	i686)
+	"Linux i686")
 		JDK_URL="@{jdk.linux.x86.url}"
 		JDK_SHA256="@{jdk.linux.x86.sha256}"
 	;;
-	x86_64)
+	"Linux x86_64")
 		JDK_URL="@{jdk.linux.x64.url}"
 		JDK_SHA256="@{jdk.linux.x64.sha256}"
 	;;
+	"Darwin x86_64")
+		JDK_URL="@{jre.macosx.x64.url}"
+		JDK_SHA256="@{jre.macosx.x64.sha256}"
+	;;
 	*)
-		echo "CPU architecture not supported: `uname -m`"
+		echo "Architecture not supported: $JDK_ARCH"
 		exit 1
 	;;
 esac
 
+
 # fetch JDK
 JDK_TAR_GZ=`basename $JDK_URL`
-echo "Download $JDK_URL"
-curl -v -L -o "$JDK_TAR_GZ" --retry 5 --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
+if [ ! -f "$JDK_TAR_GZ" ]; then
+	echo "Download $JDK_URL"
+	curl -v -L -o "$JDK_TAR_GZ" --retry 5 --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
+fi
+
 
 # verify archive via SHA-256 checksum
-JDK_SHA256_ACTUAL=`openssl dgst -sha256 -hex -r "$JDK_TAR_GZ" | cut -d' ' -f1`
+JDK_SHA256_ACTUAL=`openssl dgst -sha256 -hex "$JDK_TAR_GZ" | egrep --only-matching "[a-f0-9]{64}"`
 echo "Expected SHA256 checksum: $JDK_SHA256"
 echo "Actual SHA256 checksum: $JDK_SHA256_ACTUAL"
 
@@ -41,6 +52,14 @@ if [ "$JDK_SHA256" != "$JDK_SHA256_ACTUAL" ]; then
 	echo "ERROR: SHA256 checksum mismatch"
 	exit 1
 fi
+
+
+# extract and link only if explicitly requested
+if [ "$1" != "install" ]; then
+	echo "Download complete: $JDK_TAR_GZ"
+	exit 0
+fi
+
 
 echo "Extract $JDK_TAR_GZ"
 tar -v -zxf "$JDK_TAR_GZ"
