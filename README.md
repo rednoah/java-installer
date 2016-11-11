@@ -29,8 +29,8 @@ sh -x get-java.sh
 The [get-java.ps1](https://github.com/rednoah/java-installer/blob/master/release/get-java.ps1) PowerShell script requires Windows 8 or higher:
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/get-java.ps1 -UseBasicParsing -OutFile get-java.ps1
-get-java.ps1 install
+Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/get-java.ps1 -OutFile get-java.ps1 -UseBasicParsing
+powershell -File get-java.ps1 install
 ```
 
 The script uses `7z` to extract the `*.tar.gz` archive, but it will _not_ modify `JAVA_HOME` or the `PATH`.

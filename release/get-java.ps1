@@ -1,5 +1,4 @@
 # Unofficial Java Installer for Oracle Java SE 1.8.0_111
-# Example: Invoke-WebRequest https://raw.githubusercontent.com/rednoah/java-installer/master/release/install-jre.ps1 | Invoke-Expression
 
 
 $ErrorActionPreference = "Stop"
@@ -49,7 +48,7 @@ if ($JDK_SHA256 -ne $JDK_SHA256_ACTUAL) {
 
 
 # extract and link only if explicitly requested
-if ("$1" -ne "install") {
+if ($args[0] -ne "install") {
 	Write-Output "Download complete: $JDK_TAR_GZ"
 	return
 }

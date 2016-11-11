@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Unofficial Java Installer for Oracle Java SE 1.8.0_111
-# Example: curl -O https://raw.githubusercontent.com/rednoah/java-installer/master/release/get-java.sh && sh -x get-java.sh install
 
 
 # JDK version identifiers

@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # @{title} for @{jdk.name} @{jdk.version}
-# Example: curl -O https://raw.githubusercontent.com/rednoah/java-installer/master/release/get-java.sh && sh -x get-java.sh install
 
 
 # JDK version identifiers
