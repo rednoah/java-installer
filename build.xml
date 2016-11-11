@@ -60,6 +60,10 @@
 				</propertyset>
 			</filterset>
 		</copy>
+
+		<chmod perm="+x" type="file">
+			<fileset dir="${dir.release}" />
+		</chmod>
 	</target>
 
 
