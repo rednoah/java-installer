@@ -8,23 +8,23 @@ JDK_ARCH=`uname -sm`
 
 case "$JDK_ARCH" in
 	"Linux armv7l")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/jdk-8u121-linux-arm32-vfp-hflt.tar.gz"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-arm32-vfp-hflt.tar.gz"
 		JDK_SHA256="134c73db663b1fb0f3d771a383dbea1a7cfeaa00e4d2872e0a6df94d242cf2f6"
 	;;
 	"Linux armv8")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/jdk-8u121-linux-arm64-vfp-hflt.tar.gz"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-arm64-vfp-hflt.tar.gz"
 		JDK_SHA256="acd84c59aa0c3fa8cfb2e3c51bbd9ebf979b4ed9b5f15b343821c31af2ce3573"
 	;;
 	"Linux i686")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/jdk-8u121-linux-i586.tar.gz"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-i586.tar.gz"
 		JDK_SHA256="f7d6cf1468c5e71ff097bec0189caccdd8e709a2a88a2c9849ad6200c0f33d4c"
 	;;
 	"Linux x86_64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/jdk-8u121-linux-x64.tar.gz"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz"
 		JDK_SHA256="97e30203f1aef324a07c94d9d078f5d19bb6c50e638e4492722debca588210bc"
 	;;
 	"Darwin x86_64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/jre-8u121-macosx-x64.tar.gz"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-macosx-x64.tar.gz"
 		JDK_SHA256="7549541f7843be5cd507bcd91c7195c5dbbe3d222d2b322568e198f2733ba4f0"
 	;;
 	*)

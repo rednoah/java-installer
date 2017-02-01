@@ -9,11 +9,11 @@ $JDK_ARCH = "$ENV:PROCESSOR_ARCHITECTURE"
 
 Switch ($JDK_ARCH) {
 	AMD64 {
-		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u121-b13/jre-8u121-windows-x64.tar.gz"
+		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-windows-x64.tar.gz"
 		$JDK_SHA256 = "4b986f866777afc950e7d86f8b26399c84be1e3116875a8f44cc5946f85badbe"
 	}
 	x86 {
-		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u121-b13/jre-8u121-windows-i586.tar.gz"
+		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-windows-i586.tar.gz"
 		$JDK_SHA256 = "c668cdb25e5d16c8a275c73da8cb0fa142890e37f84a3b60edc56120116e6100"
 	}
 	default {
