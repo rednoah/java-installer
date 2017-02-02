@@ -38,7 +38,7 @@ esac
 JDK_TAR_GZ=`basename $JDK_URL`
 if [ ! -f "$JDK_TAR_GZ" ]; then
 	echo "Download $JDK_URL"
-	curl -v -L -o "$JDK_TAR_GZ" --retry 5 --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
+	curl -sL -o "$JDK_TAR_GZ" --retry 5 --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
 fi
 
 
