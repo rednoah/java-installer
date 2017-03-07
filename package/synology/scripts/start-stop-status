@@ -12,8 +12,8 @@ case "$1" in
 				echo "Add environment variables to $SYS_PROFILE" >> "$PKG_LOG"
 
 				# add environment variables to /etc/profile
-				echo "export JAVA_HOME=/usr/local/java    ${COMMENT}" >> "$SYS_PROFILE"
-				echo "export LANG=en_US.utf8              ${COMMENT}" >> "$SYS_PROFILE"
+				echo "export JAVA_HOME=/usr/local/java    $COMMENT" >> "$SYS_PROFILE"
+				echo "export LANG=en_US.utf8              $COMMENT" >> "$SYS_PROFILE"
 			fi
 		fi
 		exit 0
@@ -27,7 +27,7 @@ case "$1" in
 		if [ -x "/usr/local/bin/java" ] && [ -x "/usr/local/java/bin/java" ]; then
 			exit 0
 		else
-			exit 0	# force "Running" status even if java is not installed correctly to avoid DSM dependency issues (e.g. on ppc and armv5 devices)
+			exit 150 # package is broken and should be reinstalled
 		fi
 	;;
 
