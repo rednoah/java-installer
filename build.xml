@@ -25,7 +25,7 @@
 			<info name="silent_upgrade" value="yes" />
 			<info name="silent_uninstall" value="yes" />
 			<info name="thirdparty" value="yes" />
-			<info name="firmware" value="5.0" />
+			<info name="firmware" value="6.0" />
 
 			<icon size="72" file="${dir.package}/synology/images/thumb_72.png" />
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
