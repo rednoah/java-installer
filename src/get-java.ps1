@@ -33,7 +33,7 @@ if (!(test-path $JDK_TAR_GZ)) {
 	$cookie.Value = "accept-securebackup-cookie"
 	$cookie.Domain = "oracle.com"
 	$session.Cookies.Add($cookie)
-	Invoke-WebRequest -WebSession $session -Uri $JDK_URL -OutFile $JDK_TAR_GZ
+	Invoke-WebRequest -UseBasicParsing -WebSession $session -Uri $JDK_URL -OutFile $JDK_TAR_GZ
 }
 
 
