@@ -1,4 +1,4 @@
-# Unofficial Java Installer for Oracle Java SE 1.8.0_121
+# Unofficial Java Installer for Oracle Java SE 1.8.0_131
 
 
 $ErrorActionPreference = "Stop"
@@ -9,12 +9,12 @@ $JDK_ARCH = "$ENV:PROCESSOR_ARCHITECTURE"
 
 Switch ($JDK_ARCH) {
 	AMD64 {
-		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-windows-x64.tar.gz"
-		$JDK_SHA256 = "4b986f866777afc950e7d86f8b26399c84be1e3116875a8f44cc5946f85badbe"
+		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jre-8u131-windows-x64.tar.gz"
+		$JDK_SHA256 = "89417f409d558274297ae826fb6a9d399b16a20b99923ea3d81f5b1d6b75ce7d"
 	}
 	x86 {
-		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-windows-i586.tar.gz"
-		$JDK_SHA256 = "c668cdb25e5d16c8a275c73da8cb0fa142890e37f84a3b60edc56120116e6100"
+		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jre-8u131-windows-i586.tar.gz"
+		$JDK_SHA256 = "2c2bc3418f662927e8c19b2379140de84fbcb24ca70f6d47a5eac6d869f94284"
 	}
 	default {
 		throw "CPU architecture not supported: $JDK_ARCH"
@@ -33,7 +33,7 @@ if (!(test-path $JDK_TAR_GZ)) {
 	$cookie.Value = "accept-securebackup-cookie"
 	$cookie.Domain = "oracle.com"
 	$session.Cookies.Add($cookie)
-	Invoke-WebRequest -WebSession $session -Uri $JDK_URL -OutFile $JDK_TAR_GZ
+	Invoke-WebRequest -UseBasicParsing -WebSession $session -Uri $JDK_URL -OutFile $JDK_TAR_GZ
 }
 
 
