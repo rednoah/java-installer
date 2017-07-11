@@ -10,7 +10,7 @@ Synology DSM package for installing the latest Oracle Java binaries on Synology 
 ## Installation on Synology NAS
 Add the following __Package Source__ to Synology DSM ► Package Center ► Settings ► Package Sources:
 
-https://app.filebot.net/syno/
+https://get.filebot.net/syno/
 
 On install, the package will download the latest [Oracle Java SE Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (180 MB) for your platform. This may take a while.
 
