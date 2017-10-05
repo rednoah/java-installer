@@ -1,3 +1,8 @@
+@Grapes(
+    @Grab(group='org.jsoup', module='jsoup', version='1.10.3')
+)
+
+
 def platforms = [
 	jdk: [
 		linux: [
@@ -20,28 +25,31 @@ def platforms = [
 
 // parse version/update/build from release string
 def name    = properties.product
-def release = properties.release =~ /(?<version>\d.(?<major>\d).\d_(?<update>\d+))-(?<build>b\d+)/
+def release = properties.release =~ /(?<major>\d+)[+](?<build>\d+)/
 def version = release[0][1]
-def update  = release[0][2..3].join('u')
-def build   = release[0][4]
+def build = release[0][2]
+
 
 // package repository
-def site = "http://download.oracle.com/otn-pub/java/jdk/${update}-${build}/${properties.uuid}"
+def site = "http://download.oracle.com/otn-pub/java/jdk/${version}+${build}"
 
 // grep SHA-256 checksums from Oracle
-def digest = new URL("https://www.oracle.com/webfolder/s/digest/${update}checksum.html").readLines()
+def digest = org.jsoup.Jsoup.connect("https://www.oracle.com/webfolder/s/digest/${version}checksum.html").get()
 
 // generate properties file
-ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${update} binaries") {
+ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} binaries") {
 	entry(key:"jdk.name", value: name)
 	entry(key:"jdk.version", value: version)
 
 	platforms.each{ type, o ->
 		o.each{ os, m ->
 			m.each{ arch, pkg ->
-				def filename = "${type}-${update}-${os}-${pkg}.tar.gz"
+				def filename = "${type}-${version}_${os}-${pkg}_bin.tar.gz"
 				def url = "${site}/${filename}"
-				def checksum = digest.grep{ it.contains(">${filename}<") }.findResult{ it.find(/sha256: (\p{XDigit}{64})/ ){ match, checksum -> checksum.toLowerCase() } }
+
+				def checksum = digest.select('tr')
+								.find{ it.select('td').any{ it.text() == filename } }
+								.findResult{ it.select('td').findResult{ it.text().find( /sha256: (\p{XDigit}{64})/ ){ match, checksum -> checksum.toLowerCase() } } }
 
 				entry(key:"${type}.${os}.${arch}.url", value: url)
 				entry(key:"${type}.${os}.${arch}.sha256", value: checksum)
