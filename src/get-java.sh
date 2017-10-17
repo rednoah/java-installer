@@ -24,8 +24,8 @@ case "$JDK_ARCH" in
 		JDK_SHA256="@{jdk.linux.x64.sha256}"
 	;;
 	"Darwin x86_64")
-		JDK_URL="@{jre.macosx.x64.url}"
-		JDK_SHA256="@{jre.macosx.x64.sha256}"
+		JDK_URL="@{jre.osx.x64.url}"
+		JDK_SHA256="@{jre.osx.x64.sha256}"
 	;;
 	*)
 		echo "Architecture not supported: $JDK_ARCH"
