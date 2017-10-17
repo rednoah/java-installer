@@ -2,3 +2,4 @@ lib
 release
 
 *.properties
+*.DS_Store
