@@ -17,7 +17,7 @@ def platforms = [
 			x86: 'i586',
 			x64: 'x64'
 		],
-		macosx: [
+		osx: [
 			x64: 'x64'
 		]
 	]
