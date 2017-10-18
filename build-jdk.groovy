@@ -25,16 +25,13 @@ def platforms = [
 
 // parse version/update/build from release string
 def name    = properties.product
-def release = properties.release =~ /(?<major>\d+)[+](?<build>\d+)/
-def version = release[0][1]
-def build = release[0][2]
-
+def (version, build) = properties.release.tokenize('+')
 
 // package repository
 def site = "http://download.oracle.com/otn-pub/java/jdk/${version}+${build}"
 
 // grep SHA-256 checksums from Oracle
-def digest = org.jsoup.Jsoup.connect("https://www.oracle.com/webfolder/s/digest/${version}checksum.html").get()
+def digest = org.jsoup.Jsoup.connect("https://www.oracle.com/webfolder/s/digest/${version.tr('.', '-')}checksum.html").get()
 
 // generate properties file
 ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} binaries") {
