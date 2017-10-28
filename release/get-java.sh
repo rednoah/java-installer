@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Unofficial Java Installer for Oracle Java SE 1.8.0_144
+# Unofficial Java Installer for Oracle Java SE 9.0.1
 
 
 # JDK version identifiers
@@ -8,24 +8,24 @@ JDK_ARCH=`uname -sm`
 
 case "$JDK_ARCH" in
 	"Linux armv7l")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-arm32-vfp-hflt.tar.gz"
-		JDK_SHA256="cbbd390e19ab4c473e05f60602ce2804db25e4e35be5ab95f4f1a2aeb5b72383"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/9.0.1+11/jdk-9.0.1_linux-arm32-vfp-hflt_bin.tar.gz"
+		JDK_SHA256="null"
 	;;
 	"Linux aarch64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-arm64-vfp-hflt.tar.gz"
-		JDK_SHA256="bbcf4a0805f9bcead32fd988b74cee61ef6ad90e6d1b4e0dce432ac3fd8e0168"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/9.0.1+11/jdk-9.0.1_linux-arm64-vfp-hflt_bin.tar.gz"
+		JDK_SHA256="null"
 	;;
 	"Linux i686")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-i586.tar.gz"
-		JDK_SHA256="624c090647629394ef0ee08d9d8ac5d3d5a9a60fa245fefb2eb417c36c7cb7c4"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/9.0.1+11/jdk-9.0.1_linux-i586_bin.tar.gz"
+		JDK_SHA256="null"
 	;;
 	"Linux x86_64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz"
-		JDK_SHA256="e8a341ce566f32c3d06f6d0f0eeea9a0f434f538d22af949ae58bc86f2eeaae4"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/9.0.1+11/jdk-9.0.1_linux-x64_bin.tar.gz"
+		JDK_SHA256="2cdaf0ff92d0829b510edd883a4ac8322c02f2fc1beae95d048b6716076bc014"
 	;;
 	"Darwin x86_64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-macosx-x64.tar.gz"
-		JDK_SHA256="6430664d0d883e662084c0f3a519bd34640e9bb4f54966476a8ca45b97de8f45"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/9.0.1+11/jre-9.0.1_osx-x64_bin.tar.gz"
+		JDK_SHA256="3d2c65cf46807825ad8573265b3f23596c204be4036366444bbe5a62d0eb606a"
 	;;
 	*)
 		echo "Architecture not supported: $JDK_ARCH"
