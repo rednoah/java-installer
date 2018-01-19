@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Unofficial Java Installer for Oracle Java SE 1.8.0_151
+# Unofficial Java Installer for Oracle Java SE 1.8.0_162
 
 
 # JDK version identifiers
@@ -8,24 +8,24 @@ JDK_ARCH=`uname -sm`
 
 case "$JDK_ARCH" in
 	"Linux armv7l")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-arm32-vfp-hflt.tar.gz"
-		JDK_SHA256="2cca3c6ffcc016ae531802202562ef20630500e134838017a6e91daac2dbb339"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-arm32-vfp-hflt.tar.gz"
+		JDK_SHA256="57720cc98e0dd709e8439df73d70cd1252d76f059e3e08ce0b36e8776b7bfa77"
 	;;
 	"Linux aarch64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-arm64-vfp-hflt.tar.gz"
-		JDK_SHA256="418631095498193b0918b2c86370b8fdad60abf7bf8f7e60498a5f2999106af7"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-arm64-vfp-hflt.tar.gz"
+		JDK_SHA256="c84d7d32f1292b9d6b645ee286903b1b2d6881897e734c056efab8b9ab66d3a7"
 	;;
 	"Linux i686")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-i586.tar.gz"
-		JDK_SHA256="8062f34f69dd1f1991bff517df52da606c53f5fa0d6677ceb46df30e93b53a70"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-i586.tar.gz"
+		JDK_SHA256="eecf88dbcf7c78d236251d44350126f1297a522f2eab974b4027ef20f7a6fb24"
 	;;
 	"Linux x86_64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.tar.gz"
-		JDK_SHA256="c78200ce409367b296ec39be4427f020e2c585470c4eed01021feada576f027f"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.tar.gz"
+		JDK_SHA256="68ec82d47fd9c2b8eb84225b6db398a72008285fafc98631b1ff8d2229680257"
 	;;
 	"Darwin x86_64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jre-8u151-macosx-x64.tar.gz"
-		JDK_SHA256="8c0c2e7d432b392bb41fc5b6d1197c28445ccb1b590a06bcbd5e3bec6ec634c9"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jre-8u162-macosx-x64.tar.gz"
+		JDK_SHA256="9008a6d9ffcf30c023937a51ae87f142824a78f568307920d0f0212f8588e6e2"
 	;;
 	*)
 		echo "Architecture not supported: $JDK_ARCH"
