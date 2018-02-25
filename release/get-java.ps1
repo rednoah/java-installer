@@ -12,10 +12,6 @@ Switch ($JDK_ARCH) {
 		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jre-9.0.4_windows-x64_bin.tar.gz"
 		$JDK_SHA256 = "ffcd6d774cfba78d88a1af253eecad0ec3639bdeabdfb3345e61d1c2355267a4"
 	}
-	x86 {
-		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jre-9.0.4_windows-i586_bin.tar.gz"
-		$JDK_SHA256 = "null"
-	}
 	default {
 		throw "CPU architecture not supported: $JDK_ARCH"
 	}

@@ -7,18 +7,6 @@
 JDK_ARCH=`uname -sm`
 
 case "$JDK_ARCH" in
-	"Linux armv7l")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jdk-9.0.4_linux-arm32-vfp-hflt_bin.tar.gz"
-		JDK_SHA256="null"
-	;;
-	"Linux aarch64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jdk-9.0.4_linux-arm64-vfp-hflt_bin.tar.gz"
-		JDK_SHA256="null"
-	;;
-	"Linux i686")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jdk-9.0.4_linux-i586_bin.tar.gz"
-		JDK_SHA256="null"
-	;;
 	"Linux x86_64")
 		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jdk-9.0.4_linux-x64_bin.tar.gz"
 		JDK_SHA256="90c4ea877e816e3440862cfa36341bc87d05373d53389ec0f2d54d4e8c95daa2"

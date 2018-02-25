@@ -6,15 +6,11 @@
 def platforms = [
 	jdk: [
 		linux: [
-			arm32: 'arm32-vfp-hflt',
-			arm64: 'arm64-vfp-hflt',
-			x86: 'i586',
 			x64: 'x64'
 		]
 	],
 	jre: [
 		windows: [
-			x86: 'i586',
 			x64: 'x64'
 		],
 		osx: [

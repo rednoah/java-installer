@@ -7,18 +7,6 @@
 JDK_ARCH=`uname -sm`
 
 case "$JDK_ARCH" in
-	"Linux armv7l")
-		JDK_URL="@{jdk.linux.arm32.url}"
-		JDK_SHA256="@{jdk.linux.arm32.sha256}"
-	;;
-	"Linux aarch64")
-		JDK_URL="@{jdk.linux.arm64.url}"
-		JDK_SHA256="@{jdk.linux.arm64.sha256}"
-	;;
-	"Linux i686")
-		JDK_URL="@{jdk.linux.x86.url}"
-		JDK_SHA256="@{jdk.linux.x86.sha256}"
-	;;
 	"Linux x86_64")
 		JDK_URL="@{jdk.linux.x64.url}"
 		JDK_SHA256="@{jdk.linux.x64.sha256}"

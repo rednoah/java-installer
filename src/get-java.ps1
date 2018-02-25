@@ -12,10 +12,6 @@ Switch ($JDK_ARCH) {
 		$JDK_URL = "@{jre.windows.x64.url}"
 		$JDK_SHA256 = "@{jre.windows.x64.sha256}"
 	}
-	x86 {
-		$JDK_URL = "@{jre.windows.x86.url}"
-		$JDK_SHA256 = "@{jre.windows.x86.sha256}"
-	}
 	default {
 		throw "CPU architecture not supported: $JDK_ARCH"
 	}
