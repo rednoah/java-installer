@@ -28,7 +28,7 @@ def name    = properties.product
 def (version, build) = properties.release.tokenize('+')
 
 // package repository
-def site = "http://download.oracle.com/otn-pub/java/jdk/${version}+${build}"
+def site = "http://download.oracle.com/otn-pub/java/jdk/${version}+${build}/${properties.uuid}"
 
 // grep SHA-256 checksums from Oracle
 def digest = org.jsoup.Jsoup.connect("https://www.oracle.com/webfolder/s/digest/${version.tr('.', '-')}checksum.html").get()
