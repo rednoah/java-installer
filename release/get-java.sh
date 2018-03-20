@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Unofficial Java Installer for Oracle Java SE 9.0.4
+# Unofficial Java Installer for Oracle Java SE 10
 
 
 # JDK version identifiers
@@ -8,12 +8,12 @@ JDK_ARCH=`uname -sm`
 
 case "$JDK_ARCH" in
 	"Linux x86_64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jdk-9.0.4_linux-x64_bin.tar.gz"
-		JDK_SHA256="90c4ea877e816e3440862cfa36341bc87d05373d53389ec0f2d54d4e8c95daa2"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10+46/76eac37278c24557a3c4199677f19b62/jdk-10_linux-x64_bin.tar.gz"
+		JDK_SHA256="ac487a2738d3d59f7a4b95095207970b811143068752b6b4ec404d5a3aa8680c"
 	;;
 	"Darwin x86_64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/9.0.4+11/c2514751926b4512b076cc82f959763f/jre-9.0.4_osx-x64_bin.tar.gz"
-		JDK_SHA256="61145430ffc932ae0119500603e560df0589dcfb96583014a715b52d376e3ccb"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10+46/76eac37278c24557a3c4199677f19b62/jre-10_osx-x64_bin.tar.gz"
+		JDK_SHA256="6d83350a86c878fd17e1b5673436153a4584b1be42de04c268b7a9a6a802062d"
 	;;
 	*)
 		echo "Architecture not supported: $JDK_ARCH"
