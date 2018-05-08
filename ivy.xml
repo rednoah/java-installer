@@ -2,8 +2,8 @@
 <ivy-module version="2.0">
 	<info organisation="net.filebot" module="java-installer" />
 	<dependencies>
-		<dependency org="org.apache.ant" name="ant" rev="latest.release" />
-		<dependency org="org.codehaus.groovy" name="groovy-ant" rev="latest.release" />
-		<dependency org="net.filebot" name="ant-spk" rev="latest.release" />
+		<dependency org="org.apache.ant" name="ant" rev="1.10.3" />
+		<dependency org="org.codehaus.groovy" name="groovy-ant" rev="2.4.15" />
+		<dependency org="net.filebot" name="ant-spk" rev="0.6" />
 	</dependencies>
 </ivy-module>
