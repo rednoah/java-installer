@@ -5,7 +5,7 @@
     "packages":[
         {
             "package":"oracle-java",
-            "version":"10",
+            "version":"10.0.1",
             "dname":"Unofficial Java Installer",
             "desc":"Unofficial Java Installer will help you install Oracle Java SE on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest Oracle Java SE Development Kit (180 MB) for your platform. This may take a while.",
             "maintainer":"Oracle Corporation",
@@ -19,9 +19,9 @@
             "thumbnail":[
                 "https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png"
             ],
-            "link":"https://github.com/rednoah/java-installer/releases/download/10/oracle-java-10-noarch.spk",
-            "md5":"24503124b6aff95c6054199520693f85",
-            "sha256":"cf5fd1094b2797668d9c1bf731e27bf7efe53b2cca2dc0e9bcd339ee22502184",
+            "link":"https://github.com/rednoah/java-installer/releases/download/10.0.1/oracle-java-10.0.1-noarch.spk",
+            "md5":"0d6f85145bd2b5214825200900809554",
+            "sha256":"75664da51612a85facd05d654cbe97c97094c4d467e5f4f4be8c6844a76f777c",
             "size":61440
         }
     ]
