@@ -4,16 +4,19 @@
 
 
 def platforms = [
-	jdk: [
-		linux: [
-			x64: 'x64'
-		]
-	],
 	jre: [
 		windows: [
 			x64: 'x64'
 		],
 		osx: [
+			x64: 'x64'
+		],
+		linux: [
+			x64: 'x64'
+		]
+	],
+	jdk: [
+		linux: [
 			x64: 'x64'
 		]
 	]

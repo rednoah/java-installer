@@ -2,14 +2,18 @@
 
 # @{title} for @{jdk.name} @{jdk.version}
 
-
 # JDK version identifiers
 JDK_ARCH=`uname -sm`
 
 case "$JDK_ARCH" in
 	"Linux x86_64")
-		JDK_URL="@{jdk.linux.x64.url}"
-		JDK_SHA256="@{jdk.linux.x64.sha256}"
+		if [ "$2" = "jdk" ]; then
+			JDK_URL="@{jdk.linux.x64.url}"
+			JDK_SHA256="@{jdk.linux.x64.sha256}"
+		else
+			JDK_URL="@{jre.linux.x64.url}"
+			JDK_SHA256="@{jre.linux.x64.sha256}"
+		fi
 	;;
 	"Darwin x86_64")
 		JDK_URL="@{jre.osx.x64.url}"

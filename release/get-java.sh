@@ -2,14 +2,18 @@
 
 # Unofficial Java Installer for Oracle Java SE 10.0.1
 
-
 # JDK version identifiers
 JDK_ARCH=`uname -sm`
 
 case "$JDK_ARCH" in
 	"Linux x86_64")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz"
-		JDK_SHA256="ae8ed645e6af38432a56a847597ac61d4283b7536688dbab44ab536199d1e5a4"
+		if [ "$2" = "jdk" ]; then
+			JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz"
+			JDK_SHA256="ae8ed645e6af38432a56a847597ac61d4283b7536688dbab44ab536199d1e5a4"
+		else
+			JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jre-10.0.1_linux-x64_bin.tar.gz"
+			JDK_SHA256="385e67769312577b3d2e8ba08798cb354039c223a89671ba328caafa3943eb86"
+		fi
 	;;
 	"Darwin x86_64")
 		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jre-10.0.1_osx-x64_bin.tar.gz"

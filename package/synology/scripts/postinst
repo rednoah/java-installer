@@ -7,7 +7,7 @@ PKG_LOG="$SYNOPKG_PKGDEST/install-jdk.log"
 cd "$SYNOPKG_PKGDEST"
 
 # fetch JDK
-"$SYNOPKG_PKGDEST/get-java.sh" install 2>&1 | tee "$PKG_LOG"
+"$SYNOPKG_PKGDEST/get-java.sh" install jdk 2>&1 | tee "$PKG_LOG"
 
 # make sure that `java` is working
 if [ -x "/usr/local/java/bin/java" ]; then
