@@ -2,25 +2,29 @@
 
 # Unofficial Java Installer for Oracle Java SE 10.0.1
 
-# JDK version identifiers
-JDK_ARCH=`uname -sm`
+COMMAND=${1:-get}             # get | install
+JRE=${2:-jre}                 # jre | jdk
+PLATFORM=${3:-`uname -sm`}    # Linux x86_64 | Darwin x86_64 | etc
 
-case "$JDK_ARCH" in
-	"Linux x86_64")
-		if [ "$2" = "jdk" ]; then
-			JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz"
-			JDK_SHA256="ae8ed645e6af38432a56a847597ac61d4283b7536688dbab44ab536199d1e5a4"
-		else
-			JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jre-10.0.1_linux-x64_bin.tar.gz"
-			JDK_SHA256="385e67769312577b3d2e8ba08798cb354039c223a89671ba328caafa3943eb86"
-		fi
+case "$PLATFORM $JRE" in
+	"Linux x86_64 jdk")
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz"
+		JDK_SHA256="ae8ed645e6af38432a56a847597ac61d4283b7536688dbab44ab536199d1e5a4"
 	;;
-	"Darwin x86_64")
+	"Linux x86_64 jre")
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jre-10.0.1_linux-x64_bin.tar.gz"
+		JDK_SHA256="385e67769312577b3d2e8ba08798cb354039c223a89671ba328caafa3943eb86"
+	;;
+	"Darwin x86_64 jre")
 		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jre-10.0.1_osx-x64_bin.tar.gz"
 		JDK_SHA256="543c01e2880add48315d6d85f6a50c1bb6e36a31d4c3e0e87569adb1851e03a3"
 	;;
+	"Windows x86_64 jre")
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jre-10.0.1_windows-x64_bin.tar.gz"
+		JDK_SHA256="69467d28b238b5c9a092a1b8e99fba8da694c5c704684b15ed793004d0f708a7"
+	;;
 	*)
-		echo "Architecture not supported: $JDK_ARCH"
+		echo "Architecture not supported: $PLATFORM"
 		exit 1
 	;;
 esac
@@ -46,7 +50,7 @@ fi
 
 
 # extract and link only if explicitly requested
-if [ "$1" != "install" ]; then
+if [ "$COMMAND" != "install" ]; then
 	echo "Download complete: $JDK_TAR_GZ"
 	exit 0
 fi

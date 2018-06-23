@@ -2,25 +2,29 @@
 
 # @{title} for @{jdk.name} @{jdk.version}
 
-# JDK version identifiers
-JDK_ARCH=`uname -sm`
+COMMAND=${1:-get}             # get | install
+JRE=${2:-jre}                 # jre | jdk
+PLATFORM=${3:-`uname -sm`}    # Linux x86_64 | Darwin x86_64 | etc
 
-case "$JDK_ARCH" in
-	"Linux x86_64")
-		if [ "$2" = "jdk" ]; then
-			JDK_URL="@{jdk.linux.x64.url}"
-			JDK_SHA256="@{jdk.linux.x64.sha256}"
-		else
-			JDK_URL="@{jre.linux.x64.url}"
-			JDK_SHA256="@{jre.linux.x64.sha256}"
-		fi
+case "$PLATFORM $JRE" in
+	"Linux x86_64 jdk")
+		JDK_URL="@{jdk.linux.x64.url}"
+		JDK_SHA256="@{jdk.linux.x64.sha256}"
 	;;
-	"Darwin x86_64")
+	"Linux x86_64 jre")
+		JDK_URL="@{jre.linux.x64.url}"
+		JDK_SHA256="@{jre.linux.x64.sha256}"
+	;;
+	"Darwin x86_64 jre")
 		JDK_URL="@{jre.osx.x64.url}"
 		JDK_SHA256="@{jre.osx.x64.sha256}"
 	;;
+	"Windows x86_64 jre")
+		JDK_URL="@{jre.windows.x64.url}"
+		JDK_SHA256="@{jre.windows.x64.sha256}"
+	;;
 	*)
-		echo "Architecture not supported: $JDK_ARCH"
+		echo "Architecture not supported: $PLATFORM"
 		exit 1
 	;;
 esac
@@ -46,7 +50,7 @@ fi
 
 
 # extract and link only if explicitly requested
-if [ "$1" != "install" ]; then
+if [ "$COMMAND" != "install" ]; then
 	echo "Download complete: $JDK_TAR_GZ"
 	exit 0
 fi
