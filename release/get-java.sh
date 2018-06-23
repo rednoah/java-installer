@@ -2,11 +2,13 @@
 
 # Unofficial Java Installer for Oracle Java SE 10.0.1
 
-COMMAND=${1:-get}             # get | install
-JRE=${2:-jre}                 # jre | jdk
-PLATFORM=${3:-`uname -sm`}    # Linux x86_64 | Darwin x86_64 | etc
+COMMAND=${1:-get}        # get | install
+JRE=${2:-jre}            # jre | jdk
+ARCH=${3:-`uname -m`}    # x86_64 | i686 | aarch64 | armv7l | etc
+OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
-case "$PLATFORM $JRE" in
+
+case "$OS $ARCH $JRE" in
 	"Linux x86_64 jdk")
 		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz"
 		JDK_SHA256="ae8ed645e6af38432a56a847597ac61d4283b7536688dbab44ab536199d1e5a4"
