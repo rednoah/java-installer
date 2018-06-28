@@ -1,4 +1,15 @@
+ANT := ant -lib lib
+
 build:
-	ant resolve
-	ant update-jdk -lib "lib"
-	ant spk package-source -lib "lib"
+	$(ANT) build
+
+spksrc:
+	$(ANT) package-source
+
+spk: update
+	$(ANT) spk
+	$(ANT) package-source
+
+update:
+	$(ANT) resolve
+	$(ANT) update-jdk

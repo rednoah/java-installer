@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<project name="java-installer" default="build" xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:syno="antlib:net.filebot.ant.spk">
+<project name="java-installer" default="build" xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:groovy="antlib:org.codehaus.groovy" xmlns:syno="antlib:net.filebot.ant.spk">
 	<property file="package.properties" />
 	<property file="profile.properties" />
 
@@ -38,13 +38,14 @@
 	</target>
 
 
-	<target name="package-source" description="Update Synology Package Source">
+	<target name="package-source" description="Update Synology Package Source" depends="stats">
 		<syno:package-source file="${basedir}/spksrc.json">
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
 			<spk file="${dir.release}/${package}-${jdk.version}-noarch.spk">
 				<info name="dname" value="${title}" />
 				<info name="desc" value="${title} will help you install ${product} on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest ${product} Development Kit (180 MB) for your platform. This may take a while." />
 				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${jdk.version}/${package}-${jdk.version}-noarch.spk" />
+				<info name="download_count" value="${download_count}" />
 				<thumbnail url="https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png" />
 			</spk>
 		</syno:package-source>
@@ -74,9 +75,12 @@
 
 
 	<target name="update-jdk" description="Update JDK build properties">
-		<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy" />
 		<delete file="build-jdk.properties" />
-		<groovy src="build-jdk.groovy" />
+		<groovy:groovy src="build-jdk.groovy" />
+	</target>
+
+	<target name="stats">
+		<groovy:groovy src="build-jdk-stats.groovy" />
 	</target>
 
 </project>
