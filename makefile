@@ -1,5 +1,7 @@
 ANT := ant -lib lib
 
+build:
+	$(ANT) build
 
 spksrc:
 	$(ANT) package-source

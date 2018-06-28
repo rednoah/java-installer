@@ -20,6 +20,7 @@
                 "https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png"
             ],
             "link":"https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171-noarch.spk",
+            "download_count":"20613",
             "md5":"0d274c9eeccb36a3d8a7eb5aecd5099d",
             "sha256":"58db69096c523e7f59320d842ac81fa1769cace6c6b3162d17c5b61ae0826efe",
             "size":61440
