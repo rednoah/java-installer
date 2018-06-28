@@ -4,7 +4,7 @@
 	<dependencies>
 		<dependency org="org.apache.ant" name="ant" rev="1.10.4" />
 		<dependency org="org.codehaus.groovy" name="groovy-ant" rev="2.5.0" />
-		<dependency org="org.codehaus.groovy" name="groovy-json" rev="2.5.0"/>
+		<dependency org="org.codehaus.groovy" name="groovy-json" rev="2.5.0" />
 		<dependency org="net.filebot" name="ant-spk" rev="0.6" />
 	</dependencies>
 </ivy-module>
