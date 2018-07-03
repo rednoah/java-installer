@@ -3,7 +3,7 @@
     <cachechk>201807040600</cachechk>
     <item>
         <name>Unofficial Java Installer</name>
-        <internalName>Unofficial Java Installer</internalName>
+        <internalName>oracle-java</internalName>
         <changeLog>https://www.filebot.net/forums/viewforum.php?f=7</changeLog>
         <category>FileBot</category>
         <type>Java</type>
