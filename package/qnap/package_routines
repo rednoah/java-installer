@@ -25,7 +25,7 @@ PKG_POST_REMOVE='{
 
 pkg_install(){
 	cd "$SYS_QPKG_DIR"
-	"$SYS_QPKG_DIR/get-java.sh" install >> "$SYS_QPKG_DIR/install-jdk.log" 2>&1
+	"$SYS_QPKG_DIR/get-java.sh" install jdk >> "$SYS_QPKG_DIR/install-jdk.log" 2>&1
 }
 
 

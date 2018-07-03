@@ -1,6 +1,6 @@
 #!/bin/sh
 CONF="/etc/config/qpkg.conf"
-QPKG_NAME="java-installer"
+QPKG_NAME="oracle-java"
 QPKG_ROOT=`/sbin/getcfg $QPKG_NAME Install_Path -f $CONF`
 
 
