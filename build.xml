@@ -52,6 +52,13 @@
 	</target>
 
 
+	<target name="qpkg" description="Build QNAP Package">
+		<exec executable="qbuild" dir="${dir.package}/qnap" failonerror="yes">
+			<arg line="--build-version ${jdk.version} --build-dir ${dir.release}" />
+		</exec>
+	</target>
+
+
 	<target name="build">
 		<copy todir="${dir.release}" overwrite="yes" encoding="UTF-8" verbose="true">
 			<fileset dir="${dir.source}" />
