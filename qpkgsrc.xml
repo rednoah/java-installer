@@ -1,0 +1,62 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<plugins>
+    <cachechk>201807040600</cachechk>
+    <item>
+        <name>Unofficial Java Installer</name>
+        <internalName>Unofficial Java Installer</internalName>
+        <changeLog>https://www.filebot.net/forums/viewforum.php?f=7</changeLog>
+        <category>FileBot</category>
+        <type>Java</type>
+        <icon80>https://github.com/rednoah/java-installer/raw/master/package/qnap/icons/oracle-java_80.gif</icon80>
+        <description>Unofficial Java Installer will help you install Oracle Java SE on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest Oracle Java SE Development Kit (180 MB) for your platform. This may take a while.</description>
+        <fwVersion>4.2.1</fwVersion>
+        <version>1.8.0_171</version>
+        <platform>
+            <platformID>TS-269H</platformID>
+            <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+        </platform>
+        <platform>
+            <platformID>TS-NASARM</platformID>
+            <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+        </platform>
+        <platform>
+            <platformID>TS-NASX86</platformID>
+            <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+        </platform>
+        <platform>
+            <platformID>TS-X28</platformID>
+            <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+        </platform>
+        <platform>
+            <platformID>TS-X31</platformID>
+            <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+        </platform>
+        <platform>
+            <platformID>TS-X31U</platformID>
+            <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+        </platform>
+        <platform>
+            <platformID>TS-X41</platformID>
+            <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+        </platform>
+        <platform>
+            <platformID>TS-ARM-X09</platformID>
+            <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+        </platform>
+        <platform>
+            <platformID>TS-ARM-X19</platformID>
+            <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+        </platform>
+        <publishedDate>2018/07/04</publishedDate>
+        <maintainer>rednoah</maintainer>
+        <developer>rednoah</developer>
+        <forumLink>https://www.filebot.net/forums/viewforum.php?f=13</forumLink>
+        <icon100></icon100>
+        <language>English</language>
+        <snapshot></snapshot>
+        <bannerImg></bannerImg>
+        <changeLog></changeLog>
+        <tutorialLink></tutorialLink>
+    </item>
+</plugins>
