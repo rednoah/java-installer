@@ -5,8 +5,8 @@
         <name>Unofficial Java Installer</name>
         <internalName>oracle-java</internalName>
         <changeLog>https://www.filebot.net/forums/viewforum.php?f=7</changeLog>
-        <category>FileBot</category>
-        <type>Java</type>
+        <category>Essentials</category>
+        <type>Developer Tools</type>
         <icon80>https://github.com/rednoah/java-installer/raw/master/package/qnap/icons/oracle-java_80.gif</icon80>
         <description>Unofficial Java Installer will help you install Oracle Java SE on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest Oracle Java SE Development Kit (180 MB) for your platform. This may take a while.</description>
         <fwVersion>4.2.1</fwVersion>
