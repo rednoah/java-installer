@@ -52,7 +52,7 @@
 	</target>
 
 
-	<target name="qpkg" description="Build QNAP Package">
+	<target name="qpkg" depends="build" description="Build QNAP Package">
 		<copy todir="${dir.package}/qnap/shared" overwrite="yes" verbose="true">
 			<fileset dir="${dir.release}" includes="*.sh" />
 		</copy>
