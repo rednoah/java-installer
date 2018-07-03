@@ -25,20 +25,11 @@ PKG_POST_REMOVE='{
 
 pkg_install(){
 	cd "$SYS_QPKG_DIR"
-	echo `pwd` >> /share/Data/Development/java-installer/printenv.txt
-	"$SYS_QPKG_DIR/scripts/get-java.sh" install > /share/Data/Development/java-installer/a.out 2>&1
+	"$SYS_QPKG_DIR/get-java.sh" install >> "$SYS_QPKG_DIR/install-jdk.log" 2>&1
 }
 
 
 pkg_post_install(){
-	QPKG_LOG="$SYS_QPKG_DIR/install-jdk.log"
-
-	# set working dir
-	cd "$SYS_QPKG_DIR"
-
-	# fetch JDK
-	"$SYS_QPKG_DIR/get-java.sh" install 2>&1 | tee -a "$QPKG_LOG"
-
 	# make sure that `java` is working
 	if [ -x "/usr/local/java/bin/java" ]; then
 		# display success message
