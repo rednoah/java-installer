@@ -1,6 +1,6 @@
 ANT := ant -lib lib
 
-spksrc:
+syno-repo:
 	$(ANT) syno-repo
 
 spk: update
@@ -9,7 +9,6 @@ spk: update
 
 qpkg: update
 	$(ANT) qpkg
-	$(ANT) qnap-repo
 
 update:
 	$(ANT) resolve
