@@ -1,5 +1,8 @@
-QPKG_NAME := oracle-java
+include *.cfg
+
+
 ICON := ../icons/java_72.svg
+
 
 resize-icons:
 	# QPKG ICONS
