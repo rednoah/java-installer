@@ -63,9 +63,6 @@
 		</exec>
 	</target>
 
-	<target name="qnap-repo">
-		<groovy:groovy src="build-ant-qnap-repo.groovy" />
-	</target>
 
 	<target name="build">
 		<copy todir="${dir.release}" overwrite="yes" encoding="UTF-8" verbose="true">
