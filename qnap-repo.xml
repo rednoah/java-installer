@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugins>
   <item>
-    <cachechk>1530665845608</cachechk>
+    <cachechk>1530666311483</cachechk>
     <name>Unofficial Java Installer</name>
     <internalName>oracle-java</internalName>
     <category>Essentials</category>
@@ -12,39 +12,39 @@
     <version>1.8.0_171</version>
     <platform>
       <platformID>TS-269H</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+      <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-NASARM</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+      <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-NASX86</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+      <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-X28</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+      <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-X31</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+      <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-X31U</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+      <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-X41</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+      <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-ARM-X09</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+      <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
     </platform>
     <platform>
       <platformID>TS-ARM-X19</platformID>
-      <location>https://github.com/rednoah/ant-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
+      <location>https://github.com/rednoah/java-installer/releases/download/1.8.0_171/oracle-java-1.8.0_171.qpkg</location>
     </platform>
     <maintainer>rednoah</maintainer>
     <forumLink>https://github.com/rednoah/java-installer</forumLink>
