@@ -22,7 +22,7 @@ f.withWriter('UTF-8') { writer ->
 			['TS-269H', 'TS-NASARM', 'TS-NASX86', 'TS-X28', 'TS-X31', 'TS-X31U', 'TS-X41', 'TS-ARM-X09', 'TS-ARM-X19'].each{ id ->
 				platform{
 					platformID(id)
-					location("https://get.filebot.net/qnap/${properties.package}-${properties.'jdk.version'}.qpkg")
+					location("https://github.com/rednoah/java-installer/releases/download/${properties.'jdk.version'}/${properties.package}-${properties.'jdk.version'}.qpkg")
 				}
 			}
 			maintainer('rednoah')
