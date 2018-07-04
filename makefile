@@ -1,15 +1,16 @@
 ANT := ant -lib lib
 
-build:
-	$(ANT) build
-
 spksrc:
-	$(ANT) package-source
+	$(ANT) syno-repo
 
 spk: update
 	$(ANT) spk
-	$(ANT) package-source
+	$(ANT) syno-repo
+
+qpkg: update
+	$(ANT) qpkg
+	$(ANT) qnap-repo
 
 update:
 	$(ANT) resolve
-	$(ANT) update-jdk
+	$(ANT) update-ant

@@ -38,8 +38,8 @@
 	</target>
 
 
-	<target name="package-source" description="Update Synology Package Source" depends="stats">
-		<syno:package-source file="${basedir}/spksrc.json">
+	<target name="syno-repo" description="Update Synology Package Source" depends="stats">
+		<syno:package-source file="${basedir}/syno-repo.json">
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
 			<spk file="${dir.release}/${package}-${jdk.version}-noarch.spk">
 				<info name="dname" value="${title}" />
@@ -63,6 +63,9 @@
 		</exec>
 	</target>
 
+	<target name="qnap-repo">
+		<groovy:groovy src="build-ant-qnap-repo.groovy" />
+	</target>
 
 	<target name="build">
 		<copy todir="${dir.release}" overwrite="yes" encoding="UTF-8" verbose="true">
