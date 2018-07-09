@@ -23,15 +23,15 @@ case "$1" in
 		JAVA_HOME=`dirname $JAVA_BIN`
 
 		# link executable into /usr/local/bin/java
-		ln -sf "$JAVA_EXE" "/usr/local/bin/java"
+		ln -sf "$JAVA_EXE" "/usr/bin/java"
 
 		# link java home to /usr/local/java
-		ln -sf "$JAVA_HOME" "/usr/local/java"
+		ln -sf "$JAVA_HOME" "/usr/share/java"
 
 		# make sure that `java` is working
-		if [ -x "/usr/local/java/bin/java" ]; then
+		if [ -x "/usr/bin/java" ]; then
 			# display success message
-			"/usr/local/java/bin/java" -version >> "$QPKG_LOG" 2>&1
+			"/usr/bin/java" -version >> "$QPKG_LOG" 2>&1
 		else
 			# display error message
 			err_log "Ooops, something went wrong... View Log for details... $QPKG_LOG"
@@ -39,11 +39,11 @@ case "$1" in
 
 		# add JAVA_HOME to system-wide profile
 		if [ `grep -c "$COMMENT" $SYS_PROFILE` == "0" ]; then
-			if [ -x "/usr/local/java/bin/java" ]; then
+			if [ -x "/usr/share/java/bin/java" ]; then
 				echo "Add environment variables to $SYS_PROFILE" >> "$QPKG_LOG"
 
 				# add environment variables to /etc/profile
-				echo "export JAVA_HOME=/usr/local/java    $COMMENT" >> "$SYS_PROFILE"
+				echo "export JAVA_HOME=/usr/share/java    $COMMENT" >> "$SYS_PROFILE"
 				echo "export LANG=en_US.utf8              $COMMENT" >> "$SYS_PROFILE"
 			fi
 		fi
@@ -51,8 +51,8 @@ case "$1" in
 
 	stop)
 		# remove symlinks
-		rm "/usr/local/bin/java"
-		rm "/usr/local/java"
+		rm "/usr/bin/java"
+		rm "/usr/share/java"
 
 		# remove /etc/profile additions
 		sed -i "/${COMMENT}/d" "$SYS_PROFILE"
