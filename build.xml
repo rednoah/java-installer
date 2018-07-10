@@ -59,7 +59,7 @@
 		<chmod dir="${dir.package}/qnap/shared" perm="+x" includes="*.sh" />
 
 		<exec executable="qbuild" dir="${dir.package}/qnap" failonerror="yes">
-			<arg line="--7zip --build-version ${jdk.version} --build-dir ${dir.release}" />
+			<arg line="--build-version ${jdk.version} --build-dir ${dir.release}" />
 		</exec>
 	</target>
 
