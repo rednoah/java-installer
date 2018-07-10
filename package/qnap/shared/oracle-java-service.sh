@@ -12,7 +12,7 @@ case "$1" in
 			exit 1
 		fi
 
-		JAVA_EXE=$QPKG_ROOT/*/bin/java
+		JAVA_EXE=$(find $QPKG_ROOT -name java -type f | head -n 1)
 		JAVA_BIN=$(dirname $JAVA_EXE)
 		JAVA_HOME=$(dirname $JAVA_BIN)
 
