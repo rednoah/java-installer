@@ -4,11 +4,6 @@ QPKG_NAME="oracle-java"
 QPKG_ROOT=$(/sbin/getcfg $QPKG_NAME Install_Path -f $CONF)
 
 
-QPKG_LOG="$QPKG_ROOT/install-jdk.log"
-SYS_PROFILE="/etc/profile"
-COMMENT="# added by Unofficial Java Installer"
-
-
 case "$1" in
 	start)
 		ENABLED=$(/sbin/getcfg $QPKG_NAME Enable -u -d FALSE -f $CONF)
