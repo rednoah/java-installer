@@ -39,7 +39,7 @@
 
 
 	<target name="syno-repo" description="Update Synology Package Source" depends="stats">
-		<syno:package-source file="${basedir}/syno-repo.json">
+		<syno:package-source file="${basedir}/syno.json">
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
 			<spk file="${dir.release}/${package}-${jdk.version}-noarch.spk">
 				<info name="dname" value="${title}" />
