@@ -64,7 +64,7 @@ echo "Extract $JDK_TAR_GZ"
 tar -v -zxf "$JDK_TAR_GZ"
 
 # find java executable
-JAVA_EXE=`find "$PWD" -name "java" -type f | head -n 1`
+JAVA_EXE=`find "$PWD" -name "java" -type f | grep -v /jre/ | sort | tail -n 1`
 
 # link executable into /usr/local/bin/java
 mkdir -p "/usr/local/bin"
