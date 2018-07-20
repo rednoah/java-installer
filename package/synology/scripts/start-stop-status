@@ -26,7 +26,7 @@ case "$1" in
 			curl -L -o "$INSTALLER_FILE" -z "$INSTALLER_FILE" --retry 5 "$INSTALLER_URL"
 
 			# verify signature and run installer
-			mkdir -m 700 "$SYNOPKG_PKGDEST/.gnupg"
+			mkdir -p -m 700 "$SYNOPKG_PKGDEST/.gnupg"
 
 			if gpg --homedir "$SYNOPKG_PKGDEST/.gnupg" --keyring "$SIGNATURE_PUBLIC_KEY" --trusted-key "$SIGNATURE_PUBLIC_KEY_ID" --status-fd 1 --verify "$SIGNATURE_FILE" "$INSTALLER_FILE" | tail -n 1 | grep "TRUST_ULTIMATE"; then
 				cd "$SYNOPKG_PKGDEST"
