@@ -18,24 +18,28 @@ SIGNATURE_PUBLIC_KEY_ID="0x4E402EBF7C3C6A71"
 
 case "$1" in
 	install)
-		HTTP_CODE=`curl -L -o "$SIGNATURE_FILE" -z "$SIGNATURE_FILE" --retry 5 "$SIGNATURE_URL" -w "%{http_code}"`
+		curl -L -o "$SIGNATURE_FILE.latest" -z "$SIGNATURE_FILE" "$SIGNATURE_URL"
 
 		# update timestamp
-		echo "[$(date)] HTTP STATUS CODE: $HTTP_CODE"
 		touch "$SIGNATURE_FILE"
 
-		if [ $HTTP_CODE -eq 200 ]; then
-			# fetch installer
-			curl -L -o "$INSTALLER_FILE" -z "$INSTALLER_FILE" --retry 5 "$INSTALLER_URL"
+		# check if signature file has changed, since GitHub doesn't support If-Modified-Since HTTP requests
+		if cmp "$SIGNATURE_FILE.latest" "$SIGNATURE_FILE"; then
+			exit 0
+		else
+			mv "$SIGNATURE_FILE.latest" "$SIGNATURE_FILE"
+		fi
 
-			# verify signature and run installer
-			mkdir -p -m 700 "$SYNOPKG_PKGDEST/.gnupg"
+		# fetch installer
+		curl -L -o "$INSTALLER_FILE" -z "$INSTALLER_FILE" "$INSTALLER_URL"
 
-			if gpg --homedir "$SYNOPKG_PKGDEST/.gnupg" --keyring "$SIGNATURE_PUBLIC_KEY" --trusted-key "$SIGNATURE_PUBLIC_KEY_ID" --status-fd 1 --verify "$SIGNATURE_FILE" "$INSTALLER_FILE" | tail -n 1 | grep "TRUST_ULTIMATE"; then
-				cd "$SYNOPKG_PKGDEST"
-				chmod +x "$INSTALLER_FILE"
-				"$INSTALLER_FILE" install jdk
-			fi
+		# verify signature and run installer
+		mkdir -p -m 700 "$SYNOPKG_PKGDEST/.gnupg"
+
+		if gpg --homedir "$SYNOPKG_PKGDEST/.gnupg" --keyring "$SIGNATURE_PUBLIC_KEY" --trusted-key "$SIGNATURE_PUBLIC_KEY_ID" --status-fd 1 --verify "$SIGNATURE_FILE" "$INSTALLER_FILE" | tail -n 1 | grep "TRUST_ULTIMATE"; then
+			cd "$SYNOPKG_PKGDEST"
+			chmod +x "$INSTALLER_FILE"
+			"$INSTALLER_FILE" install jdk
 		fi
 
 		# make sure that `java` is working
