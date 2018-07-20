@@ -1,5 +1,10 @@
 ANT := ant -lib lib
 
+update:
+	$(ANT) resolve
+	$(ANT) update-jdk
+	$(ANT) build
+
 syno-repo:
 	$(ANT) syno-repo
 
@@ -9,7 +14,3 @@ spk: update
 
 qpkg: update
 	$(ANT) qpkg
-
-update:
-	$(ANT) resolve
-	$(ANT) update-ant
