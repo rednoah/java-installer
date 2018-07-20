@@ -1,4 +1,4 @@
-# Oracle Java Installer for Oracle Java SE 1.8.0_181
+# Java 8 Installer for Oracle Java SE 1.8.0_181
 
 
 $ErrorActionPreference = "Stop"
