@@ -1,7 +1,7 @@
 #!/bin/sh
 
 SYS_PROFILE="/etc/profile"
-COMMENT="# added by Java Installer"
+COMMENT="# added by $SYNOPKG_PKGNAME"
 
 
 # remove symlinks
