@@ -11,7 +11,7 @@
 	<property name="dir.release" location="${basedir}/release" />
 
 
-	<target name="spk" description="Build Synology Package" depends="build">
+	<target name="spk" description="Build Synology Package">
 		<syno:spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/BCL.txt">
 			<info name="displayname" value="${product}" />
 			<info name="description" value="Oracle Java SE lets you develop and deploy Java applications on desktops and servers, as well as in embedded environments. Java offers performance, versatility and portability." />
