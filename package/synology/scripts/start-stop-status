@@ -25,8 +25,10 @@ case "$1" in
 
 		# check if signature file has changed, since GitHub doesn't support If-Modified-Since HTTP requests
 		if cmp "$SIGNATURE_FILE.latest" "$SIGNATURE_FILE"; then
+			echo "[$(date)] NO UPDATE"
 			exit 0
 		else
+			echo "[$(date)] AUTO UPDATE"
 			mv "$SIGNATURE_FILE.latest" "$SIGNATURE_FILE"
 		fi
 
@@ -45,10 +47,10 @@ case "$1" in
 		# make sure that `java` is working
 		if [ -x "/usr/local/java/bin/java" ]; then
 			# display success message
-			"/usr/local/java/bin/java" -version 2>&1 | tee "$SYNOPKG_TEMP_LOGFILE"
+			"/usr/local/java/bin/java" -version > "$SYNOPKG_TEMP_LOGFILE" 2>&1
 		else
 			# display error message
-			echo "Ooops, something went wrong... View Log for details." | tee "$SYNOPKG_TEMP_LOGFILE"
+			echo "Ooops, something went wrong... View Log for details." > "$SYNOPKG_TEMP_LOGFILE"
 		fi
 		exit 0
 	;;
@@ -62,6 +64,8 @@ case "$1" in
 
 		# add environment variables to /etc/profile
 		if [ `grep -c "$COMMENT" $SYS_PROFILE` == "0" ]; then
+			echo "[$(date)] Add environment variables to /etc/profile" | tee -a "$PKG_LOG"
+
 			echo "export JAVA_HOME=/usr/local/java    $COMMENT" >> "$SYS_PROFILE"
 			echo "export LANG=en_US.utf8              $COMMENT" >> "$SYS_PROFILE"
 		fi
