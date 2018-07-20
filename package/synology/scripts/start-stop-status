@@ -22,7 +22,7 @@ case "$1" in
 			curl -L -o "$INSTALLER_FILE" -z "$INSTALLER_FILE" --retry 5 "$INSTALLER_URL"
 
 			# verify signature and run installer
-			if gpgv --homedir "$SYNOPKG_PKGDEST" --keyring "$SIGNATURE_KEY" "$SIGNATURE_FILE" "$INSTALLER_FILE"; then
+			if gpg --homedir "$SYNOPKG_PKGDEST" --keyring "$SIGNATURE_KEY" --verify "$SIGNATURE_FILE" "$INSTALLER_FILE"; then
 				cd "$SYNOPKG_PKGDEST"
 				chmod +x "$INSTALLER_FILE"
 				"$INSTALLER_FILE" install jdk
