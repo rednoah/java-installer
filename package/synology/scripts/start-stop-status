@@ -56,7 +56,7 @@ case "$1" in
 
 	start)
 		# check for updates once per month
-		if [ ! -f "$SIGNATURE_FILE" ] || find "$SYNOPKG_PKGDEST" -type f -name '*.asc' -maxdepth 1 -mtime +30; then
+		if [ ! -x "$INSTALLER_FILE" ] || find "$SYNOPKG_PKGDEST" -type f -name '*.asc' -maxdepth 1 -mtime +30; then
 			$0 install 2>&1 | tee "$PKG_LOG"
 		fi
 
