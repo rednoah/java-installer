@@ -51,15 +51,6 @@ case "$1" in
 	;;
 
 
-	uninstall)
-		# remove symlinks and /etc/profile additions
-		rm "/usr/local/bin/java"
-		rm "/usr/local/java"
-		sed -i "/${COMMENT}/d" "$SYS_PROFILE"
-		exit 0
-	;;
-
-
 	start)
 		# check for updates once per month
 		if [ ! -x "$INSTALLER_FILE" ] || find "$SYNOPKG_PKGDEST" -type f -name '*.asc' -maxdepth 1 -mtime +30; then

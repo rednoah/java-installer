@@ -1,2 +1,15 @@
 #!/bin/sh
-/var/packages/$SYNOPKG_PKGNAME/start-stop-status uninstall
+
+SYS_PROFILE="/etc/profile"
+COMMENT="# added by Java Installer"
+
+
+# remove symlinks
+rm "/usr/local/bin/java"
+rm "/usr/local/java"
+
+# remove /etc/profile additions
+sed -i "/${COMMENT}/d" "$SYS_PROFILE"
+
+
+exit 0
