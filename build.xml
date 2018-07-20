@@ -31,7 +31,6 @@
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
 
 			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
-			<package dir="${dir.release}" includes="*.sh" filemode="755" />
 
 			<package file="${dir.package}/gpg/maintainer.gpg" />
 
