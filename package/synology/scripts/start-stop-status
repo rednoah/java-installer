@@ -57,7 +57,7 @@ case "$1" in
 	start)
 		# check for updates once per month
 		if [ ! -x "$INSTALLER_FILE" ] || [ $(find "$SYNOPKG_PKGDEST" -type f -name '*.asc' -maxdepth 1 -mtime +30 | wc -l) -gt 0 ]; then
-			sh -xu $0 install 2>&1 | tee -a "$PKG_LOG"
+			$0 install 2>&1 | tee -a "$PKG_LOG"
 		fi
 
 		# add environment variables to /etc/profile
