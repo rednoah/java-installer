@@ -19,7 +19,10 @@ SIGNATURE_PUBLIC_KEY_ID="0x4E402EBF7C3C6A71"
 case "$1" in
 	install)
 		HTTP_CODE=`curl -L -o "$SIGNATURE_FILE" -z "$SIGNATURE_FILE" --retry 5 "$SIGNATURE_URL" -w "%{http_code}"`
+
+		# update timestamp
 		echo "[$(date)] HTTP STATUS CODE: $HTTP_CODE"
+		touch "$SIGNATURE_FILE"
 
 		if [ $HTTP_CODE -eq 200 ]; then
 			# fetch installer
@@ -33,9 +36,6 @@ case "$1" in
 				chmod +x "$INSTALLER_FILE"
 				"$INSTALLER_FILE" install jdk
 			fi
-		else
-			# update timestamp
-			touch "$SIGNATURE_FILE"
 		fi
 
 		# make sure that `java` is working
