@@ -77,6 +77,12 @@
 		<chmod perm="+x" type="file">
 			<fileset dir="${dir.release}" />
 		</chmod>
+
+		<apply executable="gpg" verbose="yes" failonerror="yes">
+			<arg line="--armor --detach-sign --verbose --batch --yes --local-user ${package.maintainer}" />
+			<srcfile />
+			<fileset dir="${dir.release}" />
+		</apply>
 	</target>
 
 
