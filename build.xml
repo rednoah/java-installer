@@ -33,6 +33,8 @@
 			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
 			<package dir="${dir.release}" includes="*.sh" filemode="755" />
 
+			<package file="${dir.package}/gpg/maintainer.gpg" />
+
 			<codesign secring="${dir.package}/gpg/secring.gpg" keyid="${gpg.key}" password="${gpg.pwd}" />
 		</syno:spk>
 	</target>
