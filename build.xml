@@ -12,7 +12,7 @@
 
 
 	<target name="spk" description="Build Synology Package" depends="build">
-		<syno:spk destdir="${dir.release}" name="${package}" version="${jdk.version}" arch="noarch" license="${dir.package}/license/BCL.txt">
+		<syno:spk destdir="${dir.release}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/BCL.txt">
 			<info name="displayname" value="${product}" />
 			<info name="description" value="Oracle Java SE lets you develop and deploy Java applications on desktops and servers, as well as in embedded environments. Java offers performance, versatility and portability." />
 			<info name="maintainer" value="Oracle Corporation" />
@@ -41,10 +41,10 @@
 	<target name="syno-repo" description="Update Synology Package Source" depends="stats">
 		<syno:package-source file="${basedir}/syno.json">
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
-			<spk file="${dir.release}/${package}-${jdk.version}-noarch.spk">
+			<spk file="${dir.release}/${package}-${version}-noarch.spk">
 				<info name="dname" value="${title}" />
 				<info name="desc" value="${title} will help you install ${product} on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest ${product} Development Kit (180 MB) for your platform. This may take a while." />
-				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${jdk.version}/${package}-${jdk.version}-noarch.spk" />
+				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
 				<info name="download_count" value="${download_count}" />
 				<thumbnail url="https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png" />
 			</spk>
@@ -59,7 +59,7 @@
 		<chmod dir="${dir.package}/qnap/shared" perm="+x" includes="*.sh" />
 
 		<exec executable="qbuild" dir="${dir.package}/qnap" failonerror="yes">
-			<arg line="--build-version ${jdk.version} --build-dir ${dir.release}" />
+			<arg line="--build-version ${version} --build-dir ${dir.release}" />
 		</exec>
 	</target>
 
@@ -75,13 +75,13 @@
 		</copy>
 
 		<chmod perm="+x" type="file">
-			<fileset dir="${dir.release}" />
+			<fileset dir="${dir.release}" includes="*.sh, *.ps1" />
 		</chmod>
 
 		<apply executable="gpg" verbose="yes" failonerror="yes">
 			<arg line="--armor --detach-sign --verbose --batch --yes --local-user ${package.maintainer}" />
 			<srcfile />
-			<fileset dir="${dir.release}" />
+			<fileset dir="${dir.release}" includes="*.sh, *.ps1" />
 		</apply>
 	</target>
 

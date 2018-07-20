@@ -8,9 +8,9 @@ update:
 syno-repo:
 	$(ANT) syno-repo
 
-spk: update
+spk:
 	$(ANT) spk
 	$(ANT) syno-repo
 
-qpkg: update
+qpkg:
 	$(ANT) qpkg
