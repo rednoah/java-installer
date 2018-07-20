@@ -1,17 +1,2 @@
 #!/bin/sh
-
-SYS_PROFILE="/etc/profile"
-COMMENT="# added by Unofficial Java Installer"
-
-
-# remove symlinks
-rm "/usr/local/bin/java"
-rm "/usr/local/java"
-
-
-# remove /etc/profile additions
-sed -i "/${COMMENT}/d" "$SYS_PROFILE"
-
-
-# return successfully
-exit 0
+/var/packages/$SYNOPKG_PKGNAME/start-stop-status uninstall

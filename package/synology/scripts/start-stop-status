@@ -2,26 +2,77 @@
 
 PKG_LOG="$SYNOPKG_PKGDEST/install-jdk.log"
 SYS_PROFILE="/etc/profile"
-COMMENT="# added by Unofficial Java Installer"
+COMMENT="# added by Java Installer"
+
+INSTALLER_SCRIPT="get-java.sh"
+INSTALLER_FILE="$SYNOPKG_PKGDEST/$INSTALLER_SCRIPT"
+INSTALLER_URL="https://raw.githubusercontent.com/rednoah/java-installer/master/release/$INSTALLER_SCRIPT"
+SIGNATURE_FILE="$INSTALLER_FILE.asc"
+SIGNATURE_URL="$INSTALLER_URL.asc"
+SIGNATURE_KEY="$SYNOPKG_PKGDEST/maintainer.gpg"
 
 
 case "$1" in
-	start)
-		if [ `grep -c "$COMMENT" $SYS_PROFILE` == "0" ]; then
-			if [ -x "/usr/local/java/bin/java" ]; then
-				echo "Add environment variables to $SYS_PROFILE" >> "$PKG_LOG"
+	install)
+		HTTP_CODE=`curl -L -o "$SIGNATURE_FILE" -z "$SIGNATURE_FILE" --retry 5 "$SIGNATURE_URL" -w "%{http_code}"`
+		echo "[$(date)] HTTP STATUS CODE: $HTTP_CODE"
 
-				# add environment variables to /etc/profile
-				echo "export JAVA_HOME=/usr/local/java    $COMMENT" >> "$SYS_PROFILE"
-				echo "export LANG=en_US.utf8              $COMMENT" >> "$SYS_PROFILE"
+		if [ $HTTP_CODE -eq 200 ]; then
+			# fetch installer
+			curl -L -o "$INSTALLER_FILE" -z "$INSTALLER_FILE" --retry 5 "$INSTALLER_URL"
+
+			# verify signature and run installer
+			if gpgv --homedir "$SYNOPKG_PKGDEST" --keyring "$SIGNATURE_KEY" "$SIGNATURE_FILE" "$INSTALLER_FILE"; then
+				cd "$SYNOPKG_PKGDEST"
+				chmod +x "$INSTALLER_FILE"
+				"$INSTALLER_FILE" install jdk
 			fi
+		else
+			# update timestamp
+			touch "$SIGNATURE_FILE"
+		fi
+
+		# make sure that `java` is working
+		if [ -x "/usr/local/java/bin/java" ]; then
+			# display success message
+			"/usr/local/java/bin/java" -version 2>&1 | tee "$SYNOPKG_TEMP_LOGFILE"
+		else
+			# display error message
+			echo "Ooops, something went wrong... View Log for details." | tee "$SYNOPKG_TEMP_LOGFILE"
+		fi
+
+		exit 0
+	;;
+
+
+	uninstall)
+		# remove symlinks and /etc/profile additions
+		rm "/usr/local/bin/java"
+		rm "/usr/local/java"
+		sed -i "/${COMMENT}/d" "$SYS_PROFILE"
+		exit 0
+	;;
+
+
+	start)
+		# check for updates once per month
+		if [ ! -f "$SIGNATURE_FILE" ] || find "$SYNOPKG_PKGDEST" -type f -name '*.asc' -maxdepth 1 -mtime +30; then
+			$0 install 2>&1 | tee "$PKG_LOG"
+		fi
+
+		# add environment variables to /etc/profile
+		if [ `grep -c "$COMMENT" $SYS_PROFILE` == "0" ]; then
+			echo "export JAVA_HOME=/usr/local/java    $COMMENT" >> "$SYS_PROFILE"
+			echo "export LANG=en_US.utf8              $COMMENT" >> "$SYS_PROFILE"
 		fi
 		exit 0
 	;;
 
+
 	stop)
 		exit 0
 	;;
+
 
 	status)
 		if [ -x "/usr/local/bin/java" ] && [ -x "/usr/local/java/bin/java" ]; then
@@ -31,8 +82,15 @@ case "$1" in
 		fi
 	;;
 
+
 	log)
 		echo "$PKG_LOG"
 		exit 0
+	;;
+
+
+	*)
+		echo "Usage: $0 {start|stop|status|log}"
+		exit 1
 	;;
 esac
