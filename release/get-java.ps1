@@ -1,4 +1,4 @@
-# Unofficial Java Installer for Oracle Java SE 10.0.1
+# Unofficial Java Installer for Oracle Java SE 10.0.2
 
 
 $ErrorActionPreference = "Stop"
@@ -9,8 +9,8 @@ $JDK_ARCH = "$ENV:PROCESSOR_ARCHITECTURE"
 
 Switch ($JDK_ARCH) {
 	AMD64 {
-		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jre-10.0.1_windows-x64_bin.tar.gz"
-		$JDK_SHA256 = "69467d28b238b5c9a092a1b8e99fba8da694c5c704684b15ed793004d0f708a7"
+		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jre-10.0.2_windows-x64_bin.tar.gz"
+		$JDK_SHA256 = "cc5362d17c8baaa84c6bc63bba79fe8c2ec3d2ff2a2ec239482ae0b7cf03887a"
 	}
 	default {
 		throw "CPU architecture not supported: $JDK_ARCH"

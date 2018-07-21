@@ -1,29 +1,28 @@
 #!/bin/sh
 
-# Unofficial Java Installer for Oracle Java SE 10.0.1
+# Unofficial Java Installer for Oracle Java SE 10.0.2
 
 COMMAND=${1:-get}        # get | install
 JRE=${2:-jre}            # jre | jdk
 ARCH=${3:-`uname -m`}    # x86_64 | i686 | aarch64 | armv7l | etc
 OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
-
 case "$OS $ARCH $JRE" in
 	"Linux x86_64 jdk")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz"
-		JDK_SHA256="ae8ed645e6af38432a56a847597ac61d4283b7536688dbab44ab536199d1e5a4"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz"
+		JDK_SHA256="6633c20d53c50c20835364d0f3e172e0cbbce78fff81867488f22a6298fa372b"
 	;;
 	"Linux x86_64 jre")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jre-10.0.1_linux-x64_bin.tar.gz"
-		JDK_SHA256="385e67769312577b3d2e8ba08798cb354039c223a89671ba328caafa3943eb86"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jre-10.0.2_linux-x64_bin.tar.gz"
+		JDK_SHA256="7d2909a597574f1821903790bb0f31aaa57ab7348e3ae53639c850371450845d"
 	;;
 	"Darwin x86_64 jre")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jre-10.0.1_osx-x64_bin.tar.gz"
-		JDK_SHA256="543c01e2880add48315d6d85f6a50c1bb6e36a31d4c3e0e87569adb1851e03a3"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jre-10.0.2_osx-x64_bin.tar.gz"
+		JDK_SHA256="a0ccfa98028ecbfd8081fc865bb8d0b32b6fd7f815e5b9695853831af3ba0963"
 	;;
 	"Windows x86_64 jre")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jre-10.0.1_windows-x64_bin.tar.gz"
-		JDK_SHA256="69467d28b238b5c9a092a1b8e99fba8da694c5c704684b15ed793004d0f708a7"
+		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jre-10.0.2_windows-x64_bin.tar.gz"
+		JDK_SHA256="cc5362d17c8baaa84c6bc63bba79fe8c2ec3d2ff2a2ec239482ae0b7cf03887a"
 	;;
 	*)
 		echo "Architecture not supported: $PLATFORM"
