@@ -52,11 +52,6 @@ case "$1" in
 			chmod +x "$INSTALLER_FILE"
 			"$INSTALLER_FILE" install jdk
 		fi
-
-		# make sure that `java` is working
-
-			# display error message
-			err_log "Ooops, something went wrong... View Log for details."
 	;;
 
 
