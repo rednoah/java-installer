@@ -1,7 +1,7 @@
 ANT := ant -lib lib
 
 update:
-	$(ANT) resolve
+	$(ANT) clean resolve
 	$(ANT) update-jdk
 	$(ANT) build
 

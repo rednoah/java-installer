@@ -1,9 +1,0 @@
-######################################################################
-# Define any package specific operations that shall be performed when
-# the package is installed.
-######################################################################
-
-pkg_install(){
-	cd "$SYS_QPKG_DIR"
-	"$SYS_QPKG_DIR/get-java.sh" install jdk >> "$SYS_QPKG_DIR/install-jdk.log" 2>&1
-}
