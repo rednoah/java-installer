@@ -69,6 +69,8 @@
 			</fileset>
 		</chmod>
 
+		<copy file="${dir.package}/gpg/maintainer.gpg" todir="${dir.dist}/qnap/shared" />
+
 		<exec executable="qbuild" dir="${dir.dist}/qnap" failonerror="yes">
 			<arg line="--build-dir ${dir.dist}" />
 		</exec>
