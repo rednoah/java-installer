@@ -52,7 +52,7 @@
 	</target>
 
 
-	<target name="qpkg" depends="build" description="Build QNAP Package">
+	<target name="qpkg" description="Build QNAP Package">
 		<copy-replace todir="${dir.dist}/qnap">
 			<fileset dir="${dir.package}/qnap">
 				<include name="**/*_routines" />
