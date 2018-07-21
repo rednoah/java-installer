@@ -54,13 +54,9 @@ case "$1" in
 		fi
 
 		# make sure that `java` is working
-		if [ -x "/usr/local/java/bin/java" ]; then
-			# display success message
-			log "$(/usr/local/java/bin/java -version)"
-		else
+
 			# display error message
 			err_log "Ooops, something went wrong... View Log for details."
-		fi
 	;;
 
 
