@@ -52,6 +52,14 @@ case "$1" in
 			chmod +x "$INSTALLER_FILE"
 			"$INSTALLER_FILE" install jdk
 		fi
+
+		if [ -x "/usr/local/bin/java" ]; then
+			# display success message
+			/sbin/log_tool -t0 -uSystem -p127.0.0.1 -mlocalhost "$(/usr/local/bin/java -version 2>&1)"
+		else
+			# display error message
+			/sbin/log_tool -t2 -uSystem -p127.0.0.1 -mlocalhost "Ooops, something went wrong... Run \`cat $PKG_LOG\` for details."
+		fi
 	;;
 
 
