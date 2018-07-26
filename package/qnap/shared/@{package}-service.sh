@@ -55,10 +55,10 @@ case "$1" in
 
 		if [ -x "/usr/local/bin/java" ]; then
 			# display success message
-			/sbin/log_tool -t0 -uSystem -p127.0.0.1 -mlocalhost "$(/usr/local/bin/java -version 2>&1)"
+			/sbin/log_tool -t0 -uSystem -p127.0.0.1 -mlocalhost -a "[$QPKG_NAME] $(/usr/local/bin/java -version 2>&1)"
 		else
 			# display error message
-			/sbin/log_tool -t2 -uSystem -p127.0.0.1 -mlocalhost "Ooops, something went wrong... Run \`cat $PKG_LOG\` for details."
+			/sbin/log_tool -t2 -uSystem -p127.0.0.1 -mlocalhost -a "[$QPKG_NAME] Ooops, something went wrong... Run \`cat $PKG_LOG\` for details."
 		fi
 	;;
 
