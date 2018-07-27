@@ -15,12 +15,12 @@
 	<target name="spk" description="Build Synology Package">
 		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/BCL.txt">
 			<info name="displayname" value="${title}" />
-			<info name="description" value="${package.description}" />
-			<info name="maintainer" value="${package.developer}" />
-			<info name="maintainer_url" value="${package.homepage}" />
-			<info name="distributor" value="${package.developer}" />
-			<info name="distributor_url" value="${package.homepage}" />
-			<info name="support_url" value="${package.homepage}/issues" />
+			<info name="description" value="${description}" />
+			<info name="maintainer" value="rednoah" />
+			<info name="maintainer_url" value="https://github.com/rednoah/java-installer" />
+			<info name="distributor" value="rednoah" />
+			<info name="distributor_url" value="https://github.com/rednoah/java-installer" />
+			<info name="support_url" value="https://github.com/rednoah/java-installer/issues" />
 			<info name="startable" value="no" />
 			<info name="silent_install" value="no" />
 			<info name="silent_upgrade" value="yes" />
