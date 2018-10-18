@@ -151,7 +151,7 @@
 		<element name="filesets" implicit="yes" />
 		<sequential>
 			<apply executable="gpg" verbose="yes" failonerror="yes">
-				<arg line="--armor --detach-sign --verbose --batch --yes --local-user ${package.maintainer}" />
+				<arg line="--armor --detach-sign --verbose --batch --yes --local-user ${maintainer}" />
 				<srcfile />
 				<filesets />
 			</apply>
