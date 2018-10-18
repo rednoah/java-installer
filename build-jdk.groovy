@@ -1,55 +1,26 @@
-@Grapes(
-    @Grab(group='org.jsoup', module='jsoup', version='1.10.3')
-)
-
-
 def platforms = [
-	jre: [
-		windows: [
-			x64: 'x64'
-		],
-		osx: [
-			x64: 'x64'
-		],
-		linux: [
-			x64: 'x64'
-		]
-	],
-	jdk: [
-		linux: [
-			x64: 'x64'
-		]
-	]
+	[type: 'jdk', os: 'windows', arch: 'x64', pkg: 'zip'],
+	[type: 'jdk', os: 'osx',     arch: 'x64', pkg: 'tar.gz'],
+	[type: 'jdk', os: 'linux',   arch: 'x64', pkg: 'tar.gz']
 ]
 
 // parse version/update/build from release string
 def name    = properties.product
-def (version, build) = properties.release.tokenize('+')
-
-// package repository
-def site = "http://download.oracle.com/otn-pub/java/jdk/${version}+${build}/${properties.uuid}"
-
-// grep SHA-256 checksums from Oracle
-def digest = org.jsoup.Jsoup.connect("https://www.oracle.com/webfolder/s/digest/${version.tr('.', '-')}checksum.html").get()
+def (version, build) = properties.release.tokenize('[+]')
+def (major) = version.tokenize('[.]')
 
 // generate properties file
 ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} binaries") {
 	entry(key:"jdk.name", value: name)
 	entry(key:"jdk.version", value: version)
 
-	platforms.each{ type, o ->
-		o.each{ os, m ->
-			m.each{ arch, pkg ->
-				def filename = "${type}-${version}_${os}-${pkg}_bin.tar.gz"
-				def url = "${site}/${filename}"
+	platforms.each{ jdk ->
+		jdk.with {
+			def url = "https://download.java.net/java/GA/jdk${major}/${build}/GPL/openjdk-${version}_${os}-${arch}_bin.${pkg}"
+			def checksum = new URL("${url}.sha256").text.trim()
 
-				def checksum = digest.select('tr')
-								.find{ it.select('td').any{ it.text() == filename } }
-								.findResult{ it.select('td').findResult{ it.text().find( /sha256: (\p{XDigit}{64})/ ){ match, checksum -> checksum.toLowerCase() } } }
-
-				entry(key:"${type}.${os}.${arch}.url", value: url)
-				entry(key:"${type}.${os}.${arch}.sha256", value: checksum)
-			}
+			entry(key:"${type}.${os}.${arch}.url", value: url)
+			entry(key:"${type}.${os}.${arch}.sha256", value: checksum)
 		}
 	}
 }
