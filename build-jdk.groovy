@@ -36,8 +36,11 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	liberica.each{ jdk ->
 		jdk.with {
-			def url = "https://github.com/bell-sw/Liberica/releases/download/jdk${major}/bellsoft-jdk${major}-${pkg}"
-			def checksum = url.bytes.digest('SHA-256') // GitHub Release API doesn't give us the SHA-256
+			def url = "https://github.com/bell-sw/Liberica/releases/download/${major}/bellsoft-jdk${major}-${pkg}"
+
+			// GitHub Release API doesn't give us the SHA-256
+			println "Download $url"
+			def checksum = new URL(url).bytes.digest('SHA-256')
 
 			entry(key:"jdk.${os}.${arch}.url", value: url)
 			entry(key:"jdk.${os}.${arch}.sha256", value: checksum)
