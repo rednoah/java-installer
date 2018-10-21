@@ -3,26 +3,30 @@
 # @{title} for @{jdk.name} @{jdk.version}
 
 COMMAND=${1:-get}        # get | install
-JRE=${2:-jre}            # jre | jdk
+TYPE=${2:-jdk}           # jre | jdk
 ARCH=${3:-`uname -m`}    # x86_64 | i686 | aarch64 | armv7l | etc
 OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
-case "$OS $ARCH $JRE" in
+case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jdk")
 		JDK_URL="@{jdk.linux.x64.url}"
 		JDK_SHA256="@{jdk.linux.x64.sha256}"
 	;;
-	"Linux x86_64 jre")
-		JDK_URL="@{jre.linux.x64.url}"
-		JDK_SHA256="@{jre.linux.x64.sha256}"
+	"Linux aarch64 jdk")
+		JDK_URL="@{jdk.linux.aarch64.url}"
+		JDK_SHA256="@{jdk.linux.aarch64.sha256}"
 	;;
-	"Darwin x86_64 jre")
-		JDK_URL="@{jre.osx.x64.url}"
-		JDK_SHA256="@{jre.osx.x64.sha256}"
+	"Linux armv7l jdk")
+		JDK_URL="@{jdk.linux.armv7l.url}"
+		JDK_SHA256="@{jdk.linux.armv7l.sha256}"
 	;;
-	"Windows x86_64 jre")
-		JDK_URL="@{jre.windows.x64.url}"
-		JDK_SHA256="@{jre.windows.x64.sha256}"
+	"Darwin x86_64 jdk")
+		JDK_URL="@{jdk.osx.x64.url}"
+		JDK_SHA256="@{jdk.osx.x64.sha256}"
+	;;
+	"Windows x86_64 jdk")
+		JDK_URL="@{jdk.windows.x64.url}"
+		JDK_SHA256="@{jdk.windows.x64.sha256}"
 	;;
 	*)
 		echo "Architecture not supported: $PLATFORM"

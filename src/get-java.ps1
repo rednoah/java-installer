@@ -9,8 +9,8 @@ $JDK_ARCH = "$ENV:PROCESSOR_ARCHITECTURE"
 
 Switch ($JDK_ARCH) {
 	AMD64 {
-		$JDK_URL = "@{jre.windows.x64.url}"
-		$JDK_SHA256 = "@{jre.windows.x64.sha256}"
+		$JDK_URL = "@{jdk.windows.x64.url}"
+		$JDK_SHA256 = "@{jdk.windows.x64.sha256}"
 	}
 	default {
 		throw "CPU architecture not supported: $JDK_ARCH"
