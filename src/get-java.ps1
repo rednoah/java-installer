@@ -23,13 +23,7 @@ $JDK_TAR_GZ = Split-Path -Leaf $JDK_URL
 
 if (!(test-path $JDK_TAR_GZ)) {
 	Write-Output "Download $JDK_TAR_GZ"
-	$session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
-	$cookie = New-Object System.Net.Cookie 
-	$cookie.Name = "oraclelicense"
-	$cookie.Value = "accept-securebackup-cookie"
-	$cookie.Domain = "oracle.com"
-	$session.Cookies.Add($cookie)
-	Invoke-WebRequest -UseBasicParsing -WebSession $session -Uri $JDK_URL -OutFile $JDK_TAR_GZ
+	Invoke-WebRequest -UseBasicParsing -Uri $JDK_URL -OutFile $JDK_TAR_GZ
 }
 
 
