@@ -50,10 +50,9 @@ if ($args[0] -ne "install") {
 }
 
 
-# use 7-Zip to extract tar
+# extract zip archive
 Write-Output "Extract $JDK_TAR_GZ"
-& 7z e -aos $JDK_TAR_GZ
-& 7z x -aos ([System.IO.Path]::GetFileNameWithoutExtension($JDK_TAR_GZ))
+Expand-Archive -Path $JDK_TAR_GZ -DestinationPath .
 
 
 # find java executable
