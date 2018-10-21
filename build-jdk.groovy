@@ -7,7 +7,7 @@ def (major) = version.tokenize('[.]')
 // OpenJDK for x64 Windows / Linux / Mac
 def openjdk = [
 	[os: 'windows', arch: 'x64', pkg: 'windows-x64_bin.zip'],
-	[os: 'osx',     arch: 'x64', pkg: 'osx-x64_bin.tar.gz'],
+	[os: 'mac',     arch: 'x64', pkg: 'osx-x64_bin.tar.gz'],
 	[os: 'linux',   arch: 'x64', pkg: 'linux-x64_bin.tar.gz']
 ]
 
@@ -16,6 +16,14 @@ def openjdk = [
 def liberica = [
 	[os: 'linux', arch: 'aarch64', pkg: 'linux-aarch64-lite.tar.gz'],
 	[os: 'linux', arch: 'armv7l', pkg: 'linux-arm32-vfp-hflt-lite.tar.gz']
+]
+
+
+// Gluon JavaFX
+def javafx = [
+	[os: 'windows', arch: 'x64'],
+	[os: 'mac',     arch: 'x64']
+	[os: 'linux',   arch: 'x64']
 ]
 
 
@@ -36,7 +44,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	liberica.each{ jdk ->
 		jdk.with {
-			def url = "https://github.com/bell-sw/Liberica/releases/download/${version}/bellsoft-jdk${version}-${pkg}"
+			def url = "https://github.com/bell-sw/Liberica/releases/download/${major}/bellsoft-jdk${major}-${pkg}"
 
 			// GitHub Release API doesn't give us the SHA-256
 			println "Download $url"
@@ -46,4 +54,17 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 			entry(key:"jdk.${os}.${arch}.sha256", value: checksum)
 		}
 	}
+
+
+	javafx.each{ jfx ->
+		jfx.with {
+			def url = "http://gluonhq.com/download/javafx-${major}-sdk-${os}/"
+
+			println "Download $url"
+			def checksum = new URL(url).bytes.digest('SHA-256')
+
+			entry(key:"jfx.${os}.${arch}.url", value: url)
+			entry(key:"jfx.${os}.${arch}.sha256", value: checksum)
+		}
+	}	
 }

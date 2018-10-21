@@ -1,16 +1,27 @@
 # @{title} for @{jdk.name} @{jdk.version}
 
 
+param (
+	[string]$command = 'get',
+	[string]$type = 'jdk',
+	[string]$arch = $ENV:PROCESSOR_ARCHITECTURE
+)
+
+
 $ErrorActionPreference = "Stop"
 
 
 # JDK version identifiers
 $JDK_ARCH = "$ENV:PROCESSOR_ARCHITECTURE"
 
-Switch ($JDK_ARCH) {
-	AMD64 {
+Switch ("$type $arch") {
+	"AMD64 jdk" {
 		$JDK_URL = "@{jdk.windows.x64.url}"
 		$JDK_SHA256 = "@{jdk.windows.x64.sha256}"
+	}
+	"AMD64 jfx" {
+		$JDK_URL = "@{jfx.windows.x64.url}"
+		$JDK_SHA256 = "@{jfx.windows.x64.sha256}"
 	}
 	default {
 		throw "CPU architecture not supported: $JDK_ARCH"
@@ -38,7 +49,7 @@ if ($JDK_SHA256 -ne $JDK_SHA256_ACTUAL) {
 
 
 # extract and link only if explicitly requested
-if ($args[0] -ne "install") {
+if ($command -ne "install") {
 	Write-Output "Download complete: $JDK_TAR_GZ"
 	return
 }

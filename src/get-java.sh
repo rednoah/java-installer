@@ -21,13 +21,27 @@ case "$OS $ARCH $TYPE" in
 		JDK_SHA256="@{jdk.linux.armv7l.sha256}"
 	;;
 	"Darwin x86_64 jdk")
-		JDK_URL="@{jdk.osx.x64.url}"
-		JDK_SHA256="@{jdk.osx.x64.sha256}"
+		JDK_URL="@{jdk.mac.x64.url}"
+		JDK_SHA256="@{jdk.mac.x64.sha256}"
 	;;
 	"Windows x86_64 jdk")
 		JDK_URL="@{jdk.windows.x64.url}"
 		JDK_SHA256="@{jdk.windows.x64.sha256}"
 	;;
+
+	"Linux x86_64 jfx")
+		JDK_URL="@{jfx.linux.x64.url}"
+		JDK_SHA256="@{jfx.linux.x64.sha256}"
+	;;
+	"Darwin x86_64 jfx")
+		JDK_URL="@{jfx.mac.x64.url}"
+		JDK_SHA256="@{jfx.mac.x64.sha256}"
+	;;
+	"Windows x86_64 jfx")
+		JDK_URL="@{jfx.windows.x64.url}"
+		JDK_SHA256="@{jfx.windows.x64.sha256}"
+	;;
+
 	*)
 		echo "Architecture not supported: $OS $ARCH"
 		exit 1
@@ -55,7 +69,7 @@ fi
 
 
 # extract and link only if explicitly requested
-if [ "$COMMAND" != "install" ]; then
+if [ "$COMMAND $TYPE" != "install jdk" ]; then
 	echo "Download complete: $JDK_TAR_GZ"
 	exit 0
 fi
