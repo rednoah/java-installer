@@ -29,7 +29,7 @@ case "$OS $ARCH $TYPE" in
 		JDK_SHA256="@{jdk.windows.x64.sha256}"
 	;;
 	*)
-		echo "Architecture not supported: $PLATFORM"
+		echo "Architecture not supported: $OS $ARCH"
 		exit 1
 	;;
 esac
