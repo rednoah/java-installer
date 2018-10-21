@@ -36,7 +36,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	liberica.each{ jdk ->
 		jdk.with {
-			def url = "https://github.com/bell-sw/Liberica/releases/download/${major}/bellsoft-jdk${major}-${pkg}"
+			def url = "https://github.com/bell-sw/Liberica/releases/download/${version}/bellsoft-jdk${version}-${pkg}"
 
 			// GitHub Release API doesn't give us the SHA-256
 			println "Download $url"
