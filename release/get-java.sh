@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Unofficial Java Installer for OpenJDK 11.0.1
+# Java Installer for OpenJDK 11.0.1
 
 COMMAND=${1:-get}        # get | install
 TYPE=${2:-jdk}           # jre | jdk
@@ -28,6 +28,20 @@ case "$OS $ARCH $TYPE" in
 		JDK_URL="https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_windows-x64_bin.zip"
 		JDK_SHA256="289dd06e06c2cbd5e191f2d227c9338e88b6963fd0c75bceb9be48f0394ede21"
 	;;
+
+	"Linux x86_64 jfx")
+		JDK_URL="http://download2.gluonhq.com/openjfx/11/openjfx-11_linux-x64_bin-sdk.zip"
+		JDK_SHA256="737ff0a20cf4d11dce93c2bdba342274e5b363e4c0e8d1548d3ba5d539a717d9"
+	;;
+	"Darwin x86_64 jfx")
+		JDK_URL="http://download2.gluonhq.com/openjfx/11/openjfx-11_osx-x64_bin-sdk.zip"
+		JDK_SHA256="adabd9332993519e8ad69c5412a9acb00443e3b80a15c3d372a99b064a94873c"
+	;;
+	"Windows x86_64 jfx")
+		JDK_URL="http://download2.gluonhq.com/openjfx/11/openjfx-11_windows-x64_bin-sdk.zip"
+		JDK_SHA256="ec0b2665db9745808b7eaa4432d3eff271bb16ed5f64751999310ed982d5df02"
+	;;
+
 	*)
 		echo "Architecture not supported: $OS $ARCH"
 		exit 1
@@ -39,7 +53,7 @@ esac
 JDK_TAR_GZ=`basename $JDK_URL`
 if [ ! -f "$JDK_TAR_GZ" ]; then
 	echo "Download $JDK_URL"
-	curl -fsSL -o "$JDK_TAR_GZ" --retry 5 --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
+	curl -fsSL -o "$JDK_TAR_GZ" --retry 5 "$JDK_URL"
 fi
 
 
@@ -55,7 +69,7 @@ fi
 
 
 # extract and link only if explicitly requested
-if [ "$COMMAND" != "install" ]; then
+if [ "$COMMAND $TYPE" != "install jdk" ]; then
 	echo "Download complete: $JDK_TAR_GZ"
 	exit 0
 fi

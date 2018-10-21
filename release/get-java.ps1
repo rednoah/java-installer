@@ -1,4 +1,11 @@
-# Unofficial Java Installer for OpenJDK 11.0.1
+# Java Installer for OpenJDK 11.0.1
+
+
+param (
+	[string]$command = 'get',
+	[string]$type = 'jdk',
+	[string]$arch = $ENV:PROCESSOR_ARCHITECTURE
+)
 
 
 $ErrorActionPreference = "Stop"
@@ -7,10 +14,14 @@ $ErrorActionPreference = "Stop"
 # JDK version identifiers
 $JDK_ARCH = "$ENV:PROCESSOR_ARCHITECTURE"
 
-Switch ($JDK_ARCH) {
-	AMD64 {
+Switch ("$type $arch") {
+	"AMD64 jdk" {
 		$JDK_URL = "https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_windows-x64_bin.zip"
 		$JDK_SHA256 = "289dd06e06c2cbd5e191f2d227c9338e88b6963fd0c75bceb9be48f0394ede21"
+	}
+	"AMD64 jfx" {
+		$JDK_URL = "http://download2.gluonhq.com/openjfx/11/openjfx-11_windows-x64_bin-sdk.zip"
+		$JDK_SHA256 = "ec0b2665db9745808b7eaa4432d3eff271bb16ed5f64751999310ed982d5df02"
 	}
 	default {
 		throw "CPU architecture not supported: $JDK_ARCH"
@@ -23,13 +34,7 @@ $JDK_TAR_GZ = Split-Path -Leaf $JDK_URL
 
 if (!(test-path $JDK_TAR_GZ)) {
 	Write-Output "Download $JDK_TAR_GZ"
-	$session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
-	$cookie = New-Object System.Net.Cookie 
-	$cookie.Name = "oraclelicense"
-	$cookie.Value = "accept-securebackup-cookie"
-	$cookie.Domain = "oracle.com"
-	$session.Cookies.Add($cookie)
-	Invoke-WebRequest -UseBasicParsing -WebSession $session -Uri $JDK_URL -OutFile $JDK_TAR_GZ
+	Invoke-WebRequest -UseBasicParsing -Uri $JDK_URL -OutFile $JDK_TAR_GZ
 }
 
 
@@ -44,7 +49,7 @@ if ($JDK_SHA256 -ne $JDK_SHA256_ACTUAL) {
 
 
 # extract and link only if explicitly requested
-if ($args[0] -ne "install") {
+if ($command -ne "install") {
 	Write-Output "Download complete: $JDK_TAR_GZ"
 	return
 }
