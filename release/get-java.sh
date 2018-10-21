@@ -1,28 +1,32 @@
 #!/bin/sh
 
-# Unofficial Java Installer for Oracle Java SE 10.0.2
+# Unofficial Java Installer for OpenJDK 11.0.1
 
 COMMAND=${1:-get}        # get | install
-JRE=${2:-jre}            # jre | jdk
+TYPE=${2:-jdk}           # jre | jdk
 ARCH=${3:-`uname -m`}    # x86_64 | i686 | aarch64 | armv7l | etc
 OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
-case "$OS $ARCH $JRE" in
+case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jdk")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz"
-		JDK_SHA256="6633c20d53c50c20835364d0f3e172e0cbbce78fff81867488f22a6298fa372b"
+		JDK_URL="https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz"
+		JDK_SHA256="7a6bb980b9c91c478421f865087ad2d69086a0583aeeb9e69204785e8e97dcfd"
 	;;
-	"Linux x86_64 jre")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jre-10.0.2_linux-x64_bin.tar.gz"
-		JDK_SHA256="7d2909a597574f1821903790bb0f31aaa57ab7348e3ae53639c850371450845d"
+	"Linux aarch64 jdk")
+		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/11/bellsoft-jdk11-linux-aarch64-lite.tar.gz"
+		JDK_SHA256="b80941aa5ccefa24ab3e1584e1301ddac2c436eefa03cffcffb43bae5bd526be"
 	;;
-	"Darwin x86_64 jre")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jre-10.0.2_osx-x64_bin.tar.gz"
-		JDK_SHA256="a0ccfa98028ecbfd8081fc865bb8d0b32b6fd7f815e5b9695853831af3ba0963"
+	"Linux armv7l jdk")
+		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/11/bellsoft-jdk11-linux-arm32-vfp-hflt-lite.tar.gz"
+		JDK_SHA256="f3469cdff77dfc940352bf86893805f7125cffd1cc72342b6a51627bb8307b75"
 	;;
-	"Windows x86_64 jre")
-		JDK_URL="http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jre-10.0.2_windows-x64_bin.tar.gz"
-		JDK_SHA256="cc5362d17c8baaa84c6bc63bba79fe8c2ec3d2ff2a2ec239482ae0b7cf03887a"
+	"Darwin x86_64 jdk")
+		JDK_URL="https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_osx-x64_bin.tar.gz"
+		JDK_SHA256="fa07eee08fa0f3de541ee1770de0cdca2ae3876f3bd78c329f27e85c287cd070"
+	;;
+	"Windows x86_64 jdk")
+		JDK_URL="https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_windows-x64_bin.zip"
+		JDK_SHA256="289dd06e06c2cbd5e191f2d227c9338e88b6963fd0c75bceb9be48f0394ede21"
 	;;
 	*)
 		echo "Architecture not supported: $PLATFORM"
