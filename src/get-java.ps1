@@ -4,27 +4,24 @@
 param (
 	[string]$command = 'get',
 	[string]$type = 'jdk',
-	[string]$arch = $ENV:PROCESSOR_ARCHITECTURE
+	[string]$arch = 'x86_64'
 )
 
 
 $ErrorActionPreference = "Stop"
 
 
-# JDK version identifiers
-$JDK_ARCH = "$ENV:PROCESSOR_ARCHITECTURE"
-
-Switch ("$type $arch") {
-	"AMD64 jdk" {
+Switch ("$arch $type") {
+	"x86_64 jdk" {
 		$JDK_URL = "@{jdk.windows.x64.url}"
 		$JDK_SHA256 = "@{jdk.windows.x64.sha256}"
 	}
-	"AMD64 jfx" {
+	"x86_64 jfx" {
 		$JDK_URL = "@{jfx.windows.x64.url}"
 		$JDK_SHA256 = "@{jfx.windows.x64.sha256}"
 	}
 	default {
-		throw "CPU architecture not supported: $JDK_ARCH"
+		throw "CPU architecture not supported."
 	}
 }
 
