@@ -14,8 +14,6 @@ def openjdk = [
 
 // BellSoft Liberica JDK Linux ARM
 def liberica = [
-// bellsoft-jdk11-linux-aarch64-lite.tar.gz
-// bellsoft-jdk11-linux-arm32-vfp-hflt-lite.tar.gz
 	[os: 'linux', arch: 'aarch64', pkg: 'linux-aarch64-lite.tar.gz'],
 	[os: 'linux', arch: 'armv7l', pkg: 'linux-arm32-vfp-hflt-lite.tar.gz']
 ]
@@ -37,12 +35,9 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 	}
 
 	liberica.each{ jdk ->
-		def json = new groovy.json.JsonSlurper().parse(new URL('https://api.github.com/repos/bell-sw/Liberica/releases'))
-		def sha256 = { pkg -> }
-
 		jdk.with {
 			def url = "https://github.com/bell-sw/Liberica/releases/download/jdk${major}/bellsoft-jdk${major}-${pkg}"
-			def checksum = new URL("${url}.sha256").text.trim()
+			def checksum = url.bytes.digest('SHA-256') // GitHub Release API doesn't give us the SHA-256
 
 			entry(key:"jdk.${os}.${arch}.url", value: url)
 			entry(key:"jdk.${os}.${arch}.sha256", value: checksum)
