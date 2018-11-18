@@ -62,7 +62,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	javafx.each{ jfx ->
 		jfx.with {
-			def url = "http://download2.gluonhq.com/openjfx/${major}/openjfx-${major}_${pkg}"
+			def url = "http://download2.gluonhq.com/openjfx/${version}/openjfx-${version}_${pkg}"
 			def checksum = sha256(url)
 
 			entry(key:"jfx.${os}.${arch}.url", value: url)
