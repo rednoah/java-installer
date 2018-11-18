@@ -18,7 +18,7 @@ Switch ("$arch $type") {
 	}
 	"x86_64 jfx" {
 		$JDK_URL = "http://download2.gluonhq.com/openjfx/11.0.1/openjfx-11.0.1_windows-x64_bin-sdk.zip"
-		$JDK_SHA256 = "b80021b37fca7a2c67f15e1b32f862120080c0260bc662631abdcdbf9cbbdb7"
+		$JDK_SHA256 = "0b80021b37fca7a2c67f15e1b32f862120080c0260bc662631abdcdbf9cbbdb7"
 	}
 	default {
 		throw "CPU architecture not supported."

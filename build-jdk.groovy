@@ -31,7 +31,7 @@ def javafx = [
 def sha256(url) {
 	def file = new File('cache', url.tokenize('/').last())
 	new AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
-	return file.bytes.digest('SHA-256')
+	return file.bytes.digest('SHA-256').padLeft(64, '0')
 }
 
 
