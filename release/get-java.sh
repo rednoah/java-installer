@@ -14,11 +14,11 @@ case "$OS $ARCH $TYPE" in
 	;;
 	"Linux aarch64 jdk")
 		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/11/bellsoft-jdk11-linux-aarch64-lite.tar.gz"
-		JDK_SHA256="b80941aa5ccefa24ab3e1584e1301ddac2c436eefa03cffcffb43bae5bd526be"
+		JDK_SHA256="bf12d58ba6e3a2ef3b9727a784c34348f7c86fa1593f856ccf06a723bbfdafeb"
 	;;
 	"Linux armv7l jdk")
 		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/11/bellsoft-jdk11-linux-arm32-vfp-hflt-lite.tar.gz"
-		JDK_SHA256="f3469cdff77dfc940352bf86893805f7125cffd1cc72342b6a51627bb8307b75"
+		JDK_SHA256="a2d630e1e9cbdf6090cb8d53a41fe2eff21321c358c3bbf1fdf0fdaa4ad57ed3"
 	;;
 	"Darwin x86_64 jdk")
 		JDK_URL="https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_osx-x64_bin.tar.gz"
@@ -39,7 +39,7 @@ case "$OS $ARCH $TYPE" in
 	;;
 	"Windows x86_64 jfx")
 		JDK_URL="http://download2.gluonhq.com/openjfx/11.0.1/openjfx-11.0.1_windows-x64_bin-sdk.zip"
-		JDK_SHA256="0b80021b37fca7a2c67f15e1b32f862120080c0260bc662631abdcdbf9cbbdb7"
+		JDK_SHA256="2b98461eaa366abe8ff4a59f69a0d527ac5380d54ed571ed1ce9239520263051"
 	;;
 
 	*)
