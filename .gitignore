@@ -1,5 +1,6 @@
 lib
 dist
 release
+cache
 
 *.properties
