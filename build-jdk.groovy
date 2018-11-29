@@ -29,9 +29,13 @@ def javafx = [
 
 
 def sha256(url) {
-	def file = new File('cache', url.tokenize('/').last())
-	new AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
-	return file.bytes.digest('SHA-256').padLeft(64, '0')
+	try {
+		return new URL("${url}.sha256").text.tokenize().first()
+	} catch(e) {
+		def file = new File('cache', url.tokenize('/').last())
+		new AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
+		return file.bytes.digest('SHA-256').padLeft(64, '0')
+	}
 }
 
 
@@ -43,7 +47,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 	openjdk.each{ jdk ->
 		jdk.with {
 			def url = "https://download.java.net/java/GA/jdk${major}/${build}/GPL/openjdk-${version}_${pkg}"
-			def checksum = new URL("${url}.sha256").text.trim()
+			def checksum = sha256(url)
 
 			entry(key:"jdk.${os}.${arch}.url", value: url)
 			entry(key:"jdk.${os}.${arch}.sha256", value: checksum)
