@@ -1,4 +1,4 @@
-# Java 8 Installer for Oracle Java SE 1.8.0_191
+# Java 8 Installer for Oracle Java SE 1.8.0_201
 
 
 $ErrorActionPreference = "Stop"
@@ -9,12 +9,12 @@ $JDK_ARCH = "$ENV:PROCESSOR_ARCHITECTURE"
 
 Switch ($JDK_ARCH) {
 	AMD64 {
-		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jre-8u191-windows-x64.tar.gz"
-		$JDK_SHA256 = "cb4499f0fde769186f53ee26987aed4c67b6ee790aea16b460d82c48beb2f418"
+		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jre-8u201-windows-x64.tar.gz"
+		$JDK_SHA256 = "359894fcc97627c1177f9b3ca3f19fa5f327f0e29789abf8de6d8a9f14481d8d"
 	}
 	x86 {
-		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jre-8u191-windows-i586.tar.gz"
-		$JDK_SHA256 = "cc7e16e342e591cc4771844ef4148ce3679335a6433860bedca67781bd3858d1"
+		$JDK_URL = "http://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jre-8u201-windows-i586.tar.gz"
+		$JDK_SHA256 = "dc419a2ebd838e2f3d4e0a0efb02024abad464129d5d8decb8a7b6fbde552227"
 	}
 	default {
 		throw "CPU architecture not supported: $JDK_ARCH"
