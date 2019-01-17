@@ -1,4 +1,4 @@
-# Java Installer for OpenJDK 11.0.1
+# Java Installer for OpenJDK 11.0.2
 
 
 param (
@@ -13,12 +13,12 @@ $ErrorActionPreference = "Stop"
 
 Switch ("$arch $type") {
 	"x86_64 jdk" {
-		$JDK_URL = "https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_windows-x64_bin.zip"
-		$JDK_SHA256 = "289dd06e06c2cbd5e191f2d227c9338e88b6963fd0c75bceb9be48f0394ede21"
+		$JDK_URL = "https://download.java.net/java/GA/jdk11/7/GPL/openjdk-11.0.2_windows-x64_bin.zip"
+		$JDK_SHA256 = "74b13684729a249d32fd955fd1de2bec22e627f6a6a5894ca74f88c945c95f55"
 	}
 	"x86_64 jfx" {
-		$JDK_URL = "http://download2.gluonhq.com/openjfx/11.0.1/openjfx-11.0.1_windows-x64_bin-sdk.zip"
-		$JDK_SHA256 = "2b98461eaa366abe8ff4a59f69a0d527ac5380d54ed571ed1ce9239520263051"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/11.0.2/openjfx-11.0.2_windows-x64_bin-sdk.zip"
+		$JDK_SHA256 = "2dd008e0c865f9bc02abd4aaf11ceeb15ca5bfe8c434e613501feda60528ce61"
 	}
 	default {
 		throw "CPU architecture not supported."
