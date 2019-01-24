@@ -13,8 +13,8 @@ $ErrorActionPreference = "Stop"
 
 Switch ("$arch $type") {
 	"x86_64 jdk" {
-		$JDK_URL = "https://download.java.net/java/GA/jdk11/7/GPL/openjdk-11.0.2_windows-x64_bin.zip"
-		$JDK_SHA256 = "74b13684729a249d32fd955fd1de2bec22e627f6a6a5894ca74f88c945c95f55"
+		$JDK_URL = "https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip"
+		$JDK_SHA256 = "cf39490fe042dba1b61d6e9a395095279a69e70086c8c8d5466d9926d80976d8"
 	}
 	"x86_64 jfx" {
 		$JDK_URL = "https://download2.gluonhq.com/openjfx/11.0.2/openjfx-11.0.2_windows-x64_bin-sdk.zip"

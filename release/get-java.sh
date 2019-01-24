@@ -9,24 +9,24 @@ OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
 case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk11/7/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz"
-		JDK_SHA256="62ee5758af12bbad04f376bf2b61f114076f6d8ffe4ba8db13bb5a63b5ef0d29"
+		JDK_URL="https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz"
+		JDK_SHA256="99be79935354f5c0df1ad293620ea36d13f48ec3ea870c838f20c504c9668b57"
 	;;
 	"Linux aarch64 jdk")
-		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/11.0.1/bellsoft-jdk11.0.1-linux-aarch64-lite.tar.gz"
-		JDK_SHA256="7f354889950fea7c7dcebfc9bfe37a6f623b62d7db097fbd712011bbae407058"
+		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/11.0.2/bellsoft-jdk11.0.2-linux-aarch64.tar.gz"
+		JDK_SHA256="3ab8376175e283557634ee7b7bc5881e9db7141ff08bd56f48b7218226f0866c"
 	;;
 	"Linux armv7l jdk")
-		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/11.0.1/bellsoft-jdk11.0.1-linux-arm32-vfp-hflt-lite.tar.gz"
-		JDK_SHA256="c9d22b8809497efedcef253641b11da9c394d3fd546d35556c8d165210bd8bdf"
+		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/11.0.2/bellsoft-jdk11.0.2-linux-arm32-vfp-hflt.tar.gz"
+		JDK_SHA256="ac407bcbf0c7e1b3bf47291b0116db8e5da884fa0d9a4b3aed42632b54e57b2a"
 	;;
 	"Darwin x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk11/7/GPL/openjdk-11.0.2_osx-x64_bin.tar.gz"
-		JDK_SHA256="0724f0a2e6509a2a20c3238660e33d45b2137f6d82db5c5ebd1c0592210ce948"
+		JDK_URL="https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_osx-x64_bin.tar.gz"
+		JDK_SHA256="f365750d4be6111be8a62feda24e265d97536712bc51783162982b8ad96a70ee"
 	;;
 	"Windows x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk11/7/GPL/openjdk-11.0.2_windows-x64_bin.zip"
-		JDK_SHA256="74b13684729a249d32fd955fd1de2bec22e627f6a6a5894ca74f88c945c95f55"
+		JDK_URL="https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip"
+		JDK_SHA256="cf39490fe042dba1b61d6e9a395095279a69e70086c8c8d5466d9926d80976d8"
 	;;
 
 	"Linux x86_64 jfx")
