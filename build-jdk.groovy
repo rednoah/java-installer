@@ -14,8 +14,8 @@ def openjdk = [
 
 // BellSoft Liberica JDK Linux ARM
 def liberica = [
-	[os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64-lite.tar.gz'],
-	[os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt-lite.tar.gz']
+	[os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64.tar.gz'],
+	[os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt.tar.gz']
 ]
 
 
