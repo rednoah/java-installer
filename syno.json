@@ -4,10 +4,10 @@
     ],
     "packages":[
         {
-            "package":"java-8-installer",
-            "version":"1.8",
-            "dname":"Java 8 Installer",
-            "desc":"Java 8 Installer will help you install Oracle Java SE on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest Oracle Java SE Development Kit (180 MB) for your platform. This may take a while.",
+            "package":"java-installer",
+            "version":"1.0",
+            "dname":"Java Installer",
+            "desc":"Java Installer will help you install and update Java. Supported platforms include armv7l, aarch64, i586 and x86_64 models. During the install, this package will download the latest OpenJDK binaries (180 MB) for your platform. This may take a while.",
             "maintainer":"rednoah",
             "maintainer_url":"https://github.com/rednoah/java-installer",
             "distributor":"rednoah",
@@ -19,11 +19,11 @@
             "thumbnail":[
                 "https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png"
             ],
-            "link":"https://github.com/rednoah/java-installer/releases/download/1.8/java-8-installer-1.8-noarch.spk",
-            "download_count":"20991",
-            "md5":"cc3363fb07b6f4141f8a5d147eaed97d",
-            "sha256":"58c121cf919ed95e38ba183c2cb0c469bd2db23a85eb0768db960e34b7cbc125",
-            "size":61440
+            "link":"https://github.com/rednoah/java-installer/releases/download/1.0/java-installer-1.0-noarch.spk",
+            "download_count":"25662",
+            "md5":"ac988508bef435922a0b682384740f02",
+            "sha256":"56cc0f351bde62c29c2fd6ff07985f11498eea0632a66c3e7ae8fdbcff78f03d",
+            "size":40960
         }
     ]
 }
