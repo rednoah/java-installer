@@ -1,6 +1,7 @@
 // parse version/update/build from release string
 def name    = properties.product
-def version = properties.release
+def (version, build) = properties.release.tokenize('[+]')
+def (major) = version.tokenize('[.]')
 
 
 // OpenJDK for x64 Windows / Linux / Mac
@@ -13,10 +14,8 @@ def openjdk = [
 
 // BellSoft Liberica JDK Linux ARM
 def liberica = [
-	[os: 'windows', arch: 'x86',     pkg: 'windows-i586-lite.zip'],
-	[os: 'linux',   arch: 'x86',     pkg: 'linux-i586-lite.tar.gz'],
-	[os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64-lite.tar.gz'],
-	[os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt-lite.tar.gz']
+	[os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64.tar.gz'],
+	[os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt.tar.gz']
 ]
 
 
@@ -26,6 +25,7 @@ def javafx = [
 	[os: 'mac',     arch: 'x64', pkg: 'osx-x64_bin-sdk.zip'],
 	[os: 'linux',   arch: 'x64', pkg: 'linux-x64_bin-sdk.zip']
 ]
+
 
 
 def sha256(url) {
@@ -39,11 +39,6 @@ def sha256(url) {
 }
 
 
-def getOpenJDK(pkg) {
-	return "https://download.java.net/java/GA/jdk${properties.ojdk_version}/${properties.ojdk_uuid}/${properties.ojdk_major}/GPL/openjdk-${properties.ojdk_version}_${pkg}"
-}
-
-
 // generate properties file
 ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} binaries") {
 	entry(key: 'jdk.name', value: name)
@@ -51,7 +46,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	openjdk.each{ jdk ->
 		jdk.with {
-			def url = getOpenJDK(pkg)
+			def url = "https://download.java.net/java/GA/jdk${major}/${build}/GPL/openjdk-${version}_${pkg}"
 			def checksum = sha256(url)
 
 			entry(key:"jdk.${os}.${arch}.url", value: url)
