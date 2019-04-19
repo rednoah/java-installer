@@ -1,4 +1,4 @@
-# Java Installer for OpenJDK 12
+# Java Installer for OpenJDK 12.0.1
 
 
 param (
@@ -21,8 +21,8 @@ Switch ("$arch $type") {
 		$JDK_SHA256 = "e5292de96363654320ce6ee6ae9b66cbab965713de85d948a06731a789ce910e"
 	}
 	"x86 jdk" {
-		$JDK_URL = "https://github.com/bell-sw/Liberica/releases/download/12/bellsoft-jdk12-windows-i586-lite.zip"
-		$JDK_SHA256 = "f13a3a7d803a74f568347f94d77eaf8ddf37d2fc8117d390d1529010a7f19154"
+		$JDK_URL = "https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-windows-i586.zip"
+		$JDK_SHA256 = "4c39ab2aa5c246c377702693d462f17cdd5d85ca55aad0f270eda5063d95e4b0"
 	}
 	default {
 		throw "CPU architecture not supported."

@@ -13,10 +13,10 @@ def openjdk = [
 
 // BellSoft Liberica JDK Linux ARM
 def liberica = [
-	[os: 'windows', arch: 'x86',     pkg: 'windows-i586-lite.zip'],
-	[os: 'linux',   arch: 'x86',     pkg: 'linux-i586-lite.tar.gz'],
-	[os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64-lite.tar.gz'],
-	[os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt-lite.tar.gz']
+	[os: 'windows', arch: 'x86',     pkg: 'windows-i586.zip'],
+	[os: 'linux',   arch: 'x86',     pkg: 'linux-i586.tar.gz'],
+	[os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64.tar.gz'],
+	[os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt.tar.gz']
 ]
 
 
@@ -39,9 +39,10 @@ def sha256(url) {
 }
 
 
-def getOpenJDK(pkg) {
-	return "https://download.java.net/java/GA/jdk${properties.ojdk_version}/${properties.ojdk_uuid}/${properties.ojdk_major}/GPL/openjdk-${properties.ojdk_version}_${pkg}"
-}
+def uuid = properties.ojdk_uuid
+def (major) = version.tokenize(/[.]/)
+def gjfx_version = properties.gjfx_version
+
 
 
 // generate properties file
@@ -51,7 +52,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	openjdk.each{ jdk ->
 		jdk.with {
-			def url = getOpenJDK(pkg)
+			def url = "https://download.java.net/java/GA/jdk${version}/${uuid}/${major}/GPL/openjdk-${version}_${pkg}"
 			def checksum = sha256(url)
 
 			entry(key:"jdk.${os}.${arch}.url", value: url)
@@ -61,7 +62,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	liberica.each{ jdk ->
 		jdk.with {
-			def url = "https://github.com/bell-sw/Liberica/releases/download/${version}/bellsoft-jdk${version}-${pkg}"
+			def url = "https://download.bell-sw.com/java/${version}/bellsoft-jdk${version}-${pkg}"
 			def checksum = sha256(url)
 
 			entry(key:"jdk.${os}.${arch}.url", value: url)
@@ -71,7 +72,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	javafx.each{ jfx ->
 		jfx.with {
-			def url = "https://download2.gluonhq.com/openjfx/${version}/openjfx-${version}_${pkg}"
+			def url = "https://download2.gluonhq.com/openjfx/${gjfx_version}/openjfx-${gjfx_version}_${pkg}"
 			def checksum = sha256(url)
 
 			entry(key:"jfx.${os}.${arch}.url", value: url)

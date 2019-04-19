@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Java Installer for OpenJDK 12
+# Java Installer for OpenJDK 12.0.1
 
 COMMAND=${1:-get}        # get | install
 TYPE=${2:-jdk}           # jre | jdk
@@ -13,16 +13,16 @@ case "$OS $ARCH $TYPE" in
 		JDK_SHA256="151eb4ec00f82e5e951126f572dc9116104c884d97f91be14ec11e85fc2dd626"
 	;;
 	"Linux i686 jdk")
-		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/12/bellsoft-jdk12-linux-i586-lite.tar.gz"
-		JDK_SHA256="c397860ee53e7db2c6693e1a0a95857981acca4962d74b15f666f327849f057d"
+		JDK_URL="https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-linux-i586.tar.gz"
+		JDK_SHA256="b267c658281f8cb3fa0cf92b2b24e34e0d41a57aab83685a9dcc8dc8680833a8"
 	;;
 	"Linux aarch64 jdk")
-		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/12/bellsoft-jdk12-linux-aarch64-lite.tar.gz"
-		JDK_SHA256="afdc22765f0d83c55e47d3dd891ccd6f480d652e236e25d02f21a54c8b008ff8"
+		JDK_URL="https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-linux-aarch64.tar.gz"
+		JDK_SHA256="7dade4567a8a518e9d477e24256421293c48dfa47e9940b9788416f55b1baa84"
 	;;
 	"Linux armv7l jdk")
-		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/12/bellsoft-jdk12-linux-arm32-vfp-hflt-lite.tar.gz"
-		JDK_SHA256="0cfc100c10d3585ed6c4818e0b2e472d1e4cb9feae22c434ce413e5391104bf1"
+		JDK_URL="https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-linux-arm32-vfp-hflt.tar.gz"
+		JDK_SHA256="e1f22247c7b6d63b09658fc71cd78d911748c3ce1656e9322851d8311ef704bc"
 	;;
 	"Darwin x86_64 jdk")
 		JDK_URL="https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_osx-x64_bin.tar.gz"
@@ -33,8 +33,8 @@ case "$OS $ARCH $TYPE" in
 		JDK_SHA256="fc7d9eee3c09ea6548b00ca25dbf34a348b3942c815405a1428e0bfef268d08d"
 	;;
 	"Windows x86 jdk")
-		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/12/bellsoft-jdk12-windows-i586-lite.zip"
-		JDK_SHA256="f13a3a7d803a74f568347f94d77eaf8ddf37d2fc8117d390d1529010a7f19154"
+		JDK_URL="https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-windows-i586.zip"
+		JDK_SHA256="4c39ab2aa5c246c377702693d462f17cdd5d85ca55aad0f270eda5063d95e4b0"
 	;;
 
 	"Linux x86_64 jfx")
