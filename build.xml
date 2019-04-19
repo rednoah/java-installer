@@ -13,7 +13,7 @@
 
 
 	<target name="spk" description="Build Synology Package">
-		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/BCL.txt">
+		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/GPL.txt">
 			<info name="displayname" value="${title}" />
 			<info name="description" value="${description}" />
 			<info name="maintainer" value="rednoah" />
