@@ -8,7 +8,7 @@ SYMLINK_JAVA="/usr/bin/java"
 SYMLINK_JAVA_HOME="/opt/java"
 
 
-PKG_LOG="$QPKG_ROOT/install-jdk.log"
+PKG_LOG="$QPKG_ROOT/install-java.log"
 SYS_PROFILE="/etc/profile"
 COMMENT="# added by $QPKG_NAME"
 
