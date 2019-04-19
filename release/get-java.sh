@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Java Installer for OpenJDK 11.0.2
+# Java Installer for OpenJDK 12
 
 COMMAND=${1:-get}        # get | install
 TYPE=${2:-jdk}           # jre | jdk
@@ -9,37 +9,45 @@ OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
 case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz"
-		JDK_SHA256="99be79935354f5c0df1ad293620ea36d13f48ec3ea870c838f20c504c9668b57"
+		JDK_URL="https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_linux-x64_bin.tar.gz"
+		JDK_SHA256="151eb4ec00f82e5e951126f572dc9116104c884d97f91be14ec11e85fc2dd626"
+	;;
+	"Linux i686 jdk")
+		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/12/bellsoft-jdk12-linux-i586-lite.tar.gz"
+		JDK_SHA256="c397860ee53e7db2c6693e1a0a95857981acca4962d74b15f666f327849f057d"
 	;;
 	"Linux aarch64 jdk")
-		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/11.0.2/bellsoft-jdk11.0.2-linux-aarch64.tar.gz"
-		JDK_SHA256="3ab8376175e283557634ee7b7bc5881e9db7141ff08bd56f48b7218226f0866c"
+		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/12/bellsoft-jdk12-linux-aarch64-lite.tar.gz"
+		JDK_SHA256="afdc22765f0d83c55e47d3dd891ccd6f480d652e236e25d02f21a54c8b008ff8"
 	;;
 	"Linux armv7l jdk")
-		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/11.0.2/bellsoft-jdk11.0.2-linux-arm32-vfp-hflt.tar.gz"
-		JDK_SHA256="ac407bcbf0c7e1b3bf47291b0116db8e5da884fa0d9a4b3aed42632b54e57b2a"
+		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/12/bellsoft-jdk12-linux-arm32-vfp-hflt-lite.tar.gz"
+		JDK_SHA256="0cfc100c10d3585ed6c4818e0b2e472d1e4cb9feae22c434ce413e5391104bf1"
 	;;
 	"Darwin x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_osx-x64_bin.tar.gz"
-		JDK_SHA256="f365750d4be6111be8a62feda24e265d97536712bc51783162982b8ad96a70ee"
+		JDK_URL="https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_osx-x64_bin.tar.gz"
+		JDK_SHA256="cba6f42f82496f62c51fb544e243d440984d442bdc906550a30428d8be6189e5"
 	;;
 	"Windows x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip"
-		JDK_SHA256="cf39490fe042dba1b61d6e9a395095279a69e70086c8c8d5466d9926d80976d8"
+		JDK_URL="https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_windows-x64_bin.zip"
+		JDK_SHA256="fc7d9eee3c09ea6548b00ca25dbf34a348b3942c815405a1428e0bfef268d08d"
+	;;
+	"Windows x86 jdk")
+		JDK_URL="https://github.com/bell-sw/Liberica/releases/download/12/bellsoft-jdk12-windows-i586-lite.zip"
+		JDK_SHA256="f13a3a7d803a74f568347f94d77eaf8ddf37d2fc8117d390d1529010a7f19154"
 	;;
 
 	"Linux x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/11.0.2/openjfx-11.0.2_linux-x64_bin-sdk.zip"
-		JDK_SHA256="40ef06cd50ea535d45403d9c44e9cb405b631c547734b5b50a6cb7b222293f97"
+		JDK_URL="https://download2.gluonhq.com/openjfx/12/openjfx-12_linux-x64_bin-sdk.zip"
+		JDK_SHA256="ac1b80d8cccd423ae2fa20833becaff81d85f24c1b8438a5218d39d4e1d6b5c6"
 	;;
 	"Darwin x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/11.0.2/openjfx-11.0.2_osx-x64_bin-sdk.zip"
-		JDK_SHA256="e98158812db1a0037cdaf85824adff384e41e3edf046fda145479ce6057cb514"
+		JDK_URL="https://download2.gluonhq.com/openjfx/12/openjfx-12_osx-x64_bin-sdk.zip"
+		JDK_SHA256="85202e2bc793320c5fc8fe9c276f572a3c3fafcf2665fd49f9038e4b71b3f672"
 	;;
 	"Windows x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/11.0.2/openjfx-11.0.2_windows-x64_bin-sdk.zip"
-		JDK_SHA256="2dd008e0c865f9bc02abd4aaf11ceeb15ca5bfe8c434e613501feda60528ce61"
+		JDK_URL="https://download2.gluonhq.com/openjfx/12/openjfx-12_windows-x64_bin-sdk.zip"
+		JDK_SHA256="e5292de96363654320ce6ee6ae9b66cbab965713de85d948a06731a789ce910e"
 	;;
 
 	*)
@@ -58,7 +66,7 @@ fi
 
 
 # verify archive via SHA-256 checksum
-JDK_SHA256_ACTUAL=`openssl dgst -sha256 -hex "$JDK_TAR_GZ" | egrep --only-matching "[a-f0-9]{64}"`
+JDK_SHA256_ACTUAL=`openssl dgst -sha256 -hex "$JDK_TAR_GZ" | egrep -o "[a-f0-9]{64}"`
 echo "Expected SHA256 checksum: $JDK_SHA256"
 echo "Actual SHA256 checksum: $JDK_SHA256_ACTUAL"
 

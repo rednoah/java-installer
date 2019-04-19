@@ -1,4 +1,4 @@
-# Java Installer for OpenJDK 11.0.2
+# Java Installer for OpenJDK 12
 
 
 param (
@@ -13,12 +13,16 @@ $ErrorActionPreference = "Stop"
 
 Switch ("$arch $type") {
 	"x86_64 jdk" {
-		$JDK_URL = "https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip"
-		$JDK_SHA256 = "cf39490fe042dba1b61d6e9a395095279a69e70086c8c8d5466d9926d80976d8"
+		$JDK_URL = "https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_windows-x64_bin.zip"
+		$JDK_SHA256 = "fc7d9eee3c09ea6548b00ca25dbf34a348b3942c815405a1428e0bfef268d08d"
 	}
 	"x86_64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/11.0.2/openjfx-11.0.2_windows-x64_bin-sdk.zip"
-		$JDK_SHA256 = "2dd008e0c865f9bc02abd4aaf11ceeb15ca5bfe8c434e613501feda60528ce61"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/12/openjfx-12_windows-x64_bin-sdk.zip"
+		$JDK_SHA256 = "e5292de96363654320ce6ee6ae9b66cbab965713de85d948a06731a789ce910e"
+	}
+	"x86 jdk" {
+		$JDK_URL = "https://github.com/bell-sw/Liberica/releases/download/12/bellsoft-jdk12-windows-i586-lite.zip"
+		$JDK_SHA256 = "f13a3a7d803a74f568347f94d77eaf8ddf37d2fc8117d390d1529010a7f19154"
 	}
 	default {
 		throw "CPU architecture not supported."
