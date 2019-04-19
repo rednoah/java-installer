@@ -16,7 +16,7 @@
 		<copy-replace todir="${dir.dist}/spk">
 			<fileset dir="${dir.package}/synology" />
 		</copy-replace>
-		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/GPL.txt">
+		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch">
 			<info name="displayname" value="${title}" />
 			<info name="description" value="${description}" />
 			<info name="maintainer" value="rednoah" />
