@@ -4,12 +4,12 @@
     ],
     "packages":[
         {
-            "package":"oracle-java",
-            "version":"10.0.1",
-            "dname":"Unofficial Java Installer",
-            "desc":"Unofficial Java Installer will help you install Oracle Java SE on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest Oracle Java SE Development Kit (180 MB) for your platform. This may take a while.",
-            "maintainer":"Oracle Corporation",
-            "maintainer_url":"http://www.oracle.com/technetwork/java/javase/downloads/index.html",
+            "package":"java-8-installer",
+            "version":"1.8",
+            "dname":"Java 8 Installer",
+            "desc":"Java 8 Installer will help you install Oracle Java SE on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest Oracle Java SE Development Kit (180 MB) for your platform. This may take a while.",
+            "maintainer":"rednoah",
+            "maintainer_url":"https://github.com/rednoah/java-installer",
             "distributor":"rednoah",
             "distributor_url":"https://github.com/rednoah/java-installer",
             "start":false,
@@ -19,9 +19,10 @@
             "thumbnail":[
                 "https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png"
             ],
-            "link":"https://github.com/rednoah/java-installer/releases/download/10.0.1/oracle-java-10.0.1-noarch.spk",
-            "md5":"0d6f85145bd2b5214825200900809554",
-            "sha256":"75664da51612a85facd05d654cbe97c97094c4d467e5f4f4be8c6844a76f777c",
+            "link":"https://github.com/rednoah/java-installer/releases/download/1.8/java-8-installer-1.8-noarch.spk",
+            "download_count":"20991",
+            "md5":"cc3363fb07b6f4141f8a5d147eaed97d",
+            "sha256":"58c121cf919ed95e38ba183c2cb0c469bd2db23a85eb0768db960e34b7cbc125",
             "size":61440
         }
     ]

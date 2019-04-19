@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<project name="java-installer" default="build" xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:groovy="antlib:org.codehaus.groovy" xmlns:syno="antlib:net.filebot.ant.spk">
+<project name="java-installer" default="spk" xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:groovy="antlib:org.codehaus.groovy" xmlns:syno="antlib:net.filebot.ant.spk">
 	<property file="package.properties" />
 	<property file="profile.properties" />
 
@@ -7,16 +7,17 @@
 
 	<property name="dir.source" location="${basedir}/src" />
 	<property name="dir.lib" location="${basedir}/lib" />
+	<property name="dir.dist" location="${basedir}/dist" />
 	<property name="dir.package" location="${basedir}/package" />
 	<property name="dir.release" location="${basedir}/release" />
 
 
-	<target name="spk" description="Build Synology Package" depends="build">
-		<syno:spk destdir="${dir.release}" name="${package}" version="${jdk.version}" arch="noarch" license="${dir.package}/license/BCL.txt">
-			<info name="displayname" value="${product}" />
-			<info name="description" value="Oracle Java SE lets you develop and deploy Java applications on desktops and servers, as well as in embedded environments. Java offers performance, versatility and portability." />
-			<info name="maintainer" value="Oracle Corporation" />
-			<info name="maintainer_url" value="http://www.oracle.com/technetwork/java/javase/downloads/index.html" />
+	<target name="spk" description="Build Synology Package">
+		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/GPL.txt">
+			<info name="displayname" value="${title}" />
+			<info name="description" value="${description}" />
+			<info name="maintainer" value="rednoah" />
+			<info name="maintainer_url" value="https://github.com/rednoah/java-installer" />
 			<info name="distributor" value="rednoah" />
 			<info name="distributor_url" value="https://github.com/rednoah/java-installer" />
 			<info name="support_url" value="https://github.com/rednoah/java-installer/issues" />
@@ -31,20 +32,19 @@
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
 
 			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
-			<package dir="${dir.release}" includes="*.sh" filemode="755" />
+
+			<package file="${dir.package}/gpg/maintainer.gpg" />
 
 			<codesign secring="${dir.package}/gpg/secring.gpg" keyid="${gpg.key}" password="${gpg.pwd}" />
 		</syno:spk>
 	</target>
 
 
-	<target name="package-source" description="Update Synology Package Source" depends="stats">
-		<syno:package-source file="${basedir}/spksrc.json">
+	<target name="syno-repo" description="Update Synology Package Source" depends="stats">
+		<syno:package-source file="${basedir}/syno.json">
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
-			<spk file="${dir.release}/${package}-${jdk.version}-noarch.spk">
-				<info name="dname" value="${title}" />
-				<info name="desc" value="${title} will help you install ${product} on your Synology NAS. Supported platforms include armv7l, armv8, i686 and x86_64 models. During the install, this package will download the latest ${product} Development Kit (180 MB) for your platform. This may take a while." />
-				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${jdk.version}/${package}-${jdk.version}-noarch.spk" />
+			<spk file="${dir.release}/${package}-${version}-noarch.spk">
+				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
 				<info name="download_count" value="${download_count}" />
 				<thumbnail url="https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png" />
 			</spk>
@@ -52,19 +52,49 @@
 	</target>
 
 
+	<target name="qpkg" description="Build QNAP Package">
+		<copy-replace todir="${dir.dist}/qnap">
+			<fileset dir="${dir.package}/qnap">
+				<include name="**/*_routines" />
+				<include name="**/*.sh" />
+				<include name="**/*.cfg" />
+				<include name="**/*.png" />
+			</fileset>
+		</copy-replace>
+
+		<chmod perm="+x" type="file" verbose="yes">
+			<fileset dir="${dir.dist}/qnap">
+				<include name="**/*_routines" />
+				<include name="**/*.sh" />
+			</fileset>
+		</chmod>
+
+		<copy file="${dir.package}/gpg/maintainer.gpg" todir="${dir.dist}/qnap/shared" />
+
+		<exec executable="docker" failonerror="yes">
+			<arg line="run --rm -v ${dir.dist}/qnap:/src rednoah/qpkg-build" />
+		</exec>
+		<copy file="${dir.dist}/qnap/build/${package}_${version}.qpkg" tofile="${dir.dist}/${package}_${version}.qpkg" />
+	</target>
+
+
 	<target name="build">
-		<copy todir="${dir.release}" overwrite="yes" encoding="UTF-8" verbose="true">
+		<copy-replace todir="${dir.release}">
 			<fileset dir="${dir.source}" />
-			<filterset begintoken="@{" endtoken="}">
-				<propertyset>
-					<propertyref builtin="all" />
-				</propertyset>
-			</filterset>
-		</copy>
+		</copy-replace>
 
 		<chmod perm="+x" type="file">
-			<fileset dir="${dir.release}" />
+			<fileset dir="${dir.release}" includes="*.sh, *.ps1" />
 		</chmod>
+
+		<release-sign>
+			<fileset dir="${dir.release}" includes="*.sh, *.ps1" />
+		</release-sign>
+	</target>
+
+
+	<target name="clean">
+		<delete dir="${dir.dist}" />
 	</target>
 
 
@@ -79,8 +109,54 @@
 		<groovy:groovy src="build-jdk.groovy" />
 	</target>
 
+
 	<target name="stats">
 		<groovy:groovy src="build-jdk-stats.groovy" />
 	</target>
+
+
+	<macrodef name="copy-replace" description="Copy text files and replace ant variables">
+		<attribute name="todir" />
+		<element name="filesets" implicit="yes" />
+		<sequential>
+			<copy todir="@{todir}" overwrite="yes" verbose="yes" encoding="utf-8">
+				<restrict>
+					<filesets />
+					<not>
+						<name name="**/*.png" />
+					</not>
+				</restrict>
+				<filterset begintoken="@{" endtoken="}">
+					<propertyset>
+						<propertyref builtin="all" />
+					</propertyset>
+				</filterset>
+				<filtermapper>
+					<replacetokens begintoken="@{" endtoken="}" propertiesResource="package.properties" />
+				</filtermapper>
+			</copy>
+			<copy todir="@{todir}" overwrite="yes" verbose="yes">
+				<restrict>
+					<filesets />
+					<name name="**/*.png" />
+				</restrict>
+				<filtermapper>
+					<replacetokens begintoken="@{" endtoken="}" propertiesResource="package.properties" />
+				</filtermapper>
+			</copy>
+		</sequential>
+	</macrodef>
+
+
+	<macrodef name="release-sign" description="Sign files with GnuPG">
+		<element name="filesets" implicit="yes" />
+		<sequential>
+			<apply executable="gpg" verbose="yes" failonerror="yes">
+				<arg line="--armor --detach-sign --verbose --batch --yes --local-user ${maintainer}" />
+				<srcfile />
+				<filesets />
+			</apply>
+		</sequential>
+	</macrodef>
 
 </project>

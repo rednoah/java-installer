@@ -12,6 +12,10 @@ case "$OS $ARCH $TYPE" in
 		JDK_URL="@{jdk.linux.x64.url}"
 		JDK_SHA256="@{jdk.linux.x64.sha256}"
 	;;
+	"Linux i686 jdk")
+		JDK_URL="@{jdk.linux.x86.url}"
+		JDK_SHA256="@{jdk.linux.x86.sha256}"
+	;;
 	"Linux aarch64 jdk")
 		JDK_URL="@{jdk.linux.aarch64.url}"
 		JDK_SHA256="@{jdk.linux.aarch64.sha256}"
@@ -27,6 +31,10 @@ case "$OS $ARCH $TYPE" in
 	"Windows x86_64 jdk")
 		JDK_URL="@{jdk.windows.x64.url}"
 		JDK_SHA256="@{jdk.windows.x64.sha256}"
+	;;
+	"Windows x86 jdk")
+		JDK_URL="@{jdk.windows.x86.url}"
+		JDK_SHA256="@{jdk.windows.x86.sha256}"
 	;;
 
 	"Linux x86_64 jfx")
@@ -58,7 +66,7 @@ fi
 
 
 # verify archive via SHA-256 checksum
-JDK_SHA256_ACTUAL=`openssl dgst -sha256 -hex "$JDK_TAR_GZ" | egrep --only-matching "[a-f0-9]{64}"`
+JDK_SHA256_ACTUAL=`openssl dgst -sha256 -hex "$JDK_TAR_GZ" | egrep -o "[a-f0-9]{64}"`
 echo "Expected SHA256 checksum: $JDK_SHA256"
 echo "Actual SHA256 checksum: $JDK_SHA256_ACTUAL"
 

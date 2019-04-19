@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PKG_LOG="$SYNOPKG_PKGDEST/install-jdk.log"
+PKG_LOG="$SYNOPKG_PKGDEST/install-java.log"
 
 
 # set working dir

@@ -20,6 +20,10 @@ Switch ("$arch $type") {
 		$JDK_URL = "@{jfx.windows.x64.url}"
 		$JDK_SHA256 = "@{jfx.windows.x64.sha256}"
 	}
+	"x86 jdk" {
+		$JDK_URL = "@{jdk.windows.x86.url}"
+		$JDK_SHA256 = "@{jdk.windows.x86.sha256}"
+	}
 	default {
 		throw "CPU architecture not supported."
 	}
