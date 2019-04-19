@@ -1,76 +1,51 @@
+def platforms = [
+	jdk: [
+		linux: [
+			arm32: 'arm32-vfp-hflt',
+			arm64: 'arm64-vfp-hflt',
+			x86: 'i586',
+			x64: 'x64'
+		]
+	],
+	jre: [
+		windows: [
+			x86: 'i586',
+			x64: 'x64'
+		],
+		macosx: [
+			x64: 'x64'
+		]
+	]
+]
+
 // parse version/update/build from release string
 def name    = properties.product
-def (version, build) = properties.release.tokenize('[+]')
-def (major) = version.tokenize('[.]')
+def release = properties.release =~ /(?<version>\d.(?<major>\d).\d_(?<update>\d+))-(?<build>b\d+)/
+def version = release[0][1]
+def update  = release[0][2..3].join('u')
+def build   = release[0][4]
 
+// package repository
+def site = "http://download.oracle.com/otn-pub/java/jdk/${update}-${build}/${properties.uuid}"
 
-// OpenJDK for x64 Windows / Linux / Mac
-def openjdk = [
-	[os: 'windows', arch: 'x64', pkg: 'windows-x64_bin.zip'],
-	[os: 'mac',     arch: 'x64', pkg: 'osx-x64_bin.tar.gz'],
-	[os: 'linux',   arch: 'x64', pkg: 'linux-x64_bin.tar.gz']
-]
-
-
-// BellSoft Liberica JDK Linux ARM
-def liberica = [
-	[os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64.tar.gz'],
-	[os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt.tar.gz']
-]
-
-
-// Gluon JavaFX
-def javafx = [
-	[os: 'windows', arch: 'x64', pkg: 'windows-x64_bin-sdk.zip'],
-	[os: 'mac',     arch: 'x64', pkg: 'osx-x64_bin-sdk.zip'],
-	[os: 'linux',   arch: 'x64', pkg: 'linux-x64_bin-sdk.zip']
-]
-
-
-
-def sha256(url) {
-	try {
-		return new URL("${url}.sha256").text.tokenize().first()
-	} catch(e) {
-		def file = new File('cache', url.tokenize('/').last())
-		new AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
-		return file.bytes.digest('SHA-256').padLeft(64, '0')
-	}
-}
-
+// grep SHA-256 checksums from Oracle
+def digest = new URL("https://www.oracle.com/webfolder/s/digest/${update}checksum.html").readLines()
 
 // generate properties file
-ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} binaries") {
-	entry(key: 'jdk.name', value: name)
-	entry(key: 'jdk.version', value: version)
+ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${update} binaries") {
+	entry(key:"jdk.name", value: name)
+	entry(key:"jdk.version", value: version)
 
-	openjdk.each{ jdk ->
-		jdk.with {
-			def url = "https://download.java.net/java/GA/jdk${major}/${build}/GPL/openjdk-${version}_${pkg}"
-			def checksum = sha256(url)
+	platforms.each{ type, o ->
+		o.each{ os, m ->
+			m.each{ arch, pkg ->
+				def filename = "${type}-${update}-${os}-${pkg}.tar.gz"
+				def url = "${site}/${filename}"
+				def checksum = digest.grep{ it.contains(">${filename}<") }.findResult{ it.find(/sha256: (\p{XDigit}{64})/ ){ match, checksum -> checksum.toLowerCase() } }
 
-			entry(key:"jdk.${os}.${arch}.url", value: url)
-			entry(key:"jdk.${os}.${arch}.sha256", value: checksum)
-		}
-	}
-
-	liberica.each{ jdk ->
-		jdk.with {
-			def url = "https://github.com/bell-sw/Liberica/releases/download/${version}/bellsoft-jdk${version}-${pkg}"
-			def checksum = sha256(url)
-
-			entry(key:"jdk.${os}.${arch}.url", value: url)
-			entry(key:"jdk.${os}.${arch}.sha256", value: checksum)
-		}
-	}
-
-	javafx.each{ jfx ->
-		jfx.with {
-			def url = "https://download2.gluonhq.com/openjfx/${version}/openjfx-${version}_${pkg}"
-			def checksum = sha256(url)
-
-			entry(key:"jfx.${os}.${arch}.url", value: url)
-			entry(key:"jfx.${os}.${arch}.sha256", value: checksum)
+				entry(key:"${type}.${os}.${arch}.url", value: url)
+				entry(key:"${type}.${os}.${arch}.sha256", value: checksum)
+			}
 		}
 	}
 }
