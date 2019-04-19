@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PKG_LOG="$SYNOPKG_PKGDEST/install-jdk.log"
+PKG_LOG="$SYNOPKG_PKGDEST/install-java.log"
 SYS_PROFILE="/etc/profile"
-COMMENT="# added by Java Installer"
+COMMENT="# added by @{title}"
 
 
 INSTALLER_SCRIPT="get-java.sh"

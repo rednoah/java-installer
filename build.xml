@@ -13,6 +13,9 @@
 
 
 	<target name="spk" description="Build Synology Package" depends="branch">
+		<copy-replace todir="${dir.dist}/synology">
+			<fileset dir="${dir.package}/synology" />
+		</copy-replace>
 		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/GPL.txt">
 			<info name="displayname" value="${title}" />
 			<info name="description" value="${description}" />
@@ -31,7 +34,7 @@
 			<icon size="72" file="${dir.package}/synology/images/thumb_72.png" />
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
 
-			<scripts dir="${dir.package}/synology/scripts" filemode="755" />
+			<scripts dir="${dir.dist}/synology/scripts" filemode="755" />
 
 			<package file="${dir.package}/gpg/maintainer.gpg" />
 
@@ -43,7 +46,7 @@
 	<target name="syno-repo" description="Update Synology Package Source" depends="stats">
 		<syno:package-source file="${basedir}/syno.json">
 			<keyring file="${dir.package}/gpg/FileBot.pub" />
-			<spk file="${dir.release}/${package}-${version}-noarch.spk">
+			<spk file="${dir.dist}/${package}-${version}-noarch.spk">
 				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
 				<info name="download_count" value="${download_count}" />
 				<thumbnail url="https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png" />
