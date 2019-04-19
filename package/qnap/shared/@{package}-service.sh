@@ -15,7 +15,7 @@ COMMENT="# added by $QPKG_NAME"
 
 INSTALLER_SCRIPT="get-java.sh"
 INSTALLER_FILE="$QPKG_ROOT/$INSTALLER_SCRIPT"
-INSTALLER_URL="https://raw.githubusercontent.com/rednoah/java-installer/master/release/$INSTALLER_SCRIPT"
+INSTALLER_URL="https://raw.githubusercontent.com/rednoah/java-installer/@{branch}/release/$INSTALLER_SCRIPT"
 
 SIGNATURE_FILE="$INSTALLER_FILE.asc"
 SIGNATURE_URL="$INSTALLER_URL.asc"

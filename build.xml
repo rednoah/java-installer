@@ -12,7 +12,7 @@
 	<property name="dir.release" location="${basedir}/release" />
 
 
-	<target name="spk" description="Build Synology Package">
+	<target name="spk" description="Build Synology Package" depends="branch">
 		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" license="${dir.package}/license/GPL.txt">
 			<info name="displayname" value="${title}" />
 			<info name="description" value="${description}" />
@@ -52,7 +52,7 @@
 	</target>
 
 
-	<target name="qpkg" description="Build QNAP Package">
+	<target name="qpkg" description="Build QNAP Package" depends="branch">
 		<copy-replace todir="${dir.dist}/qnap">
 			<fileset dir="${dir.package}/qnap">
 				<include name="**/*_routines" />
@@ -112,6 +112,14 @@
 
 	<target name="stats">
 		<groovy:groovy src="build-jdk-stats.groovy" />
+	</target>
+
+
+	<target name="branch">
+		<exec executable="git" outputproperty="branch" failonerror="true">
+			<arg line="rev-parse --abbrev-ref HEAD" />
+		</exec>
+		<echo>Branch: ${branch}</echo>
 	</target>
 
 
