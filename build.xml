@@ -71,9 +71,10 @@
 
 		<copy file="${dir.package}/gpg/maintainer.gpg" todir="${dir.dist}/qnap/shared" />
 
-		<exec executable="qbuild" dir="${dir.dist}/qnap" failonerror="yes">
-			<arg line="--build-dir ${dir.dist}" />
+		<exec executable="docker" failonerror="yes">
+			<arg line="run --rm -v ${dir.dist}/qnap:/src rednoah/qpkg-build" />
 		</exec>
+		<copy file="${dir.dist}/qnap/build/${package}_${version}.qpkg" tofile="${dir.dist}/${package}_${version}.qpkg" />
 	</target>
 
 
