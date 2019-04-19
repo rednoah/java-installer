@@ -1,23 +1,27 @@
 # @{title} for @{jdk.name} @{jdk.version}
 
 
+param (
+	[string]$command = 'get',
+	[string]$type = 'jdk',
+	[string]$arch = 'x86_64'
+)
+
+
 $ErrorActionPreference = "Stop"
 
 
-# JDK version identifiers
-$JDK_ARCH = "$ENV:PROCESSOR_ARCHITECTURE"
-
-Switch ($JDK_ARCH) {
-	AMD64 {
-		$JDK_URL = "@{jre.windows.x64.url}"
-		$JDK_SHA256 = "@{jre.windows.x64.sha256}"
+Switch ("$arch $type") {
+	"x86_64 jdk" {
+		$JDK_URL = "@{jdk.windows.x64.url}"
+		$JDK_SHA256 = "@{jdk.windows.x64.sha256}"
 	}
-	x86 {
-		$JDK_URL = "@{jre.windows.x86.url}"
-		$JDK_SHA256 = "@{jre.windows.x86.sha256}"
+	"x86_64 jfx" {
+		$JDK_URL = "@{jfx.windows.x64.url}"
+		$JDK_SHA256 = "@{jfx.windows.x64.sha256}"
 	}
 	default {
-		throw "CPU architecture not supported: $JDK_ARCH"
+		throw "CPU architecture not supported."
 	}
 }
 
@@ -27,13 +31,7 @@ $JDK_TAR_GZ = Split-Path -Leaf $JDK_URL
 
 if (!(test-path $JDK_TAR_GZ)) {
 	Write-Output "Download $JDK_TAR_GZ"
-	$session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
-	$cookie = New-Object System.Net.Cookie 
-	$cookie.Name = "oraclelicense"
-	$cookie.Value = "accept-securebackup-cookie"
-	$cookie.Domain = "oracle.com"
-	$session.Cookies.Add($cookie)
-	Invoke-WebRequest -UseBasicParsing -WebSession $session -Uri $JDK_URL -OutFile $JDK_TAR_GZ
+	Invoke-WebRequest -UseBasicParsing -Uri $JDK_URL -OutFile $JDK_TAR_GZ
 }
 
 
@@ -48,16 +46,15 @@ if ($JDK_SHA256 -ne $JDK_SHA256_ACTUAL) {
 
 
 # extract and link only if explicitly requested
-if ($args[0] -ne "install") {
+if ($command -ne "install") {
 	Write-Output "Download complete: $JDK_TAR_GZ"
 	return
 }
 
 
-# use 7-Zip to extract tar
+# extract zip archive
 Write-Output "Extract $JDK_TAR_GZ"
-& 7z e -aos $JDK_TAR_GZ
-& 7z x -aos ([System.IO.Path]::GetFileNameWithoutExtension($JDK_TAR_GZ))
+Expand-Archive -Path $JDK_TAR_GZ -DestinationPath .
 
 
 # find java executable

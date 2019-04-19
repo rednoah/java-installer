@@ -2,33 +2,48 @@
 
 # @{title} for @{jdk.name} @{jdk.version}
 
+COMMAND=${1:-get}        # get | install
+TYPE=${2:-jdk}           # jre | jdk
+ARCH=${3:-`uname -m`}    # x86_64 | i686 | aarch64 | armv7l | etc
+OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
-# JDK version identifiers
-JDK_ARCH=`uname -sm`
-
-case "$JDK_ARCH" in
-	"Linux armv7l")
-		JDK_URL="@{jdk.linux.arm32.url}"
-		JDK_SHA256="@{jdk.linux.arm32.sha256}"
-	;;
-	"Linux aarch64")
-		JDK_URL="@{jdk.linux.arm64.url}"
-		JDK_SHA256="@{jdk.linux.arm64.sha256}"
-	;;
-	"Linux i686")
-		JDK_URL="@{jdk.linux.x86.url}"
-		JDK_SHA256="@{jdk.linux.x86.sha256}"
-	;;
-	"Linux x86_64")
+case "$OS $ARCH $TYPE" in
+	"Linux x86_64 jdk")
 		JDK_URL="@{jdk.linux.x64.url}"
 		JDK_SHA256="@{jdk.linux.x64.sha256}"
 	;;
-	"Darwin x86_64")
-		JDK_URL="@{jre.macosx.x64.url}"
-		JDK_SHA256="@{jre.macosx.x64.sha256}"
+	"Linux aarch64 jdk")
+		JDK_URL="@{jdk.linux.aarch64.url}"
+		JDK_SHA256="@{jdk.linux.aarch64.sha256}"
 	;;
+	"Linux armv7l jdk")
+		JDK_URL="@{jdk.linux.armv7l.url}"
+		JDK_SHA256="@{jdk.linux.armv7l.sha256}"
+	;;
+	"Darwin x86_64 jdk")
+		JDK_URL="@{jdk.mac.x64.url}"
+		JDK_SHA256="@{jdk.mac.x64.sha256}"
+	;;
+	"Windows x86_64 jdk")
+		JDK_URL="@{jdk.windows.x64.url}"
+		JDK_SHA256="@{jdk.windows.x64.sha256}"
+	;;
+
+	"Linux x86_64 jfx")
+		JDK_URL="@{jfx.linux.x64.url}"
+		JDK_SHA256="@{jfx.linux.x64.sha256}"
+	;;
+	"Darwin x86_64 jfx")
+		JDK_URL="@{jfx.mac.x64.url}"
+		JDK_SHA256="@{jfx.mac.x64.sha256}"
+	;;
+	"Windows x86_64 jfx")
+		JDK_URL="@{jfx.windows.x64.url}"
+		JDK_SHA256="@{jfx.windows.x64.sha256}"
+	;;
+
 	*)
-		echo "Architecture not supported: $JDK_ARCH"
+		echo "Architecture not supported: $OS $ARCH"
 		exit 1
 	;;
 esac
@@ -38,7 +53,7 @@ esac
 JDK_TAR_GZ=`basename $JDK_URL`
 if [ ! -f "$JDK_TAR_GZ" ]; then
 	echo "Download $JDK_URL"
-	curl -fsSL -o "$JDK_TAR_GZ" --retry 5 --cookie "oraclelicense=accept-securebackup-cookie" "$JDK_URL"
+	curl -fsSL -o "$JDK_TAR_GZ" --retry 5 "$JDK_URL"
 fi
 
 
@@ -54,7 +69,7 @@ fi
 
 
 # extract and link only if explicitly requested
-if [ "$1" != "install" ]; then
+if [ "$COMMAND $TYPE" != "install jdk" ]; then
 	echo "Download complete: $JDK_TAR_GZ"
 	exit 0
 fi
@@ -64,7 +79,7 @@ echo "Extract $JDK_TAR_GZ"
 tar -v -zxf "$JDK_TAR_GZ"
 
 # find java executable
-JAVA_EXE=`find "$PWD" -name "java" -type f | grep -v /jre/ | sort | tail -n 1`
+JAVA_EXE=`find "$PWD" -name "java" -type f | head -n 1`
 
 # link executable into /usr/local/bin/java
 mkdir -p "/usr/local/bin"
