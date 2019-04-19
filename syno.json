@@ -5,7 +5,7 @@
     "packages":[
         {
             "package":"java-installer",
-            "version":"1.0",
+            "version":"1.9",
             "dname":"Java Installer",
             "desc":"Java Installer will help you install and update Java. Supported platforms include armv7l, aarch64, i586 and x86_64 models. During the install, this package will download the latest OpenJDK binaries (180 MB) for your platform. This may take a while.",
             "maintainer":"rednoah",
@@ -19,10 +19,10 @@
             "thumbnail":[
                 "https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png"
             ],
-            "link":"https://github.com/rednoah/java-installer/releases/download/1.0/java-installer-1.0-noarch.spk",
-            "download_count":"25662",
-            "md5":"ac988508bef435922a0b682384740f02",
-            "sha256":"56cc0f351bde62c29c2fd6ff07985f11498eea0632a66c3e7ae8fdbcff78f03d",
+            "link":"https://github.com/rednoah/java-installer/releases/download/1.9/java-installer-1.9-noarch.spk",
+            "download_count":"25666",
+            "md5":"9d77223b1cc972f08bfe63c4d5d5bd1b",
+            "sha256":"eff7cb271817e33c14ea19213d454520b5be42ffad2d78b1d16fbdcbb2bc3773",
             "size":40960
         }
     ]
