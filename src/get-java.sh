@@ -12,7 +12,7 @@ case "$OS $ARCH $TYPE" in
 		JDK_URL="@{jdk.linux.x64.url}"
 		JDK_SHA256="@{jdk.linux.x64.sha256}"
 	;;
-	"Linux x86 jdk")
+	"Linux i686 jdk")
 		JDK_URL="@{jdk.linux.x86.url}"
 		JDK_SHA256="@{jdk.linux.x86.sha256}"
 	;;
