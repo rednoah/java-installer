@@ -18,11 +18,11 @@ case "$OS $ARCH $TYPE" in
 	;;
 	"Linux aarch64 jdk")
 		JDK_URL="https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-linux-aarch64.tar.gz"
-		JDK_SHA256="7dade4567a8a518e9d477e24256421293c48dfa47e9940b9788416f55b1baa84"
+		JDK_SHA256="037177804b80177edcbab30c5612f0fc13e611f6d9287642c831f00b9b7fe188"
 	;;
 	"Linux armv7l jdk")
 		JDK_URL="https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-linux-arm32-vfp-hflt.tar.gz"
-		JDK_SHA256="e1f22247c7b6d63b09658fc71cd78d911748c3ce1656e9322851d8311ef704bc"
+		JDK_SHA256="f9b1e45c310f45ec3a6804345a0c64f632ac7f2ae6258cf1b7b73009a1e57651"
 	;;
 	"Darwin x86_64 jdk")
 		JDK_URL="https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_osx-x64_bin.tar.gz"
