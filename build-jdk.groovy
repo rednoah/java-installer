@@ -1,8 +1,3 @@
-// parse version/update/build from release string
-def name    = properties.product
-def version = properties.release
-
-
 // OpenJDK for x64 Windows / Linux / Mac
 def openjdk = [
 	[os: 'windows', arch: 'x64', pkg: 'windows-x64_bin.zip'],
@@ -11,7 +6,7 @@ def openjdk = [
 ]
 
 
-// BellSoft Liberica JDK Linux ARM
+// BellSoft Liberica JDK ARM and x86 Linux
 def liberica = [
 	[os: 'windows', arch: 'x86',     pkg: 'windows-i586.zip'],
 	[os: 'linux',   arch: 'x86',     pkg: 'linux-i586.tar.gz'],
@@ -28,6 +23,13 @@ def javafx = [
 ]
 
 
+// parse version/update/build from release string
+def name    = properties.product
+def version = properties.release
+def major   = version.tokenize(/[.]/).first()
+def uuid    = properties.uuid
+
+
 def sha256(url) {
 	try {
 		return new URL("${url}.sha256").text.tokenize().first()
@@ -37,12 +39,6 @@ def sha256(url) {
 		return file.bytes.digest('SHA-256').padLeft(64, '0')
 	}
 }
-
-
-def uuid = properties.ojdk_uuid
-def (major) = version.tokenize(/[.]/)
-def gjfx_version = properties.gjfx_version
-
 
 
 // generate properties file
@@ -72,7 +68,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	javafx.each{ jfx ->
 		jfx.with {
-			def url = "https://download2.gluonhq.com/openjfx/${gjfx_version}/openjfx-${gjfx_version}_${pkg}"
+			def url = "https://download2.gluonhq.com/openjfx/${version}/openjfx-${version}_${pkg}"
 			def checksum = sha256(url)
 
 			entry(key:"jfx.${os}.${arch}.url", value: url)

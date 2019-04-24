@@ -38,16 +38,16 @@ case "$OS $ARCH $TYPE" in
 	;;
 
 	"Linux x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/12/openjfx-12_linux-x64_bin-sdk.zip"
-		JDK_SHA256="ac1b80d8cccd423ae2fa20833becaff81d85f24c1b8438a5218d39d4e1d6b5c6"
+		JDK_URL="https://download2.gluonhq.com/openjfx/12.0.1/openjfx-12.0.1_linux-x64_bin-sdk.zip"
+		JDK_SHA256="8de2c84a5844341d140074f5070deca1f7865733ef0176a8114540a9db2e4657"
 	;;
 	"Darwin x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/12/openjfx-12_osx-x64_bin-sdk.zip"
-		JDK_SHA256="85202e2bc793320c5fc8fe9c276f572a3c3fafcf2665fd49f9038e4b71b3f672"
+		JDK_URL="https://download2.gluonhq.com/openjfx/12.0.1/openjfx-12.0.1_osx-x64_bin-sdk.zip"
+		JDK_SHA256="6915fcec618dda0fdb0a46bd15db11e3cafba5b213e1f818bd64543cc25abf6c"
 	;;
 	"Windows x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/12/openjfx-12_windows-x64_bin-sdk.zip"
-		JDK_SHA256="e5292de96363654320ce6ee6ae9b66cbab965713de85d948a06731a789ce910e"
+		JDK_URL="https://download2.gluonhq.com/openjfx/12.0.1/openjfx-12.0.1_windows-x64_bin-sdk.zip"
+		JDK_SHA256="3af29fe7d8ded403f0653d16f8da6d431c176d476b63479205b7488c14c33d98"
 	;;
 
 	*)

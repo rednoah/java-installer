@@ -17,8 +17,8 @@ Switch ("$arch $type") {
 		$JDK_SHA256 = "fc7d9eee3c09ea6548b00ca25dbf34a348b3942c815405a1428e0bfef268d08d"
 	}
 	"x86_64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/12/openjfx-12_windows-x64_bin-sdk.zip"
-		$JDK_SHA256 = "e5292de96363654320ce6ee6ae9b66cbab965713de85d948a06731a789ce910e"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/12.0.1/openjfx-12.0.1_windows-x64_bin-sdk.zip"
+		$JDK_SHA256 = "3af29fe7d8ded403f0653d16f8da6d431c176d476b63479205b7488c14c33d98"
 	}
 	"x86 jdk" {
 		$JDK_URL = "https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-windows-i586.zip"
