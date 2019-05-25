@@ -36,7 +36,7 @@ Switch ("$arch $type") {
 
 
 # fetch JDK
-if ($out -ne $null) {
+if ($out) {
 	$JDK_TAR_GZ = $out
 } else {
 	$JDK_TAR_GZ = Split-Path -Leaf $JDK_URL	
