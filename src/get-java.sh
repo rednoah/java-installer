@@ -37,6 +37,15 @@ case "$OS $ARCH $TYPE" in
 		JDK_SHA256="@{jdk.windows.x86.sha256}"
 	;;
 
+	"Windows x86_64 jre")
+		JDK_URL="@{jre.windows.x64.url}"
+		JDK_SHA256="@{jre.windows.x64.sha256}"
+	;;
+	"Darwin x86_64 jre")
+		JDK_URL="@{jre.mac.x64.url}"
+		JDK_SHA256="@{jre.mac.x64.sha256}"
+	;;
+
 	"Linux x86_64 jfx")
 		JDK_URL="@{jfx.linux.x64.url}"
 		JDK_SHA256="@{jfx.linux.x64.sha256}"
@@ -58,7 +67,8 @@ esac
 
 
 # fetch JDK
-JDK_TAR_GZ=`basename $JDK_URL`
+JDK_TAR_GZ="@{jdk.name}_@{jdk.version}_$OS-$ARCH-$TYPE.tar.gz"
+
 if [ ! -f "$JDK_TAR_GZ" ]; then
 	echo "Download $JDK_URL"
 	curl -fsSL -o "$JDK_TAR_GZ" --retry 5 "$JDK_URL"

@@ -16,6 +16,10 @@ Switch ("$arch $type") {
 		$JDK_URL = "@{jdk.windows.x64.url}"
 		$JDK_SHA256 = "@{jdk.windows.x64.sha256}"
 	}
+	"x86_64 jre" {
+		$JDK_URL = "@{jre.windows.x64.url}"
+		$JDK_SHA256 = "@{jre.windows.x64.sha256}"
+	}
 	"x86_64 jfx" {
 		$JDK_URL = "@{jfx.windows.x64.url}"
 		$JDK_SHA256 = "@{jfx.windows.x64.sha256}"
@@ -31,7 +35,7 @@ Switch ("$arch $type") {
 
 
 # fetch JDK
-$JDK_TAR_GZ = Split-Path -Leaf $JDK_URL
+$JDK_TAR_GZ = "@{jdk.name}_@{jdk.version}_$arch-$jdk.zip"
 
 if (!(test-path $JDK_TAR_GZ)) {
 	Write-Output "Download $JDK_TAR_GZ"
