@@ -16,6 +16,10 @@ Switch ("$arch $type") {
 		$JDK_URL = "https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_windows-x64_bin.zip"
 		$JDK_SHA256 = "fc7d9eee3c09ea6548b00ca25dbf34a348b3942c815405a1428e0bfef268d08d"
 	}
+	"x86_64 jre" {
+		$JDK_URL = "https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.1+12/OpenJDK12U-jre_x64_windows_hotspot_12.0.1_12.zip"
+		$JDK_SHA256 = "415242a5dd288fa3559a729912ff79916f5c74827c7819980912285165ad2d3a"
+	}
 	"x86_64 jfx" {
 		$JDK_URL = "https://download2.gluonhq.com/openjfx/12.0.1/openjfx-12.0.1_windows-x64_bin-sdk.zip"
 		$JDK_SHA256 = "3af29fe7d8ded403f0653d16f8da6d431c176d476b63479205b7488c14c33d98"
@@ -31,7 +35,7 @@ Switch ("$arch $type") {
 
 
 # fetch JDK
-$JDK_TAR_GZ = Split-Path -Leaf $JDK_URL
+$JDK_TAR_GZ = "OpenJDK_12.0.1_$arch-$jdk.zip"
 
 if (!(test-path $JDK_TAR_GZ)) {
 	Write-Output "Download $JDK_TAR_GZ"

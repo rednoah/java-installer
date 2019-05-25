@@ -37,6 +37,15 @@ case "$OS $ARCH $TYPE" in
 		JDK_SHA256="4c39ab2aa5c246c377702693d462f17cdd5d85ca55aad0f270eda5063d95e4b0"
 	;;
 
+	"Windows x86_64 jre")
+		JDK_URL="https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.1+12/OpenJDK12U-jre_x64_windows_hotspot_12.0.1_12.zip"
+		JDK_SHA256="415242a5dd288fa3559a729912ff79916f5c74827c7819980912285165ad2d3a"
+	;;
+	"Darwin x86_64 jre")
+		JDK_URL="https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.1+12/OpenJDK12U-jre_x64_mac_hotspot_12.0.1_12.tar.gz"
+		JDK_SHA256="a739b9b828ee1e83830739180af1c1f070431bba3812ab4f067dfca18e163b2a"
+	;;
+
 	"Linux x86_64 jfx")
 		JDK_URL="https://download2.gluonhq.com/openjfx/12.0.1/openjfx-12.0.1_linux-x64_bin-sdk.zip"
 		JDK_SHA256="8de2c84a5844341d140074f5070deca1f7865733ef0176a8114540a9db2e4657"
@@ -58,7 +67,8 @@ esac
 
 
 # fetch JDK
-JDK_TAR_GZ=`basename $JDK_URL`
+JDK_TAR_GZ="OpenJDK_12.0.1_$OS-$ARCH-$TYPE.tar.gz"
+
 if [ ! -f "$JDK_TAR_GZ" ]; then
 	echo "Download $JDK_URL"
 	curl -fsSL -o "$JDK_TAR_GZ" --retry 5 "$JDK_URL"
