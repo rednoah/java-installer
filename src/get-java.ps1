@@ -4,7 +4,7 @@
 param (
 	[string]$command = 'get',
 	[string]$type = 'jdk',
-	[string]$arch = 'x86_64'
+	[string]$arch = 'x86_64',
 	[string]$out
 )
 
