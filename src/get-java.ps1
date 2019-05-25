@@ -44,7 +44,7 @@ if ($out) {
 
 
 if (!(test-path $JDK_TAR_GZ)) {
-	Write-Output "Download $JDK_TAR_GZ"
+	Write-Output "Download $JDK_URL"
 	Invoke-WebRequest -UseBasicParsing -Uri $JDK_URL -OutFile $JDK_TAR_GZ
 }
 
