@@ -6,6 +6,13 @@ def openjdk = [
 ]
 
 
+// AdoptOpenJDK for JRE
+def adoptopenjdk = [
+	[type: 'jre', os: 'windows', arch: 'x64', pkg: 'zip'],
+	[type: 'jre', os: 'mac',     arch: 'x64', pkg: 'tar.gz']
+]
+
+
 // BellSoft Liberica JDK ARM and x86 Linux
 def liberica = [
 	[os: 'windows', arch: 'x86',     pkg: 'windows-i586.zip'],
@@ -24,20 +31,28 @@ def javafx = [
 
 
 // parse version/update/build from release string
-def name    = properties.product
-def version = properties.release
-def major   = version.tokenize(/[.]/).first()
-def uuid    = properties.uuid
+def name = properties.product
+def (version, build) = properties.release.tokenize(/[+]/)
+def (major, minor, update) = version.tokenize(/[.]/)
+def uuid = properties.uuid
 
 
 def sha256(url) {
 	try {
 		return new URL("${url}.sha256").text.tokenize().first()
 	} catch(e) {
-		def file = new File('cache', url.tokenize('/').last())
-		new AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
-		return file.bytes.digest('SHA-256').padLeft(64, '0')
+		println e
 	}
+
+	try {
+		return new URL("${url}.sha256.txt").text.tokenize().first()
+	} catch(e) {
+		println e
+	}
+
+	def file = new File('cache', url.tokenize('/').last())
+	new AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
+	return file.bytes.digest('SHA-256').padLeft(64, '0')
 }
 
 
@@ -53,6 +68,16 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 			entry(key:"jdk.${os}.${arch}.url", value: url)
 			entry(key:"jdk.${os}.${arch}.sha256", value: checksum)
+		}
+	}
+
+	adoptopenjdk.each{ jre ->
+		jre.with {
+			def url = "https://github.com/AdoptOpenJDK/openjdk${major}-binaries/releases/download/jdk-${version}+${build}/OpenJDK${major}U-${type}_${arch}_${os}_hotspot_${version}_${build}.${pkg}"
+			def checksum = sha256(url)
+
+			entry(key:"jre.${os}.${arch}.url", value: url)
+			entry(key:"jre.${os}.${arch}.sha256", value: checksum)
 		}
 	}
 
