@@ -5,6 +5,7 @@ param (
 	[string]$command = 'get',
 	[string]$type = 'jdk',
 	[string]$arch = 'x86_64'
+	[string]$out
 )
 
 
@@ -35,7 +36,12 @@ Switch ("$arch $type") {
 
 
 # fetch JDK
-$JDK_TAR_GZ = "@{jdk.name}_@{jdk.version}_$arch-$jdk.zip"
+if ($out -ne $null) {
+	$JDK_TAR_GZ = $out
+} else {
+	$JDK_TAR_GZ = Split-Path -Leaf $JDK_URL	
+}
+
 
 if (!(test-path $JDK_TAR_GZ)) {
 	Write-Output "Download $JDK_TAR_GZ"

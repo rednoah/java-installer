@@ -67,7 +67,7 @@ esac
 
 
 # fetch JDK
-JDK_TAR_GZ="@{jdk.name}_@{jdk.version}_$OS-$ARCH-$TYPE.tar.gz"
+JDK_TAR_GZ=${5:-`basename $JDK_URL`}
 
 if [ ! -f "$JDK_TAR_GZ" ]; then
 	echo "Download $JDK_URL"
