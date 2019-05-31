@@ -5,6 +5,7 @@ param (
 	[string]$command = 'get',
 	[string]$type = 'jdk',
 	[string]$arch = 'x86_64',
+	[string]$os = 'Windows',
 	[string]$out
 )
 
@@ -12,23 +13,58 @@ param (
 $ErrorActionPreference = "Stop"
 
 
-Switch ("$arch $type") {
-	"x86_64 jdk" {
+Switch ("$os $arch $type") {
+	"Linux x86_64 jdk" {
+		$JDK_URL = "@{jdk.linux.x64.url}"
+		$JDK_SHA256 = "@{jdk.linux.x64.sha256}"
+	}
+	"Linux i686 jdk" {
+		$JDK_URL = "@{jdk.linux.x86.url}"
+		$JDK_SHA256 = "@{jdk.linux.x86.sha256}"
+	}
+	"Linux aarch64 jdk" {
+		$JDK_URL = "@{jdk.linux.aarch64.url}"
+		$JDK_SHA256 = "@{jdk.linux.aarch64.sha256}"
+	;;
+	"Linux armv7l jdk" {
+		$JDK_URL = "@{jdk.linux.armv7l.url}"
+		$JDK_SHA256 = "@{jdk.linux.armv7l.sha256}"
+	}
+	"Darwin x86_64 jdk" {
+		$JDK_URL = "@{jdk.mac.x64.url}"
+		$JDK_SHA256 = "@{jdk.mac.x64.sha256}"
+	}
+	"Windows x86_64 jdk" {
 		$JDK_URL = "@{jdk.windows.x64.url}"
 		$JDK_SHA256 = "@{jdk.windows.x64.sha256}"
 	}
-	"x86_64 jre" {
-		$JDK_URL = "@{jre.windows.x64.url}"
-		$JDK_SHA256 = "@{jre.windows.x64.sha256}"
-	}
-	"x86_64 jfx" {
-		$JDK_URL = "@{jfx.windows.x64.url}"
-		$JDK_SHA256 = "@{jfx.windows.x64.sha256}"
-	}
-	"x86 jdk" {
+	"Windows x86 jdk" {
 		$JDK_URL = "@{jdk.windows.x86.url}"
 		$JDK_SHA256 = "@{jdk.windows.x86.sha256}"
 	}
+
+	"Windows x86_64 jre" {
+		$JDK_URL = "@{jre.windows.x64.url}"
+		$JDK_SHA256 = "@{jre.windows.x64.sha256}"
+	}
+	"Darwin x86_64 jre" {
+		$JDK_URL = "@{jre.mac.x64.url}"
+		$JDK_SHA256 = "@{jre.mac.x64.sha256}"
+	}
+
+	"Linux x86_64 jfx" {
+		$JDK_URL = "@{jfx.linux.x64.url}"
+		$JDK_SHA256 = "@{jfx.linux.x64.sha256}"
+	}
+	"Darwin x86_64 jfx" {
+		$JDK_URL = "@{jfx.mac.x64.url}"
+		$JDK_SHA256 = "@{jfx.mac.x64.sha256}"
+	}
+	"Windows x86_64 jfx" {
+		$JDK_URL = "@{jfx.windows.x64.url}"
+		$JDK_SHA256 = "@{jfx.windows.x64.sha256}"
+	}
+
 	default {
 		throw "CPU architecture not supported."
 	}
