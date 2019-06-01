@@ -81,7 +81,7 @@ if ($out) {
 
 if (!(test-path $JDK_TAR_GZ)) {
 	Write-Output "Download $JDK_URL"
-	Invoke-WebRequest -UseBasicParsing -Uri $JDK_URL -OutFile $JDK_TAR_GZ
+	(New-Object System.Net.WebClient).DownloadFile($JDK_URL, $JDK_TAR_GZ)
 }
 
 
