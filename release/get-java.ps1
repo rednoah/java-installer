@@ -25,7 +25,7 @@ Switch ("$os $arch $type") {
 	"Linux aarch64 jdk" {
 		$JDK_URL = "https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-linux-aarch64.tar.gz"
 		$JDK_SHA256 = "037177804b80177edcbab30c5612f0fc13e611f6d9287642c831f00b9b7fe188"
-	;;
+	}
 	"Linux armv7l jdk" {
 		$JDK_URL = "https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-linux-arm32-vfp-hflt.tar.gz"
 		$JDK_SHA256 = "f9b1e45c310f45ec3a6804345a0c64f632ac7f2ae6258cf1b7b73009a1e57651"

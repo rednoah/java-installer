@@ -25,7 +25,7 @@ Switch ("$os $arch $type") {
 	"Linux aarch64 jdk" {
 		$JDK_URL = "@{jdk.linux.aarch64.url}"
 		$JDK_SHA256 = "@{jdk.linux.aarch64.sha256}"
-	;;
+	}
 	"Linux armv7l jdk" {
 		$JDK_URL = "@{jdk.linux.armv7l.url}"
 		$JDK_SHA256 = "@{jdk.linux.armv7l.sha256}"
