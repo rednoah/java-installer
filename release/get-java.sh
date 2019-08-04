@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Java Installer for OpenJDK 12.0.1
+# Java Installer for OpenJDK 12.0.2
 
 COMMAND=${1:-get}        # get | install
 TYPE=${2:-jdk}           # jre | jdk
@@ -9,54 +9,54 @@ OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
 case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_linux-x64_bin.tar.gz"
-		JDK_SHA256="151eb4ec00f82e5e951126f572dc9116104c884d97f91be14ec11e85fc2dd626"
+		JDK_URL="https://download.java.net/java/GA/jdk12.0.2/e482c34c86bd4bf8b56c0b35558996b9/10/GPL/openjdk-12.0.2_linux-x64_bin.tar.gz"
+		JDK_SHA256="75998a6ebf477467aa5fb68227a67733f0e77e01f737d4dfbc01e617e59106ed"
 	;;
 	"Linux i686 jdk")
-		JDK_URL="https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-linux-i586.tar.gz"
-		JDK_SHA256="b267c658281f8cb3fa0cf92b2b24e34e0d41a57aab83685a9dcc8dc8680833a8"
+		JDK_URL="https://download.bell-sw.com/java/12.0.2/bellsoft-jdk12.0.2-linux-i586.tar.gz"
+		JDK_SHA256="d43ef56157562d976a4d5879ee48135907705b0752d51f7209920bb065b4fb57"
 	;;
 	"Linux aarch64 jdk")
-		JDK_URL="https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-linux-aarch64.tar.gz"
-		JDK_SHA256="037177804b80177edcbab30c5612f0fc13e611f6d9287642c831f00b9b7fe188"
+		JDK_URL="https://download.bell-sw.com/java/12.0.2/bellsoft-jdk12.0.2-linux-aarch64.tar.gz"
+		JDK_SHA256="57efb2646ca7337b1ec0dacfcaf04c54c451a5948deb856f994bbb2a02291059"
 	;;
 	"Linux armv7l jdk")
-		JDK_URL="https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-linux-arm32-vfp-hflt.tar.gz"
-		JDK_SHA256="f9b1e45c310f45ec3a6804345a0c64f632ac7f2ae6258cf1b7b73009a1e57651"
+		JDK_URL="https://download.bell-sw.com/java/12.0.2/bellsoft-jdk12.0.2-linux-arm32-vfp-hflt.tar.gz"
+		JDK_SHA256="f5173ae74dbfc9e968a077e73095445c0262974f46b1de7f4275432d32b67403"
 	;;
 	"Darwin x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_osx-x64_bin.tar.gz"
-		JDK_SHA256="cba6f42f82496f62c51fb544e243d440984d442bdc906550a30428d8be6189e5"
+		JDK_URL="https://download.java.net/java/GA/jdk12.0.2/e482c34c86bd4bf8b56c0b35558996b9/10/GPL/openjdk-12.0.2_osx-x64_bin.tar.gz"
+		JDK_SHA256="675a739ab89b28a8db89510f87cb2ec3206ec6662fb4b4996264c16c72cdd2a1"
 	;;
 	"Windows x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_windows-x64_bin.zip"
-		JDK_SHA256="fc7d9eee3c09ea6548b00ca25dbf34a348b3942c815405a1428e0bfef268d08d"
+		JDK_URL="https://download.java.net/java/GA/jdk12.0.2/e482c34c86bd4bf8b56c0b35558996b9/10/GPL/openjdk-12.0.2_windows-x64_bin.zip"
+		JDK_SHA256="a30bed3d6d62f6ae1052aaf3c6956aaee8e3deb2f50f155575112f3f29411fba"
 	;;
 	"Windows x86 jdk")
-		JDK_URL="https://download.bell-sw.com/java/12.0.1/bellsoft-jdk12.0.1-windows-i586.zip"
-		JDK_SHA256="4c39ab2aa5c246c377702693d462f17cdd5d85ca55aad0f270eda5063d95e4b0"
+		JDK_URL="https://download.bell-sw.com/java/12.0.2/bellsoft-jdk12.0.2-windows-i586.zip"
+		JDK_SHA256="b986b884bccd73e548cc36b2367910e1e1f2fc144bcfd9775b16ceb098627ff6"
 	;;
 
 	"Windows x86_64 jre")
-		JDK_URL="https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.1+12/OpenJDK12U-jre_x64_windows_hotspot_12.0.1_12.zip"
-		JDK_SHA256="415242a5dd288fa3559a729912ff79916f5c74827c7819980912285165ad2d3a"
+		JDK_URL="https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.2+10/OpenJDK12U-jre_x64_windows_hotspot_12.0.2_10.zip"
+		JDK_SHA256="c03fdbced77d74557d2ede7a120b09e2573dde7527a4c019458b6f20920aa632"
 	;;
 	"Darwin x86_64 jre")
-		JDK_URL="https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.1+12/OpenJDK12U-jre_x64_mac_hotspot_12.0.1_12.tar.gz"
-		JDK_SHA256="a739b9b828ee1e83830739180af1c1f070431bba3812ab4f067dfca18e163b2a"
+		JDK_URL="https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.2+10/OpenJDK12U-jre_x64_mac_hotspot_12.0.2_10.tar.gz"
+		JDK_SHA256="825929ef188019f6b8da461d1279b1b0d26cdca16760dc7b2565b6fc627d29a5"
 	;;
 
 	"Linux x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/12.0.1/openjfx-12.0.1_linux-x64_bin-sdk.zip"
-		JDK_SHA256="8de2c84a5844341d140074f5070deca1f7865733ef0176a8114540a9db2e4657"
+		JDK_URL="https://download2.gluonhq.com/openjfx/12.0.2/openjfx-12.0.2_linux-x64_bin-sdk.zip"
+		JDK_SHA256="7f91f7bfafd265672e16e34242361048f82f8959d493d9ed43339ede26c060ac"
 	;;
 	"Darwin x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/12.0.1/openjfx-12.0.1_osx-x64_bin-sdk.zip"
-		JDK_SHA256="6915fcec618dda0fdb0a46bd15db11e3cafba5b213e1f818bd64543cc25abf6c"
+		JDK_URL="https://download2.gluonhq.com/openjfx/12.0.2/openjfx-12.0.2_osx-x64_bin-sdk.zip"
+		JDK_SHA256="a87b0a6f30bcf21ec1bd1c89e1596f43dc5b0d7fd302776d0d0d2e226022fead"
 	;;
 	"Windows x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/12.0.1/openjfx-12.0.1_windows-x64_bin-sdk.zip"
-		JDK_SHA256="3af29fe7d8ded403f0653d16f8da6d431c176d476b63479205b7488c14c33d98"
+		JDK_URL="https://download2.gluonhq.com/openjfx/12.0.2/openjfx-12.0.2_windows-x64_bin-sdk.zip"
+		JDK_SHA256="5b29930518b3e8eb01c206222fd5347c45b236fdd933db4540a7362488831bd9"
 	;;
 
 	*)

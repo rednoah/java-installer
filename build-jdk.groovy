@@ -63,7 +63,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	openjdk.each{ jdk ->
 		jdk.with {
-			def url = "https://download.java.net/java/GA/jdk${version}/${uuid}/${major}/GPL/openjdk-${version}_${pkg}"
+			def url = "https://download.java.net/java/GA/jdk${version}/${uuid}/${build}/GPL/openjdk-${version}_${pkg}"
 			def checksum = sha256(url)
 
 			entry(key:"jdk.${os}.${arch}.url", value: url)
