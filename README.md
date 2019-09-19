@@ -44,3 +44,10 @@ The script uses `7z` to extract the `*.tar.gz` archive, but it will _not_ modify
 * Windows x86	(`x86`)
 * Windows x64	(`AMD64`)
 * macOS x64(`x86_64`)
+
+
+## Sources
+* [OpenJDK](https://jdk.java.net/)
+* [OpenJFX](https://openjfx.io/)
+* [Liberica JDK](https://bell-sw.com/java)
+* [AdoptOpenJDK](https://adoptopenjdk.net/)
