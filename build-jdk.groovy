@@ -13,12 +13,13 @@ def adoptopenjdk = [
 ]
 
 
-// BellSoft Liberica JDK ARM and x86 Linux
+// BellSoft Liberica JDK for embedded devices
 def liberica = [
 	[os: 'windows', arch: 'x86',     pkg: 'windows-i586.zip'],
 	[os: 'linux',   arch: 'x86',     pkg: 'linux-i586.tar.gz'],
 	[os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64.tar.gz'],
-	[os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt.tar.gz']
+	[os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt.tar.gz'],
+	[os: 'linux',   arch: 'ppc64le', pkg: 'linux-ppc64le.tar.gz']
 ]
 
 

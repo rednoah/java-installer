@@ -30,6 +30,10 @@ Switch ("$os $arch $type") {
 		$JDK_URL = "@{jdk.linux.armv7l.url}"
 		$JDK_SHA256 = "@{jdk.linux.armv7l.sha256}"
 	}
+	"Linux ppc64le jdk" {
+		$JDK_URL = "@{jdk.linux.ppc64le.url}"
+		$JDK_SHA256 = "@{jdk.linux.ppc64le.sha256}"
+	}
 	"Darwin x86_64 jdk" {
 		$JDK_URL = "@{jdk.mac.x64.url}"
 		$JDK_SHA256 = "@{jdk.mac.x64.sha256}"
