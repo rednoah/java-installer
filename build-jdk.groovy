@@ -74,8 +74,8 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	adoptopenjdk.each{ jre ->
 		jre.with {
-			// def url = "https://github.com/AdoptOpenJDK/openjdk${major}-binaries/releases/download/jdk-${version}+${build}/OpenJDK${major}U-${type}_${arch}_${os}_hotspot_${version}_${build}.${pkg}"
-			// def checksum = sha256(url)
+			def url = "https://github.com/AdoptOpenJDK/openjdk${major}-binaries/releases/download/jdk-${version}+${build}/OpenJDK${major}U-${type}_${arch}_${os}_hotspot_${version}_${build}.${pkg}"
+			def checksum = sha256(url)
 
 			entry(key:"jre.${os}.${arch}.url", value: url)
 			entry(key:"jre.${os}.${arch}.sha256", value: checksum)

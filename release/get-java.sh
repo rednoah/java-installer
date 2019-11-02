@@ -42,12 +42,12 @@ case "$OS $ARCH $TYPE" in
 	;;
 
 	"Windows x86_64 jre")
-		JDK_URL="null"
-		JDK_SHA256="null"
+		JDK_URL="https://github.com/AdoptOpenJDK/openjdk13-binaries/releases/download/jdk-13.0.1+9/OpenJDK13U-jre_x64_windows_hotspot_13.0.1_9.zip"
+		JDK_SHA256="fd3fc1085f29bab990b31bd96c38cfca439de317e97340351e88f7c77a7e070b"
 	;;
 	"Darwin x86_64 jre")
-		JDK_URL="null"
-		JDK_SHA256="null"
+		JDK_URL="https://github.com/AdoptOpenJDK/openjdk13-binaries/releases/download/jdk-13.0.1+9/OpenJDK13U-jre_x64_mac_hotspot_13.0.1_9.tar.gz"
+		JDK_SHA256="5e60a1364a363f74b0210d6c3fc3cefec98dcada75c8b239031e3947833e334a"
 	;;
 
 	"Linux x86_64 jfx")
