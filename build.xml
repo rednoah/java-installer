@@ -62,15 +62,10 @@
 				<include name="**/*.sh" />
 				<include name="**/*.cfg" />
 				<include name="**/*.png" />
+				<include name="**/private_key" />
+				<include name="**/certificate" />
 			</fileset>
 		</copy-replace>
-
-		<chmod perm="+x" type="file" verbose="yes">
-			<fileset dir="${dir.dist}/qnap">
-				<include name="**/*_routines" />
-				<include name="**/*.sh" />
-			</fileset>
-		</chmod>
 
 		<copy file="${dir.package}/gpg/maintainer.gpg" todir="${dir.dist}/qnap/shared" />
 
