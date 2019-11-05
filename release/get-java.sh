@@ -80,7 +80,7 @@ fi
 
 
 # verify archive via SHA-256 checksum
-JDK_SHA256_ACTUAL=`openssl dgst -sha256 -hex "$JDK_TAR_GZ" | egrep -o "[a-f0-9]{64}"`
+JDK_SHA256_ACTUAL=`openssl dgst -sha256 -hex "$JDK_TAR_GZ" | awk '{print $NF}'`
 echo "Expected SHA256 checksum: $JDK_SHA256"
 echo "Actual SHA256 checksum: $JDK_SHA256_ACTUAL"
 

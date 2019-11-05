@@ -5,8 +5,5 @@ update:
 	$(ANT) update-jdk
 	$(ANT) build
 
-spk:
-	$(ANT) clean spk syno-repo
-
-qpkg:
-	$(ANT) clean qpkg
+pkg:
+	$(ANT) clean spk syno-repo qpkg
