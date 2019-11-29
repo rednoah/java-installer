@@ -20,9 +20,9 @@
                 "https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png"
             ],
             "link":"https://github.com/rednoah/java-installer/releases/download/2.13/java-installer-2.13-noarch.spk",
-            "download_count":"28549",
-            "md5":"63aa93f6f4cb59fb6466678794529995",
-            "sha256":"f2edc8c9bd1f0f5db015b81bd133e77ba6ce3813c6519c10f4bb052624781e4f",
+            "download_count":"28955",
+            "md5":"4879c9ec77b2153d34689ca530db6038",
+            "sha256":"9312beaba1eb78e88bd26917c7d98c6f87dd8ba6e7b9abffc5eac121184da5bf",
             "size":40960
         }
     ]
