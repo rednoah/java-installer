@@ -6,20 +6,21 @@ def openjdk = [
 ]
 
 
-// AdoptOpenJDK for JRE
-def adoptopenjdk = [
-	[type: 'jre', os: 'windows', arch: 'x64', pkg: 'zip'],
-	[type: 'jre', os: 'mac',     arch: 'x64', pkg: 'tar.gz']
-]
-
-
 // BellSoft Liberica JDK for embedded devices
 def liberica = [
-	[os: 'windows', arch: 'x86',     pkg: 'windows-i586.zip'],
-	[os: 'linux',   arch: 'x86',     pkg: 'linux-i586.tar.gz'],
-	[os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64.tar.gz'],
-	[os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt.tar.gz'],
-	[os: 'linux',   arch: 'ppc64le', pkg: 'linux-ppc64le.tar.gz']
+	[type: 'jdk', os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64.tar.gz'],
+	[type: 'jdk', os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt.tar.gz'],
+	[type: 'jdk', os: 'linux',   arch: 'ppc64le', pkg: 'linux-ppc64le.tar.gz'],
+	// [type: 'jdk', os: 'windows', arch: 'x64',     pkg: 'windows-amd64.zip'],
+	[type: 'jre', os: 'windows', arch: 'x64',     pkg: 'windows-amd64.zip'],
+	[type: 'jdk', os: 'windows', arch: 'x86',     pkg: 'windows-i586.zip'],
+	[type: 'jre', os: 'windows', arch: 'x86',     pkg: 'windows-i586.zip'],
+	// [type: 'jdk', os: 'linux',   arch: 'amd64',   pkg: 'linux-amd64.tar.gz'],
+	[type: 'jre', os: 'linux',   arch: 'amd64',   pkg: 'linux-amd64.tar.gz'],
+	[type: 'jdk', os: 'linux',   arch: 'x86',     pkg: 'linux-i586.tar.gz'],
+	[type: 'jre', os: 'linux',   arch: 'x86',     pkg: 'linux-i586.tar.gz'],
+	// [type: 'jdk', os: 'mac',     arch: 'x64',     pkg: 'macos-amd64.zip'],
+	[type: 'jre', os: 'mac',     arch: 'x64',     pkg: 'macos-amd64.zip']
 ]
 
 
@@ -33,8 +34,8 @@ def javafx = [
 
 // parse version/update/build from release string
 def name = properties.product
-def (version, build) = properties.release.tokenize(/[+]/)
-def (major, minor, update) = version.tokenize(/[.]/)
+def release = properties.release
+def (version, build) = release.tokenize(/[+]/)
 def uuid = properties.uuid
 
 
@@ -64,31 +65,21 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	openjdk.each{ jdk ->
 		jdk.with {
-			def url = "https://download.java.net/java/GA/jdk${version}/${uuid}/${build}/GPL/openjdk-${version}_${pkg}"
+			def url = "https://download.java.net/java/GA/jdk${version}/${uuid}/GPL/openjdk-${version}_${pkg}"
 			def checksum = sha256(url)
 
 			entry(key:"jdk.${os}.${arch}.url", value: url)
 			entry(key:"jdk.${os}.${arch}.sha256", value: checksum)
-		}
-	}
-
-	adoptopenjdk.each{ jre ->
-		jre.with {
-			def url = "https://github.com/AdoptOpenJDK/openjdk${major}-binaries/releases/download/jdk-${version}+${build}/OpenJDK${major}U-${type}_${arch}_${os}_hotspot_${version}_${build}.${pkg}"
-			def checksum = sha256(url)
-
-			entry(key:"jre.${os}.${arch}.url", value: url)
-			entry(key:"jre.${os}.${arch}.sha256", value: checksum)
 		}
 	}
 
 	liberica.each{ jdk ->
 		jdk.with {
-			def url = "https://download.bell-sw.com/java/${version}/bellsoft-jdk${version}-${pkg}"
+			def url = "https://download.bell-sw.com/java/${release}/bellsoft-${type}${release}-${pkg}"
 			def checksum = sha256(url)
 
-			entry(key:"jdk.${os}.${arch}.url", value: url)
-			entry(key:"jdk.${os}.${arch}.sha256", value: checksum)
+			entry(key:"${type}.${os}.${arch}.url", value: url)
+			entry(key:"${type}.${os}.${arch}.sha256", value: checksum)
 		}
 	}
 
