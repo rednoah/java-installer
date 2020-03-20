@@ -35,9 +35,7 @@
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
 
 			<scripts dir="${dir.dist}/spk/scripts" filemode="755" />
-
 			<package file="${dir.package}/gpg/maintainer.gpg" />
-
 			<codesign secring="${dir.package}/gpg/secring.gpg" keyid="${gpg.key}" password="${gpg.pwd}" />
 		</syno:spk>
 	</target>
