@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Java Installer for OpenJDK 14
+# Java Installer for OpenJDK 14.0.1
 
 COMMAND=${1:-get}        # get | install
 TYPE=${2:-jdk}           # jre | jdk
@@ -9,58 +9,58 @@ OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
 case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz"
-		JDK_SHA256="c7006154dfb8b66328c6475447a396feb0042608ee07a96956547f574a911c09"
+		JDK_URL="https://download.java.net/java/GA/jdk14.0.1/664493ef4a6946b186ff29eb326336a2/7/GPL/openjdk-14.0.1_linux-x64_bin.tar.gz"
+		JDK_SHA256="22ce248e0bd69f23028625bede9d1b3080935b68d011eaaf9e241f84d6b9c4cc"
 	;;
 	"Linux i686 jdk")
-		JDK_URL="https://download.bell-sw.com/java/14+36/bellsoft-jdk14+36-linux-i586.tar.gz"
-		JDK_SHA256="364157d6b979115026ba9e9b346fdef34a5cc421868dc5a58d443d1c38332a19"
+		JDK_URL="https://download.bell-sw.com/java/14.0.1+8/bellsoft-jdk14.0.1+8-linux-i586.tar.gz"
+		JDK_SHA256="d1bcd4cf353843c6c141a6ed39a16fa0729338944db89e1e1e57edfbb54f89a0"
 	;;
 	"Linux aarch64 jdk")
-		JDK_URL="https://download.bell-sw.com/java/14+36/bellsoft-jdk14+36-linux-aarch64.tar.gz"
-		JDK_SHA256="b63dc386a5cc3ef53d8db5bb6a8fae0f956a2c2621b39a15edb7726e9d7ff4c7"
+		JDK_URL="https://download.bell-sw.com/java/14.0.1+8/bellsoft-jdk14.0.1+8-linux-aarch64.tar.gz"
+		JDK_SHA256="4075933836026cd97fcbb9707f26c479f04fe9309daf59a89d72c9d178d062e1"
 	;;
 	"Linux armv7l jdk")
-		JDK_URL="https://download.bell-sw.com/java/14+36/bellsoft-jdk14+36-linux-arm32-vfp-hflt.tar.gz"
-		JDK_SHA256="dd73a5214c8687ccd16e2921c2e88ae9586830d90b420a423a1f7dad5b509461"
+		JDK_URL="https://download.bell-sw.com/java/14.0.1+8/bellsoft-jdk14.0.1+8-linux-arm32-vfp-hflt.tar.gz"
+		JDK_SHA256="ddac5faaab26d7b12583ee3702ded7a9e5e29d1a3ba6a5927e1772352c3a8f08"
 	;;
 	"Linux ppc64le jdk")
-		JDK_URL="https://download.bell-sw.com/java/14+36/bellsoft-jdk14+36-linux-ppc64le.tar.gz"
-		JDK_SHA256="d0ab4b4539908de4896273077024941bed89e15c18cca67b3f22a7b0e5eb8539"
+		JDK_URL="https://download.bell-sw.com/java/14.0.1+8/bellsoft-jdk14.0.1+8-linux-ppc64le.tar.gz"
+		JDK_SHA256="747a4f561c1f230eaa0f61249e4f659e73725f08e676ba9f57d6d3e517e84aeb"
 	;;
 	"Darwin x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_osx-x64_bin.tar.gz"
-		JDK_SHA256="f3e7439e19ea22f71a96b5563e0e0967e7df1563f2f9d7922209793498ca4698"
+		JDK_URL="https://download.java.net/java/GA/jdk14.0.1/664493ef4a6946b186ff29eb326336a2/7/GPL/openjdk-14.0.1_osx-x64_bin.tar.gz"
+		JDK_SHA256="d8aa6806e6cc99724395563bf02fc6907a7c801f4caef85b96ad44927193da07"
 	;;
 	"Windows x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_windows-x64_bin.zip"
-		JDK_SHA256="6b56c65c2ebb89eb361f47370359f88c4b87234dc073988a2c33e7d75c01e488"
+		JDK_URL="https://download.java.net/java/GA/jdk14.0.1/664493ef4a6946b186ff29eb326336a2/7/GPL/openjdk-14.0.1_windows-x64_bin.zip"
+		JDK_SHA256="26255f3f2fe7168ec0dce9d9f3825649c18540ba86279a7506c7f17dd3e537f9"
 	;;
 	"Windows x86 jdk")
-		JDK_URL="https://download.bell-sw.com/java/14+36/bellsoft-jdk14+36-windows-i586.zip"
-		JDK_SHA256="7712f8843a9a8fbf5a95b6b573b6a56d9d03c1e3dcf6799f9f13d13f3160dbc4"
+		JDK_URL="https://download.bell-sw.com/java/14.0.1+8/bellsoft-jdk14.0.1+8-windows-i586.zip"
+		JDK_SHA256="131124f2bdec7bed1b62a2b92d95014df2231213c9eb43271044538781395c43"
 	;;
 
 	"Windows x86_64 jre")
-		JDK_URL="https://download.bell-sw.com/java/14+36/bellsoft-jre14+36-windows-amd64.zip"
-		JDK_SHA256="a3d3e972ee9fc87b2de1022da99433c75eaec18b494e07c4c82763760bd63d8c"
+		JDK_URL="https://download.bell-sw.com/java/14.0.1+8/bellsoft-jre14.0.1+8-windows-amd64.zip"
+		JDK_SHA256="84503984467b20c6e261d18ac50d1a1e9930ba754b7eb3631c00cc848d9f3226"
 	;;
 	"Darwin x86_64 jre")
-		JDK_URL="https://download.bell-sw.com/java/14+36/bellsoft-jre14+36-macos-amd64.zip"
-		JDK_SHA256="ae7f41a427caa95648b0bbbed98970e9943322dfe31fe70a7d3c46b805d2377f"
+		JDK_URL="https://download.bell-sw.com/java/14.0.1+8/bellsoft-jre14.0.1+8-macos-amd64.zip"
+		JDK_SHA256="d633adfaed850cf7890ef0f150791b01395273bc45477afa2b1168b61d0fcf56"
 	;;
 
 	"Linux x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/14/openjfx-14_linux-x64_bin-sdk.zip"
-		JDK_SHA256="dc0ce35ba41956b08fe62e2db9b8cf6dd80ba21716564d78ad652ddd945d6dbd"
+		JDK_URL="https://download2.gluonhq.com/openjfx/14.0.1/openjfx-14.0.1_linux-x64_bin-sdk.zip"
+		JDK_SHA256="87768e835334760a191ae7c0ae15471a4168118ac8a6bfd0732b16708d178424"
 	;;
 	"Darwin x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/14/openjfx-14_osx-x64_bin-sdk.zip"
-		JDK_SHA256="2248313482e949d43176b60bce0646d27a5891fb01ead0e4e820de917b3e5b4d"
+		JDK_URL="https://download2.gluonhq.com/openjfx/14.0.1/openjfx-14.0.1_osx-x64_bin-sdk.zip"
+		JDK_SHA256="b7db8c4da260fcf001caf0795ea82651c0c04407fa487f775f7ca408ae10dd1d"
 	;;
 	"Windows x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/14/openjfx-14_windows-x64_bin-sdk.zip"
-		JDK_SHA256="5eda8cf6c27fae9db64035b53c855cb248b7f356835af072dc1a23b13961ea8b"
+		JDK_URL="https://download2.gluonhq.com/openjfx/14.0.1/openjfx-14.0.1_windows-x64_bin-sdk.zip"
+		JDK_SHA256="9f8a16b2f0b9bf4dd114b4c1ccb7801923a41689628d40b4fc4da1a0373c999a"
 	;;
 
 	*)
