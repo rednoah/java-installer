@@ -56,7 +56,7 @@ case "$OS $ARCH $TYPE" in
 	;;
 	"Darwin x86_64 jfx")
 		JDK_URL="https://download2.gluonhq.com/openjfx/14.0.1/openjfx-14.0.1_osx-x64_bin-sdk.zip"
-		JDK_SHA256="b7db8c4da260fcf001caf0795ea82651c0c04407fa487f775f7ca408ae10dd1d"
+		JDK_SHA256="89b415660b4e4d18e955ce374728ae960476fc0436ea9412fa623783ac72a00c"
 	;;
 	"Windows x86_64 jfx")
 		JDK_URL="https://download2.gluonhq.com/openjfx/14.0.1/openjfx-14.0.1_windows-x64_bin-sdk.zip"
