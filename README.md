@@ -18,7 +18,7 @@ On install, the package will download the latest [OpenJDK](https://jdk.java.net/
 ## Installation on Linux
 The [get-java.sh](https://github.com/rednoah/java-installer/blob/latest/release/get-java.sh) shell script should work on any Linux device:
 
-```
+```sh
 # Download the latest JDK into the current directory & link java to /usr/local/bin
 curl -O https://raw.githubusercontent.com/rednoah/java-installer/latest/release/get-java.sh
 sh get-java.sh install
