@@ -48,6 +48,5 @@ The script uses `7z` to extract the `*.tar.gz` archive, but it will _not_ modify
 
 ## Package Sources
 * [OpenJDK](https://jdk.java.net/)
-* [OpenJFX](https://openjfx.io/)
-* [Liberica JDK](https://bell-sw.com/java)
-* [AdoptOpenJDK](https://adoptopenjdk.net/)
+* [OpenJFX](https://gluonhq.com/products/javafx/)
+* [Liberica JDK](https://bell-sw.com/pages/downloads/)
