@@ -32,11 +32,9 @@ def javafx = [
 ]
 
 
-// parse version/update/build from release string
+// General Build Properties
 def name = properties.product
-def release = properties.release
-def (version, build) = release.tokenize(/[+]/)
-def uuid = properties.uuid
+def version = properties.release
 
 
 def sha256(url) {
@@ -64,8 +62,9 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 	entry(key: 'jdk.version', value: version)
 
 	openjdk.each{ jdk ->
+		def build = properties.openjdk_build
 		jdk.with {
-			def url = "https://download.java.net/java/GA/jdk${version}/${uuid}/GPL/openjdk-${version}_${pkg}"
+			def url = "https://download.java.net/java/GA/jdk${version}/${build}/GPL/openjdk-${version}_${pkg}"
 			def checksum = sha256(url)
 
 			entry(key:"jdk.${os}.${arch}.url", value: url)
@@ -74,8 +73,9 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 	}
 
 	liberica.each{ jdk ->
+		def build = properties.liberica_build
 		jdk.with {
-			def url = "https://download.bell-sw.com/java/${release}/bellsoft-${type}${release}-${pkg}"
+			def url = "https://download.bell-sw.com/java/${build}/bellsoft-${type}${build}-${pkg}"
 			def checksum = sha256(url)
 
 			entry(key:"${type}.${os}.${arch}.url", value: url)
@@ -84,8 +84,9 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 	}
 
 	javafx.each{ jfx ->
+		def build = properties.openjfx_build
 		jfx.with {
-			def url = "https://download2.gluonhq.com/openjfx/${version}/openjfx-${version}_${pkg}"
+			def url = "https://download2.gluonhq.com/openjfx/${build}/openjfx-${build}_${pkg}"
 			def checksum = sha256(url)
 
 			entry(key:"jfx.${os}.${arch}.url", value: url)

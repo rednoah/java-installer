@@ -57,16 +57,16 @@ Switch ("$os $arch $type") {
 	}
 
 	"Linux x86_64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/14.0.2/openjfx-14.0.2_linux-x64_bin-sdk.zip"
-		$JDK_SHA256 = "f676b8605d2e582ffeb969ddcdc9972d2b0053acd4b9dacad8d2579f8f2b30a7"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/14.0.2.1/openjfx-14.0.2.1_linux-x64_bin-sdk.zip"
+		$JDK_SHA256 = "21761bfb966120d8c8b697ab3d87c26183fb444e7200936711eff31a8db2e9b7"
 	}
 	"Darwin x86_64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/14.0.2/openjfx-14.0.2_osx-x64_bin-sdk.zip"
-		$JDK_SHA256 = "a38fd615eecfa40ba5994942fee9f2b726e3d1bd943341488b0ef14062a8ffab"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/14.0.2.1/openjfx-14.0.2.1_osx-x64_bin-sdk.zip"
+		$JDK_SHA256 = "228973dd66beb80f2734b44868b57adbac793427e26672cad641631683ea685c"
 	}
 	"Windows x86_64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/14.0.2/openjfx-14.0.2_windows-x64_bin-sdk.zip"
-		$JDK_SHA256 = "d34c8656d2ecd5afcc921a20872c6476bf460d12a674600ce09017ecfa328ed5"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/14.0.2.1/openjfx-14.0.2.1_windows-x64_bin-sdk.zip"
+		$JDK_SHA256 = "6679bbb0eafbeb61d513026ffa7d888e6737598acbc1778d81b2d839c99c4245"
 	}
 
 	default {
