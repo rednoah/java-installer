@@ -34,10 +34,12 @@ Switch ("$os $arch $type") {
 		$JDK_URL = "https://download.bell-sw.com/java/15.0.1+9/bellsoft-jdk15.0.1+9-linux-ppc64le.tar.gz"
 		$JDK_SHA256 = "312b116e85c1a7f53b260da1791936428199212666f5fbb6f6227c8936a5510d"
 	}
+
 	"Darwin x86_64 jdk" {
 		$JDK_URL = "https://download.java.net/java/GA/jdk15.0.1/51f4f36ad4ef43e39d0dfdbaf6549e32/9/GPL/openjdk-15.0.1_osx-x64_bin.tar.gz"
 		$JDK_SHA256 = "e1d4868fb082d9202261c5a05251eded56fb805da2d641a65f604988b00b1979"
 	}
+
 	"Windows x86_64 jdk" {
 		$JDK_URL = "https://download.java.net/java/GA/jdk15.0.1/51f4f36ad4ef43e39d0dfdbaf6549e32/9/GPL/openjdk-15.0.1_windows-x64_bin.zip"
 		$JDK_SHA256 = "0a27c733fc7ceaaae3856a9c03f5e2304af30a32de6b454b8762ec02447c5464"
@@ -47,26 +49,17 @@ Switch ("$os $arch $type") {
 		$JDK_SHA256 = "552aaca2691b17369061667a93063d6778b23379dc6c83a5f8556b99be80db35"
 	}
 
-	"Windows x86_64 jre" {
-		$JDK_URL = "https://download.bell-sw.com/java/15.0.1+9/bellsoft-jre15.0.1+9-windows-amd64.zip"
-		$JDK_SHA256 = "e386678bfdbbacf58f3ba5ec4d3917d379285b10d16c96caf8457e0a572bfb37"
-	}
-	"Darwin x86_64 jre" {
-		$JDK_URL = "https://download.bell-sw.com/java/15.0.1+9/bellsoft-jre15.0.1+9-macos-amd64.zip"
-		$JDK_SHA256 = "55f95d035f055a3ec42abef8eea3a8aad46c6d1a9ae46c69da5570105375f816"
-	}
-
 	"Linux x86_64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/15.0.1/openjfx-15.0.1_linux-x64_bin-sdk.zip"
-		$JDK_SHA256 = "7e334eb6d95446bf78bc3a127dac621f84f6f23ef15ea0134c90b25dcc35f1cb"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/15.0.1/openjfx-15.0.1_linux-x64_bin-jmods.zip"
+		$JDK_SHA256 = "eb2472b26391805fe615c444f13df1dd48d1abd5501d847d50216a8519a0ac9c"
 	}
 	"Darwin x86_64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/15.0.1/openjfx-15.0.1_osx-x64_bin-sdk.zip"
-		$JDK_SHA256 = "c40b99d7b0d4ce329d2ed702f720d20a0a57a8b8a54a30bb0a8ca8fd636f205f"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/15.0.1/openjfx-15.0.1_osx-x64_bin-jmods.zip"
+		$JDK_SHA256 = "c66a77b21d6a5fdc4cfe114e5cbe11f4bc024c4471c7abd95b524eb77b1358e8"
 	}
 	"Windows x86_64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/15.0.1/openjfx-15.0.1_windows-x64_bin-sdk.zip"
-		$JDK_SHA256 = "26958610bb5ea01ef0839644068e2a4c4143a6e20f330bfee0f6c9e6109b0f8f"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/15.0.1/openjfx-15.0.1_windows-x64_bin-jmods.zip"
+		$JDK_SHA256 = "3a0ef198d70de212e33b89b959ba007384ec339fe8537b66e2661c9147365f59"
 	}
 
 	default {
