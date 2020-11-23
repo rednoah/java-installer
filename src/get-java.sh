@@ -28,10 +28,12 @@ case "$OS $ARCH $TYPE" in
 		JDK_URL="@{jdk.linux.ppc64le.url}"
 		JDK_SHA256="@{jdk.linux.ppc64le.sha256}"
 	;;
+
 	"Darwin x86_64 jdk")
 		JDK_URL="@{jdk.mac.x64.url}"
 		JDK_SHA256="@{jdk.mac.x64.sha256}"
 	;;
+
 	"Windows x86_64 jdk")
 		JDK_URL="@{jdk.windows.x64.url}"
 		JDK_SHA256="@{jdk.windows.x64.sha256}"
@@ -39,15 +41,6 @@ case "$OS $ARCH $TYPE" in
 	"Windows x86 jdk")
 		JDK_URL="@{jdk.windows.x86.url}"
 		JDK_SHA256="@{jdk.windows.x86.sha256}"
-	;;
-
-	"Windows x86_64 jre")
-		JDK_URL="@{jre.windows.x64.url}"
-		JDK_SHA256="@{jre.windows.x64.sha256}"
-	;;
-	"Darwin x86_64 jre")
-		JDK_URL="@{jre.mac.x64.url}"
-		JDK_SHA256="@{jre.mac.x64.sha256}"
 	;;
 
 	"Linux x86_64 jfx")
