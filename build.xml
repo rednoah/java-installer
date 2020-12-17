@@ -35,8 +35,9 @@
 			<icon size="72" file="${dir.package}/synology/images/thumb_72.png" />
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
 
-			<conf dir="${dir.package}/synology/conf" />
+			<conf dir="${dir.dist}/spk/conf" />
 			<scripts dir="${dir.dist}/spk/scripts" filemode="755" />
+			<package dir="${dir.dist}/spk/target" filemode="755" />
 			<package file="${dir.package}/gpg/maintainer.gpg" />
 		</syno:spk>
 	</target>
