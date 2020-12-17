@@ -1,3 +1,3 @@
-#!/bin/sh -x
-cat "/var/packages/java-installer/target/install-java.log" 1>&2
+#!/bin/sh
+cat "/var/packages/java-installer/target/install-java.log"
 exit 150
