@@ -24,26 +24,26 @@
 			<info name="distributor" value="rednoah" />
 			<info name="distributor_url" value="https://github.com/rednoah/java-installer" />
 			<info name="support_url" value="https://github.com/rednoah/java-installer/issues" />
-			<info name="startable" value="no" />
 			<info name="silent_install" value="no" />
 			<info name="silent_upgrade" value="yes" />
 			<info name="silent_uninstall" value="yes" />
 			<info name="thirdparty" value="yes" />
-			<info name="firmware" value="6.0" />
+			<info name="ctl_stop" value="no" />
+			<info name="os_min_ver" value="6.2" />
+			<info name="beta" value="yes" />
 
 			<icon size="72" file="${dir.package}/synology/images/thumb_72.png" />
 			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
 
+			<conf dir="${dir.staging}/conf" />
 			<scripts dir="${dir.dist}/spk/scripts" filemode="755" />
 			<package file="${dir.package}/gpg/maintainer.gpg" />
-			<codesign secring="${dir.package}/gpg/secring.gpg" keyid="${gpg.key}" password="${gpg.pwd}" />
 		</syno:spk>
 	</target>
 
 
 	<target name="syno-repo" description="Update Synology Package Source" depends="stats">
 		<syno:package-source file="${basedir}/syno.json">
-			<keyring file="${dir.package}/gpg/FileBot.pub" />
 			<spk file="${dir.dist}/${package}-${version}-noarch.spk">
 				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
 				<info name="download_count" value="${download_count}" />
