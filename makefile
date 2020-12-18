@@ -8,7 +8,6 @@ update:
 pkg:
 	$(ANT) clean spk syno-repo qpkg
 
-
 clean:
 	git reset --hard
 	git pull
