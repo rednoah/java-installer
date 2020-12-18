@@ -32,8 +32,8 @@
 			<info name="os_min_ver" value="6.2" />
 			<info name="beta" value="yes" />
 
-			<icon size="72" file="${dir.package}/synology/images/thumb_72.png" />
-			<icon size="256" file="${dir.package}/synology/images/thumb_256.png" />
+			<icon size="72" file="${dir.package}/synology/images/java_72.png" />
+			<icon size="256" file="${dir.package}/synology/images/java_256.png" />
 
 			<conf dir="${dir.dist}/spk/conf" />
 			<scripts dir="${dir.dist}/spk/scripts" filemode="755" />
@@ -48,7 +48,7 @@
 			<spk file="${dir.dist}/${package}-${version}-noarch.spk">
 				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
 				<info name="download_count" value="${download_count}" />
-				<thumbnail url="https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/thumb_256.png" />
+				<thumbnail url="https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/java_256.png" />
 			</spk>
 		</syno:package-source>
 	</target>
