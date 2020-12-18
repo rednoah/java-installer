@@ -24,15 +24,15 @@
 			<info name="distributor" value="rednoah" />
 			<info name="distributor_url" value="https://github.com/rednoah/java-installer" />
 			<info name="support_url" value="https://github.com/rednoah/java-installer/issues" />
+			<info name="ctl_stop" value="no" />
 			<info name="silent_install" value="no" />
 			<info name="silent_upgrade" value="yes" />
 			<info name="silent_uninstall" value="yes" />
 			<info name="thirdparty" value="yes" />
-			<info name="ctl_stop" value="no" />
 			<info name="os_min_ver" value="6.2" />
 			<info name="beta" value="yes" />
 
-			<icon size="72" file="${dir.package}/synology/images/java_72.png" />
+			<icon file="${dir.package}/synology/images/java_64.png" />
 			<icon size="256" file="${dir.package}/synology/images/java_256.png" />
 
 			<conf dir="${dir.dist}/spk/conf" />
