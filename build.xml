@@ -29,7 +29,7 @@
 			<info name="silent_upgrade" value="yes" />
 			<info name="silent_uninstall" value="yes" />
 			<info name="thirdparty" value="yes" />
-			<info name="os_min_ver" value="6.2" />
+			<info name="os_min_ver" value="7.0-40000" />
 			<info name="beta" value="yes" />
 
 			<icon file="${dir.package}/synology/images/java_64.png" />
