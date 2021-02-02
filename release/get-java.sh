@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Java Installer for OpenJDK 15.0.1
+# Java Installer for OpenJDK 15.0.2
 
 COMMAND=${1:-get}        # get | install
 TYPE=${2:-jdk}           # jre | jdk
@@ -9,38 +9,38 @@ OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
 case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk15.0.1/51f4f36ad4ef43e39d0dfdbaf6549e32/9/GPL/openjdk-15.0.1_linux-x64_bin.tar.gz"
-		JDK_SHA256="83ec3a7b1649a6b31e021cde1e58ab447b07fb8173489f27f427e731c89ed84a"
+		JDK_URL="https://download.java.net/java/GA/jdk15.0.2/0d1cfde4252546c6931946de8db48ee2/7/GPL/openjdk-15.0.2_linux-x64_bin.tar.gz"
+		JDK_SHA256="91ac6fc353b6bf39d995572b700e37a20e119a87034eeb939a6f24356fbcd207"
 	;;
 	"Linux i686 jdk")
-		JDK_URL="https://download.bell-sw.com/java/15.0.1+9/bellsoft-jdk15.0.1+9-linux-i586.tar.gz"
-		JDK_SHA256="287a4c2e62f00faa270cbdcb4e578dc71040593316f13125eec24b1b4ac0a99e"
+		JDK_URL="https://download.bell-sw.com/java/15.0.2+10/bellsoft-jdk15.0.2+10-linux-i586.tar.gz"
+		JDK_SHA256="62239fa62a31da34309458a492d6c8d0e88a21141dc78f7e1bbf1bdff5c00c23"
 	;;
 	"Linux aarch64 jdk")
-		JDK_URL="https://download.bell-sw.com/java/15.0.1+9/bellsoft-jdk15.0.1+9-linux-aarch64.tar.gz"
-		JDK_SHA256="eeab09fb1b09fbf1e2ee8859d506c0e7ea9b780d0d015504b4a1e108f066ab45"
+		JDK_URL="https://download.bell-sw.com/java/15.0.2+10/bellsoft-jdk15.0.2+10-linux-aarch64.tar.gz"
+		JDK_SHA256="254a52b5bb3a6bf96c7b8fc7f278baa6e6f6bb61e0e4ae863b47897f6e1a6768"
 	;;
 	"Linux armv7l jdk")
-		JDK_URL="https://download.bell-sw.com/java/15.0.1+9/bellsoft-jdk15.0.1+9-linux-arm32-vfp-hflt.tar.gz"
-		JDK_SHA256="9dbd04943165d34fdfa5676c2eefe13b8a2772c6c91c2635dd472189ccc2def7"
+		JDK_URL="https://download.bell-sw.com/java/15.0.2+10/bellsoft-jdk15.0.2+10-linux-arm32-vfp-hflt.tar.gz"
+		JDK_SHA256="ac387e687763dbb72e9026e563f1bc3f0cb5f504536d9ab2bed1842b8ed05a16"
 	;;
 	"Linux ppc64le jdk")
-		JDK_URL="https://download.bell-sw.com/java/15.0.1+9/bellsoft-jdk15.0.1+9-linux-ppc64le.tar.gz"
-		JDK_SHA256="312b116e85c1a7f53b260da1791936428199212666f5fbb6f6227c8936a5510d"
+		JDK_URL="https://download.bell-sw.com/java/15.0.2+10/bellsoft-jdk15.0.2+10-linux-ppc64le.tar.gz"
+		JDK_SHA256="4a23ad3a6d9ad523da6a4439483bae88995101672bef82fe1dc23acb5ea94b79"
 	;;
 
 	"Darwin x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk15.0.1/51f4f36ad4ef43e39d0dfdbaf6549e32/9/GPL/openjdk-15.0.1_osx-x64_bin.tar.gz"
-		JDK_SHA256="e1d4868fb082d9202261c5a05251eded56fb805da2d641a65f604988b00b1979"
+		JDK_URL="https://download.java.net/java/GA/jdk15.0.2/0d1cfde4252546c6931946de8db48ee2/7/GPL/openjdk-15.0.2_osx-x64_bin.tar.gz"
+		JDK_SHA256="578b17748f5a7d111474bc4c9b5a8a06b4a4aa1ba4a4bc3fef014e079ece7c74"
 	;;
 
 	"Windows x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk15.0.1/51f4f36ad4ef43e39d0dfdbaf6549e32/9/GPL/openjdk-15.0.1_windows-x64_bin.zip"
-		JDK_SHA256="0a27c733fc7ceaaae3856a9c03f5e2304af30a32de6b454b8762ec02447c5464"
+		JDK_URL="https://download.java.net/java/GA/jdk15.0.2/0d1cfde4252546c6931946de8db48ee2/7/GPL/openjdk-15.0.2_windows-x64_bin.zip"
+		JDK_SHA256="ecbe7f32bc6bff2b6c8e9b68f19cbf4ddf54a492c918ba471f32d645cf1c5cf4"
 	;;
 	"Windows x86 jdk")
-		JDK_URL="https://download.bell-sw.com/java/15.0.1+9/bellsoft-jdk15.0.1+9-windows-i586.zip"
-		JDK_SHA256="552aaca2691b17369061667a93063d6778b23379dc6c83a5f8556b99be80db35"
+		JDK_URL="https://download.bell-sw.com/java/15.0.2+10/bellsoft-jdk15.0.2+10-windows-i586.zip"
+		JDK_SHA256="651eccdcc7a45d84e249f6cf1b6be2af1d210576f88f197d0dbf44de38de25de"
 	;;
 
 	"Linux x86_64 jfx")
@@ -68,7 +68,7 @@ JDK_TAR_GZ=${5:-`basename $JDK_URL`}
 
 if [ ! -f "$JDK_TAR_GZ" ]; then
 	echo "Download $JDK_URL"
-	curl -fsSL -o "$JDK_TAR_GZ" --retry 5 "$JDK_URL"
+	curl -L -o "$JDK_TAR_GZ" --retry 5 "$JDK_URL"
 fi
 
 
