@@ -3,5 +3,6 @@ lib
 dist
 release
 
+.ant-targets-build.xml
 *.properties
 *.DS_Store

@@ -35,9 +35,35 @@ Switch ("$os $arch $type") {
 		$JDK_SHA256 = "@{jdk.linux.ppc64le.sha256}"
 	}
 
+	"Linux x86_64 jre" {
+		$jre_URL = "@{jre.linux.x64.url}"
+		$jre_SHA256 = "@{jre.linux.x64.sha256}"
+	}
+	"Linux i686 jre" {
+		$jre_URL = "@{jre.linux.x86.url}"
+		$jre_SHA256 = "@{jre.linux.x86.sha256}"
+	}
+	"Linux aarch64 jre" {
+		$jre_URL = "@{jre.linux.aarch64.url}"
+		$jre_SHA256 = "@{jre.linux.aarch64.sha256}"
+	}
+	"Linux armv7l jre" {
+		$jre_URL = "@{jre.linux.armv7l.url}"
+		$jre_SHA256 = "@{jre.linux.armv7l.sha256}"
+	}
+	"Linux ppc64le jre" {
+		$jre_URL = "@{jre.linux.ppc64le.url}"
+		$jre_SHA256 = "@{jre.linux.ppc64le.sha256}"
+	}	
+
 	"Darwin x86_64 jdk" {
 		$JDK_URL = "@{jdk.mac.x64.url}"
 		$JDK_SHA256 = "@{jdk.mac.x64.sha256}"
+	}
+
+	"Darwin x86_64 jre" {
+		$JDK_URL = "@{jre.mac.x64.url}"
+		$JDK_SHA256 = "@{jre.mac.x64.sha256}"
 	}
 
 	"Windows x86_64 jdk" {
@@ -47,6 +73,15 @@ Switch ("$os $arch $type") {
 	"Windows x86 jdk" {
 		$JDK_URL = "@{jdk.windows.x86.url}"
 		$JDK_SHA256 = "@{jdk.windows.x86.sha256}"
+	}
+
+	"Windows x86_64 jre" {
+		$jre_URL = "@{jre.windows.x64.url}"
+		$jre_SHA256 = "@{jre.windows.x64.sha256}"
+	}
+	"Windows x86 jre" {
+		$jre_URL = "@{jre.windows.x86.url}"
+		$jre_SHA256 = "@{jre.windows.x86.sha256}"
 	}
 
 	"Linux x86_64 jfx" {

@@ -1,18 +1,25 @@
-// OpenJDK for x64 Windows / Linux / Mac
-def openjdk = [
-	[os: 'windows', arch: 'x64', pkg: 'windows-x64_bin.zip'],
-	[os: 'mac',     arch: 'x64', pkg: 'osx-x64_bin.tar.gz'],
-	[os: 'linux',   arch: 'x64', pkg: 'linux-x64_bin.tar.gz']
-]
+// OpenJDK for x64 Mac
+def openjdk = []
 
 
-// BellSoft Liberica JDK for embedded devices
+// BellSoft Liberica JDK/JRE for embedded devices
 def liberica = [
 	[type: 'jdk', os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64.tar.gz'],
 	[type: 'jdk', os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt.tar.gz'],
 	[type: 'jdk', os: 'linux',   arch: 'ppc64le', pkg: 'linux-ppc64le.tar.gz'],
 	[type: 'jdk', os: 'linux',   arch: 'x86',     pkg: 'linux-i586.tar.gz'],
+	[type: 'jdk', os: 'linux',   arch: 'x64',     pkg: 'linux-amd64.tar.gz'],	
 	[type: 'jdk', os: 'windows', arch: 'x86',     pkg: 'windows-i586.zip'],
+	[type: 'jdk', os: 'windows', arch: 'x64',     pkg: 'windows-amd64.zip'],
+	[type: 'jdk', os: 'mac',     arch: 'x64',     pkg: 'macos-amd64.zip'],
+	[type: 'jre', os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64.tar.gz'],
+	[type: 'jre', os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt.tar.gz'],
+	[type: 'jre', os: 'linux',   arch: 'ppc64le', pkg: 'linux-ppc64le.tar.gz'],
+	[type: 'jre', os: 'linux',   arch: 'x86',     pkg: 'linux-i586.tar.gz'],
+	[type: 'jre', os: 'linux',   arch: 'x64',     pkg: 'linux-amd64.tar.gz'],
+	[type: 'jre', os: 'windows', arch: 'x86',     pkg: 'windows-i586.zip'],
+	[type: 'jre', os: 'windows', arch: 'x64',     pkg: 'windows-amd64.zip'],
+	[type: 'jre', os: 'mac',     arch: 'x64',     pkg: 'macos-amd64.zip'],
 ]
 
 

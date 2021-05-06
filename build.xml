@@ -10,6 +10,7 @@
 	<property name="dir.dist" location="${basedir}/dist" />
 	<property name="dir.package" location="${basedir}/package" />
 	<property name="dir.release" location="${basedir}/release" />
+	<property name="dir.cache" location="${basedir}/cache" />
 
 
 	<target name="spk" description="Build Synology Package" depends="branch">
@@ -102,6 +103,7 @@
 
 
 	<target name="update-jdk" description="Update JDK build properties">
+		<mkdir dir="${dir.cache}" />
 		<delete file="build-jdk.properties" />
 		<groovy:groovy src="build-jdk.groovy" />
 	</target>
