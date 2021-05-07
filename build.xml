@@ -60,7 +60,7 @@
 				<include name="**/*_routines" />
 				<include name="**/*.sh" />
 				<include name="**/*.cfg" />
-				<include name="**/*.png" />
+				<include name="**/*.gif" />
 				<include name="**/private_key" />
 				<include name="**/certificate" />
 			</fileset>
@@ -128,7 +128,7 @@
 				<restrict>
 					<filesets />
 					<not>
-						<name name="**/*.png" />
+						<name name="*.gif" />
 					</not>
 				</restrict>
 				<filterset begintoken="@{" endtoken="}">
@@ -143,7 +143,7 @@
 			<copy todir="@{todir}" overwrite="yes" verbose="yes">
 				<restrict>
 					<filesets />
-					<name name="**/*.png" />
+					<name name="*.gif" />
 				</restrict>
 				<filtermapper>
 					<replacetokens begintoken="@{" endtoken="}" propertiesResource="package.properties" />
