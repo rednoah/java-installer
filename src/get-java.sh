@@ -57,7 +57,7 @@ case "$OS $ARCH $TYPE" in
 	;;
 
 	*)
-		echo "Architecture not supported: $OS $ARCH"
+		echo "Architecture not supported: $OS $ARCH $TYPE"
 		exit 1
 	;;
 esac
@@ -84,7 +84,7 @@ fi
 
 
 # extract and link only if explicitly requested
-if [ "$COMMAND $TYPE" != "install jdk" ]; then
+if [ "$COMMAND" != "install" ]; then
 	echo "Download complete: $JDK_TAR_GZ"
 	exit 0
 fi
