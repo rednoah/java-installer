@@ -124,11 +124,14 @@
 		<attribute name="todir" />
 		<element name="filesets" implicit="yes" />
 		<sequential>
+			<!-- copy plain text files -->
 			<copy todir="@{todir}" overwrite="yes" verbose="yes" encoding="utf-8">
 				<restrict>
 					<filesets />
+					<!-- exclude binary files so they don't get mangled (see https://ant.apache.org/manual/Tasks/copy.html#encoding) -->
 					<not>
 						<name name="**/*.png" />
+						<name name="**/*.gif" />
 					</not>
 				</restrict>
 				<filterset begintoken="@{" endtoken="}">
@@ -140,10 +143,12 @@
 					<replacetokens begintoken="@{" endtoken="}" propertiesResource="package.properties" />
 				</filtermapper>
 			</copy>
+			<!-- copy binary files -->
 			<copy todir="@{todir}" overwrite="yes" verbose="yes">
 				<restrict>
 					<filesets />
 					<name name="**/*.png" />
+					<name name="**/*.gif" />
 				</restrict>
 				<filtermapper>
 					<replacetokens begintoken="@{" endtoken="}" propertiesResource="package.properties" />
