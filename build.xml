@@ -130,8 +130,10 @@
 					<filesets />
 					<!-- exclude binary files so they don't get mangled (see https://ant.apache.org/manual/Tasks/copy.html#encoding) -->
 					<not>
-						<name name="**/*.png" />
-						<name name="**/*.gif" />
+						<or>
+							<name name="**/*.png" />
+							<name name="**/*.gif" />
+						</or>
 					</not>
 				</restrict>
 				<filterset begintoken="@{" endtoken="}">
@@ -147,8 +149,10 @@
 			<copy todir="@{todir}" overwrite="yes" verbose="yes">
 				<restrict>
 					<filesets />
-					<name name="**/*.png" />
-					<name name="**/*.gif" />
+					<or>
+						<name name="**/*.png" />
+						<name name="**/*.gif" />
+					</or>
 				</restrict>
 				<filtermapper>
 					<replacetokens begintoken="@{" endtoken="}" propertiesResource="package.properties" />
