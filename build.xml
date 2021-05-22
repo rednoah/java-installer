@@ -110,10 +110,10 @@
 			</fileset>
 		</copy-replace>
 
-		<copy file="${dir.package}/gpg/maintainer.gpg" todir="${dir.dist}/qnap/shared" />
+		<copy file="${dir.package}/gpg/maintainer.gpg" todir="${dir.build}/qnap/shared" />
 
 		<exec executable="docker" failonerror="yes">
-			<arg line="run --rm -v ${dir.dist}/qnap:/src rednoah/qpkg-build" />
+			<arg line="run --rm -v ${dir.build}/qnap:/src rednoah/qpkg-build" />
 		</exec>
 		<copy file="${dir.build}/qnap/build/${package}_${version}.qpkg" tofile="${dir.dist}/${package}_${version}.qpkg" />
 	</target>
