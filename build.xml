@@ -32,7 +32,6 @@
 			<info name="silent_uninstall" value="yes" />
 			<info name="thirdparty" value="yes" />
 			<info name="os_min_ver" value="6.2.4" />
-			<info name="beta" value="yes" />
 
 			<icon file="${dir.package}/synology/images/java_64.png" />
 			<icon size="256" file="${dir.package}/synology/images/java_256.png" />
@@ -50,6 +49,49 @@
 		<syno:package-source file="${basedir}/syno.json">
 			<spk file="${dir.release}/${release}.spk">
 				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${release}.spk" />
+				<info name="download_count" value="${download_count}" />
+				<thumbnail url="https://www.filebot.net/syno/java-installer-thumbnail.png" />
+			</spk>
+		</syno:package-source>
+	</target>
+
+
+	<target name="spk-dsm7" description="Build Synology Package (DSM 7)" depends="branch">
+		<copy-replace todir="${dir.dist}/spk">
+			<fileset dir="${dir.package}/synology" />
+		</copy-replace>
+		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" compression="xz">
+			<info name="displayname" value="${title}" />
+			<info name="description" value="${description}" />
+			<info name="maintainer" value="rednoah" />
+			<info name="maintainer_url" value="https://github.com/rednoah/java-installer" />
+			<info name="distributor" value="rednoah" />
+			<info name="distributor_url" value="https://github.com/rednoah/java-installer" />
+			<info name="support_url" value="https://github.com/rednoah/java-installer/issues" />
+			<info name="ctl_stop" value="no" />
+			<info name="silent_install" value="no" />
+			<info name="silent_upgrade" value="yes" />
+			<info name="silent_uninstall" value="yes" />
+			<info name="thirdparty" value="yes" />
+			<info name="os_min_ver" value="7.0-40759" />
+			<info name="beta" value="yes" />
+
+			<icon file="${dir.package}/synology/images/java_64.png" />
+			<icon size="256" file="${dir.package}/synology/images/java_256.png" />
+
+			<conf dir="${dir.dist}/spk/conf" />
+			<scripts dir="${dir.dist}/spk/scripts" filemode="755" />
+			<package dir="${dir.dist}/spk/target" filemode="755" />
+			<package file="${dir.package}/gpg/maintainer.gpg" />
+		</syno:spk>
+		<copy file="${dir.dist}/${package}-${version}-noarch.spk" tofile="${dir.release}/${release}-dsm7.spk" />
+	</target>
+
+
+	<target name="syno-repo-dsm7" description="Update Synology Package Source (DSM 7)" depends="stats">
+		<syno:package-source file="${basedir}/syno-dsm7.json">
+			<spk file="${dir.release}/${release}-dsm7.spk">
+				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${release}-dsm7.spk" />
 				<info name="download_count" value="${download_count}" />
 				<thumbnail url="https://www.filebot.net/syno/java-installer-thumbnail.png" />
 			</spk>

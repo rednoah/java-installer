@@ -6,7 +6,7 @@ update:
 	$(ANT) build
 
 pkg:
-	$(ANT) clean spk syno-repo qpkg
+	$(ANT) clean spk-dsm7 syno-repo-dsm7 spk syno-repo qpkg
 
 clean:
 	git reset --hard
