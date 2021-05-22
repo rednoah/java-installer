@@ -42,10 +42,14 @@ case "$1" in
 		# make sure that `java` is working
 		if [ -x "/usr/local/bin/java" ]; then
 			# display success message
-			"/usr/local/bin/java" -version > "$SYNOPKG_TEMP_LOGFILE" 2>&1
+			{
+				echo '<p><pre><samp>$ <kbd>java -version</kbd>'
+				"/usr/local/bin/java" -version
+				echo '</samp></pre></p>'
+			} >> "$SYNOPKG_TEMP_LOGFILE" 2>&1
 		else
 			# display error message
-			echo "Ooops, something went wrong... View Log for details." > "$SYNOPKG_TEMP_LOGFILE"
+			echo "<p>Ooops, something went wrong... Run <strong><kbd>cat $PKG_LOG</kbd></strong> for details.</p>" > "$SYNOPKG_TEMP_LOGFILE"
 		fi
 		exit 0
 	;;
