@@ -43,13 +43,14 @@ case "$1" in
 		if [ -x "/usr/local/bin/java" ]; then
 			# display success message
 			{
+				echo '<p style="color:#0090D9">The latest OpenJDK has been installed successfully.</p><br>'
 				echo '<pre><samp>$ <kbd>java -version</kbd>'
 				"/usr/local/bin/java" -version
 				echo '</samp></pre>'
-			} > "$SYNOPKG_TEMP_LOGFILE" 2>&1
+			} >> "$SYNOPKG_TEMP_LOGFILE" 2>&1
 		else
 			# display error message
-			echo "Ooops, something went wrong... Run <kbd>cat $PKG_LOG</kbd> for details." > "$SYNOPKG_TEMP_LOGFILE"
+			echo "Ooops, something went wrong... Run <kbd>cat $PKG_LOG</kbd> for details." >> "$SYNOPKG_TEMP_LOGFILE"
 		fi
 		exit 0
 	;;
