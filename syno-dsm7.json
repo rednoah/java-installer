@@ -16,10 +16,10 @@
             "thumbnail": [
                 "https://www.filebot.net/syno/java-installer-thumbnail.png"
             ],
-            "link": "https://github.com/rednoah/java-installer/releases/download/2.16/java-installer_2.16.spk",
+            "link": "https://github.com/rednoah/java-installer/releases/download/2.16/java-installer_2.16-dsm7.spk",
             "download_count": "41734",
-            "md5": "c7daa00301fe9dea2be8d3fb60e86973",
-            "sha256": "7408425cc67ea728428402da08ce3c7f25dd6be81d1f102cf7eb21624e797056",
+            "md5": "571f0e23424e195818aad067d61c28f2",
+            "sha256": "7b4c079cb58b7a0bb57cb343ced007c69f43e7a14135b15b5fa5772bf1578647",
             "size": 40960
         }
     ]
