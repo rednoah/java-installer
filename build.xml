@@ -5,6 +5,8 @@
 
 	<property file="build-jdk.properties" />
 
+	<property name="release" value="${package}_${version}" />
+
 	<property name="dir.source" location="${basedir}/src" />
 	<property name="dir.lib" location="${basedir}/lib" />
 	<property name="dir.dist" location="${basedir}/dist" />
@@ -12,11 +14,11 @@
 	<property name="dir.release" location="${basedir}/release" />
 
 
-	<target name="spk" description="Build Synology Package" depends="branch">
+	<target name="spk" description="Build Synology Package (DSM 6.2.4)" depends="branch">
 		<copy-replace todir="${dir.dist}/spk">
 			<fileset dir="${dir.package}/synology" />
 		</copy-replace>
-		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch">
+		<syno:spk destdir="${dir.dist}" name="${package}" version="${version}" arch="noarch" compression="xz">
 			<info name="displayname" value="${title}" />
 			<info name="description" value="${description}" />
 			<info name="maintainer" value="rednoah" />
@@ -29,7 +31,7 @@
 			<info name="silent_upgrade" value="yes" />
 			<info name="silent_uninstall" value="yes" />
 			<info name="thirdparty" value="yes" />
-			<info name="os_min_ver" value="7.0-40000" />
+			<info name="os_min_ver" value="6.2.4" />
 			<info name="beta" value="yes" />
 
 			<icon file="${dir.package}/synology/images/java_64.png" />
@@ -40,15 +42,16 @@
 			<package dir="${dir.dist}/spk/target" filemode="755" />
 			<package file="${dir.package}/gpg/maintainer.gpg" />
 		</syno:spk>
+		<copy file="${dir.dist}/${package}-${version}-noarch.spk" tofile="${dir.release}/${release}.spk" />
 	</target>
 
 
-	<target name="syno-repo" description="Update Synology Package Source" depends="stats">
+	<target name="syno-repo" description="Update Synology Package Source (DSM 6.2.4)" depends="stats">
 		<syno:package-source file="${basedir}/syno.json">
-			<spk file="${dir.dist}/${package}-${version}-noarch.spk">
-				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}-${version}-noarch.spk" />
+			<spk file="${dir.release}/${release}.spk">
+				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${release}.spk" />
 				<info name="download_count" value="${download_count}" />
-				<thumbnail url="https://raw.githubusercontent.com/rednoah/java-installer/master/package/synology/images/java_256.png" />
+				<thumbnail url="https://www.filebot.net/syno/java-installer-thumbnail.png" />
 			</spk>
 		</syno:package-source>
 	</target>
@@ -71,7 +74,7 @@
 		<exec executable="docker" failonerror="yes">
 			<arg line="run --rm -v ${dir.dist}/qnap:/src rednoah/qpkg-build" />
 		</exec>
-		<copy file="${dir.dist}/qnap/build/${package}_${version}.qpkg" tofile="${dir.dist}/${package}_${version}.qpkg" />
+		<copy file="${dir.dist}/qnap/build/${package}_${version}.qpkg" tofile="${dir.release}/${release}.qpkg" />
 	</target>
 
 
@@ -92,6 +95,7 @@
 
 	<target name="clean">
 		<delete dir="${dir.dist}" />
+		<delete dir="${dir.release}" />
 	</target>
 
 
