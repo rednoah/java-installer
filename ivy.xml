@@ -2,11 +2,11 @@
 <ivy-module version="2.0">
 	<info organisation="net.filebot" module="java-installer" />
 	<dependencies>
-		<dependency org="org.apache.ant" name="ant" rev="1.10.9" />
-		<dependency org="org.codehaus.groovy" name="groovy-ant" rev="3.0.7" />
-		<dependency org="org.codehaus.groovy" name="groovy-json" rev="3.0.7" />
-		<dependency org="org.codehaus.groovy" name="groovy-xml" rev="3.0.7" />
-		<dependency org="org.codehaus.groovy" name="groovy-groovydoc" rev="3.0.7" />
+		<dependency org="org.apache.ant" name="ant" rev="1.10.10" />
+		<dependency org="org.codehaus.groovy" name="groovy-ant" rev="3.0.8" />
+		<dependency org="org.codehaus.groovy" name="groovy-json" rev="3.0.8" />
+		<dependency org="org.codehaus.groovy" name="groovy-xml" rev="3.0.8" />
+		<dependency org="org.codehaus.groovy" name="groovy-groovydoc" rev="3.0.8" />
 		<dependency org="net.filebot" name="ant-spk" rev="0.7" />
 	</dependencies>
 </ivy-module>
