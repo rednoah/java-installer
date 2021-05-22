@@ -43,13 +43,13 @@ case "$1" in
 		if [ -x "/usr/local/bin/java" ]; then
 			# display success message
 			{
-				echo '<p><pre><samp>$ <kbd>java -version</kbd>'
+				echo '<pre><samp>$ <kbd>java -version</kbd>'
 				"/usr/local/bin/java" -version
-				echo '</samp></pre></p>'
-			} >> "$SYNOPKG_TEMP_LOGFILE" 2>&1
+				echo '</samp></pre>'
+			} > "$SYNOPKG_TEMP_LOGFILE" 2>&1
 		else
 			# display error message
-			echo "<p>Ooops, something went wrong... Run <strong><kbd>cat $PKG_LOG</kbd></strong> for details.</p>" > "$SYNOPKG_TEMP_LOGFILE"
+			echo "Ooops, something went wrong... Run <kbd>cat $PKG_LOG</kbd> for details." > "$SYNOPKG_TEMP_LOGFILE"
 		fi
 		exit 0
 	;;
