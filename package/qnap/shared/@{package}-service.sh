@@ -53,12 +53,14 @@ case "$1" in
 			"$INSTALLER_FILE" install jdk
 		fi
 
-		if [ -x "/usr/local/bin/java" ]; then
+		if [ -x "$SYMLINK_JAVA" ]; then
 			# display success message
-			/sbin/log_tool -t0 -uSystem -p127.0.0.1 -mlocalhost -a "[Java Installer] $(/usr/local/bin/java -version 2>&1)"
+			INFO="$("$SYMLINK_JAVA" -version 2>&1 | head -n1)"
+			/sbin/log_tool -t0 -uSystem -p127.0.0.1 -mlocalhost -a "[Java Installer] $INFO"
 		else
 			# display error message
-			/sbin/log_tool -t2 -uSystem -p127.0.0.1 -mlocalhost -a "[Java Installer] Ooops, something went wrong... Run \`cat $PKG_LOG\` for details."
+			WARN="Ooops, something went wrong... Run \`cat $PKG_LOG\` for details."
+			/sbin/log_tool -t2 -uSystem -p127.0.0.1 -mlocalhost -a "[Java Installer] $WARN"
 		fi
 	;;
 
