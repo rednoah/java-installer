@@ -13,7 +13,7 @@
 	<property name="dir.release" location="${basedir}/release" />
 
 
-	<target name="spk" description="Build Synology Package (DSM 6.2.4)" depends="branch">
+	<target name="spk-dsm6" description="Build Synology Package (DSM 6.2.4)" depends="branch">
 		<copy-replace todir="${dir.build}/spk">
 			<fileset dir="${dir.package}/synology" />
 		</copy-replace>
@@ -40,14 +40,14 @@
 			<package dir="${dir.build}/spk/target" filemode="755" />
 			<package file="${dir.package}/gpg/maintainer.gpg" />
 		</syno:spk>
-		<copy file="${dir.build}/${package}-${version}-noarch.spk" tofile="${dir.dist}/${package}_${version}.spk" />
+		<copy file="${dir.build}/${package}-${version}-noarch.spk" tofile="${dir.dist}/${package}_${version}-dsm6.spk" />
 	</target>
 
 
-	<target name="syno-repo" description="Update Synology Package Source (DSM 6.2.4)" depends="stats">
-		<syno:package-source file="${basedir}/syno.json">
-			<spk file="${dir.dist}/${package}_${version}.spk">
-				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}_${version}.spk" />
+	<target name="syno-repo-dsm6" description="Update Synology Package Source (DSM 6.2.4)" depends="stats">
+		<syno:package-source file="${basedir}/syno-dsm6.json">
+			<spk file="${dir.dist}/${package}_${version}-dsm6.spk">
+				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}_${version}-dsm6.spk" />
 				<info name="download_count" value="${download_count}" />
 				<thumbnail url="https://www.filebot.net/syno/java-installer-thumbnail.png" />
 			</spk>
@@ -55,7 +55,7 @@
 	</target>
 
 
-	<target name="spk-dsm7" description="Build Synology Package (DSM 7)" depends="branch">
+	<target name="spk" description="Build Synology Package" depends="branch">
 		<copy-replace todir="${dir.build}/spk-dsm7">
 			<fileset dir="${dir.package}/synology" />
 		</copy-replace>
@@ -72,8 +72,7 @@
 			<info name="silent_upgrade" value="yes" />
 			<info name="silent_uninstall" value="yes" />
 			<info name="thirdparty" value="yes" />
-			<info name="os_min_ver" value="7.0-40759" />
-			<info name="beta" value="yes" />
+			<info name="os_min_ver" value="7.0-41890" />
 
 			<icon file="${dir.package}/synology/images/java_64.png" />
 			<icon size="256" file="${dir.package}/synology/images/java_256.png" />
@@ -83,14 +82,14 @@
 			<package dir="${dir.build}/spk-dsm7/target" filemode="755" />
 			<package file="${dir.package}/gpg/maintainer.gpg" />
 		</syno:spk>
-		<copy file="${dir.build}/${package}-${version}-noarch.spk" tofile="${dir.dist}/${package}_${version}-dsm7.spk" />
+		<copy file="${dir.build}/${package}-${version}-noarch.spk" tofile="${dir.dist}/${package}_${version}.spk" />
 	</target>
 
 
-	<target name="syno-repo-dsm7" description="Update Synology Package Source (DSM 7)" depends="stats">
-		<syno:package-source file="${basedir}/syno-dsm7.json">
-			<spk file="${dir.dist}/${package}_${version}-dsm7.spk">
-				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}_${version}-dsm7.spk" />
+	<target name="syno-repo" description="Update Synology Package Source" depends="stats">
+		<syno:package-source file="${basedir}/syno.json">
+			<spk file="${dir.dist}/${package}_${version}.spk">
+				<info name="link" value="https://github.com/rednoah/java-installer/releases/download/${version}/${package}_${version}.spk" />
 				<info name="download_count" value="${download_count}" />
 				<thumbnail url="https://www.filebot.net/syno/java-installer-thumbnail.png" />
 			</spk>
