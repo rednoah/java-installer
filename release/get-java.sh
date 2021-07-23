@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Java Installer for OpenJDK 16.0.1
+# Java Installer for OpenJDK 16.0.2
 
 COMMAND=${1:-get}        # get | install
 TYPE=${2:-jdk}           # jre | jdk
@@ -9,38 +9,38 @@ OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
 case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk16.0.1/7147401fd7354114ac51ef3e1328291f/9/GPL/openjdk-16.0.1_linux-x64_bin.tar.gz"
-		JDK_SHA256="b1198ffffb7d26a3fdedc0fa599f60a0d12aa60da1714b56c1defbce95d8b235"
+		JDK_URL="https://download.java.net/java/GA/jdk16.0.2/d4a915d82b4c4fbb9bde534da945d746/7/GPL/openjdk-16.0.2_linux-x64_bin.tar.gz"
+		JDK_SHA256="6c714ded7d881ca54970ec949e283f43d673a142fda1de79b646ddd619da9c0c"
 	;;
 	"Linux i686 jdk")
-		JDK_URL="https://download.bell-sw.com/java/16.0.1+9/bellsoft-jdk16.0.1+9-linux-i586.tar.gz"
-		JDK_SHA256="a33a9b92380759e0e9efc6f3f08cf403cd9dfa4b3fbdefe77bbee67b431b3370"
+		JDK_URL="https://download.bell-sw.com/java/16.0.2+7/bellsoft-jdk16.0.2+7-linux-i586.tar.gz"
+		JDK_SHA256="94e18199b7b943d4912a2f1df4a2339c1facfb4880206c9303d0755b38fd322e"
 	;;
 	"Linux aarch64 jdk")
-		JDK_URL="https://download.bell-sw.com/java/16.0.1+9/bellsoft-jdk16.0.1+9-linux-aarch64.tar.gz"
-		JDK_SHA256="650f04865bdd3267ab7d1ae459dc34a430b6b6c2c6f04c479f01c728717bda48"
+		JDK_URL="https://download.java.net/java/GA/jdk16.0.2/d4a915d82b4c4fbb9bde534da945d746/7/GPL/openjdk-16.0.2_linux-aarch64_bin.tar.gz"
+		JDK_SHA256="1ffb9c7748334945d9056b3324de3f797d906fce4dad86beea955153aa1e28fe"
 	;;
 	"Linux armv7l jdk")
-		JDK_URL="https://download.bell-sw.com/java/16.0.1+9/bellsoft-jdk16.0.1+9-linux-arm32-vfp-hflt.tar.gz"
-		JDK_SHA256="3b701e52122419e6dd66e1086a2cba7613d63e6fd9073afcce1dfe7e9f1404b7"
+		JDK_URL="https://download.bell-sw.com/java/16.0.2+7/bellsoft-jdk16.0.2+7-linux-arm32-vfp-hflt.tar.gz"
+		JDK_SHA256="489f1bc0087e4dc003bcd7c0edf459c4e53eae526fe81f5877d6dcc839c6aa97"
 	;;
 	"Linux ppc64le jdk")
-		JDK_URL="https://download.bell-sw.com/java/16.0.1+9/bellsoft-jdk16.0.1+9-linux-ppc64le.tar.gz"
-		JDK_SHA256="197b45dd685212307fa8affa9bdba0549b826dcafd770e4b20c2feaffd4b787b"
+		JDK_URL="https://download.bell-sw.com/java/16.0.2+7/bellsoft-jdk16.0.2+7-linux-ppc64le.tar.gz"
+		JDK_SHA256="6fdb703299326bc34c1d9979eeb03c36ece491c69868a0a4b0d7588cf5b146c4"
 	;;
 
 	"Darwin x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk16.0.1/7147401fd7354114ac51ef3e1328291f/9/GPL/openjdk-16.0.1_osx-x64_bin.tar.gz"
-		JDK_SHA256="6098f839954439d4916444757c542c1b8778a32461706812d41cc8bbefce7f2f"
+		JDK_URL="https://download.java.net/java/GA/jdk16.0.2/d4a915d82b4c4fbb9bde534da945d746/7/GPL/openjdk-16.0.2_osx-x64_bin.tar.gz"
+		JDK_SHA256="e65f2437585f16a01fa8e10139d0d855e8a74396a1dfb0163294ed17edd704b8"
 	;;
 
 	"Windows x86_64 jdk")
-		JDK_URL="https://download.java.net/java/GA/jdk16.0.1/7147401fd7354114ac51ef3e1328291f/9/GPL/openjdk-16.0.1_windows-x64_bin.zip"
-		JDK_SHA256="733b45b09463c97133d70c2368f1b9505da58e88f2c8a84358dd4accfd06a7a4"
+		JDK_URL="https://download.java.net/java/GA/jdk16.0.2/d4a915d82b4c4fbb9bde534da945d746/7/GPL/openjdk-16.0.2_windows-x64_bin.zip"
+		JDK_SHA256="9df98be05fe674066cc39144467c47b1503cfa3de059c09cc4ccc3da9c253b9a"
 	;;
 	"Windows x86 jdk")
-		JDK_URL="https://download.bell-sw.com/java/16.0.1+9/bellsoft-jdk16.0.1+9-windows-i586.zip"
-		JDK_SHA256="429c96779a94a7e9e266acc304c77e79c5524f4d7c1410c62869e1720459e7c7"
+		JDK_URL="https://download.bell-sw.com/java/16.0.2+7/bellsoft-jdk16.0.2+7-windows-i586.zip"
+		JDK_SHA256="0e069fcabb79c0e19aa50479700543804e3707c38493c4f7e52de2b579c93eb2"
 	;;
 
 	"Linux x86_64 jfx")
@@ -57,7 +57,7 @@ case "$OS $ARCH $TYPE" in
 	;;
 
 	*)
-		echo "Architecture not supported: $OS $ARCH"
+		echo "Architecture not supported: $OS $ARCH $TYPE"
 		exit 1
 	;;
 esac
@@ -84,7 +84,7 @@ fi
 
 
 # extract and link only if explicitly requested
-if [ "$COMMAND $TYPE" != "install jdk" ]; then
+if [ "$COMMAND" != "install" ]; then
 	echo "Download complete: $JDK_TAR_GZ"
 	exit 0
 fi
