@@ -40,12 +40,12 @@ case "$1" in
 		fi
 
 		# make sure that `java` is working
-		if [ -x "/usr/local/bin/java" ]; then
+		if [ -x "/usr/local/bin/java" ] && [ -d "$SYNOPKG_PKGDEST/lib" ]; then
 			# display success message
 			{
 				echo '<p style="color:#0090D9">The latest OpenJDK has been installed successfully.</p><br>'
 				echo '<pre><samp>$ <kbd>java -version</kbd>'
-				"/usr/local/bin/java" -version
+				"$SYNOPKG_PKGDEST/bin/java" -version
 				echo '</samp></pre>'
 			} >> "$SYNOPKG_TEMP_LOGFILE" 2>&1
 		else
@@ -71,7 +71,7 @@ case "$1" in
 
 
 	status)
-		if [ -x "/usr/local/bin/java" ]; then
+		if [ -x "/usr/local/bin/java" ] && [ -d "$SYNOPKG_PKGDEST/lib" ]; then
 			exit 0
 		else
 			exit 150 # package is broken and should be reinstalled
