@@ -68,7 +68,7 @@ JDK_TAR_GZ=${5:-`basename $JDK_URL`}
 
 if [ ! -f "$JDK_TAR_GZ" ]; then
 	echo "Download $JDK_URL"
-	curl -L -o "$JDK_TAR_GZ" --retry 5 "$JDK_URL"
+	curl -fsSL -o "$JDK_TAR_GZ" --retry 5 "$JDK_URL"
 fi
 
 

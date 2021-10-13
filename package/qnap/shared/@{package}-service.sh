@@ -27,7 +27,7 @@ SIGNATURE_PUBLIC_KEY_ID="0x4E402EBF7C3C6A71"
 
 case "$1" in
 	install)
-		curl -L -o "$SIGNATURE_FILE.latest" -z "$SIGNATURE_FILE" --retry 5 "$SIGNATURE_URL"
+		curl -fsSL -o "$SIGNATURE_FILE.latest" -z "$SIGNATURE_FILE" --retry 5 "$SIGNATURE_URL"
 
 		# update timestamp
 		touch "$SIGNATURE_FILE"
@@ -42,7 +42,7 @@ case "$1" in
 		fi
 
 		# fetch installer
-		curl -L -o "$INSTALLER_FILE" -z "$INSTALLER_FILE" --retry 5 "$INSTALLER_URL"
+		curl -fsSL -o "$INSTALLER_FILE" -z "$INSTALLER_FILE" --retry 5 "$INSTALLER_URL"
 
 		# verify signature and run installer
 		mkdir -p -m 700 "$SIGNATURE_GPG_HOME"
