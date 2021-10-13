@@ -12,7 +12,7 @@ PKG_LOG="$SYNOPKG_PKGDEST/install-java.log"
 
 case "$1" in
 	install)
-		curl -L -o "$SIGNATURE_FILE.latest" -z "$SIGNATURE_FILE" "$SIGNATURE_URL"
+		curl -L -o "$SIGNATURE_FILE.latest" -z "$SIGNATURE_FILE" --retry 5 "$SIGNATURE_URL"
 
 		# update timestamp
 		touch "$SIGNATURE_FILE"
@@ -27,7 +27,7 @@ case "$1" in
 		fi
 
 		# fetch installer
-		curl -L -o "$INSTALLER_FILE" -z "$INSTALLER_FILE" "$INSTALLER_URL"
+		curl -L -o "$INSTALLER_FILE" -z "$INSTALLER_FILE" --retry 5 "$INSTALLER_URL"
 
 		if gpgv --keyring "$SIGNATURE_PUBLIC_KEY" "$SIGNATURE_FILE" "$INSTALLER_FILE"; then
 			cd "$SYNOPKG_PKGDEST"
