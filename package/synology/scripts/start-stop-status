@@ -40,14 +40,14 @@ case "$1" in
 		fi
 
 		# make sure that `java` is working
-		if [ -x "/usr/local/bin/java" ] && [ -d "$SYNOPKG_PKGDEST/lib" ]; then
+		if "$SYNOPKG_PKGDEST/bin/java" > "$SYNOPKG_PKGDEST/version" 2>&1; then
 			# display success message
-			{
+			(
 				echo '<p style="color:#0090D9">The latest OpenJDK has been installed successfully.</p><br>'
 				echo '<pre><samp>$ <kbd>java -version</kbd>'
-				"$SYNOPKG_PKGDEST/bin/java" -version
+				cat "$SYNOPKG_PKGDEST/version"
 				echo '</samp></pre>'
-			} >> "$SYNOPKG_TEMP_LOGFILE" 2>&1
+			) >> "$SYNOPKG_TEMP_LOGFILE" 2>&1
 		else
 			# display error message
 			echo "Ooops, something went wrong... Run <kbd>cat $PKG_LOG</kbd> for details." >> "$SYNOPKG_TEMP_LOGFILE"
@@ -59,7 +59,7 @@ case "$1" in
 	start)
 		# check for updates once per month
 		if [ ! -x "$INSTALLER_FILE" ] || [ $(find "$SYNOPKG_PKGDEST" -type f -name '*.asc' -maxdepth 1 -mtime +30 | wc -l) -gt 0 ]; then
-			$0 install 2>&1 | tee "$PKG_LOG"
+			$0 install > "$PKG_LOG" 2>&1
 		fi
 		exit 0
 	;;
@@ -71,7 +71,7 @@ case "$1" in
 
 
 	status)
-		if [ -x "/usr/local/bin/java" ] && [ -d "$SYNOPKG_PKGDEST/lib" ]; then
+		if [ "/usr/local/bin/java" -ef "$SYNOPKG_PKGDEST/bin/java" ] && [ -f "$SYNOPKG_PKGDEST/release" ]; then
 			exit 0
 		else
 			exit 150 # package is broken and should be reinstalled
