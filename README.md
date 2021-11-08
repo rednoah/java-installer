@@ -1,18 +1,24 @@
-# Unofficial Java Installer
+# Java Installer
 [![Github Releases](https://img.shields.io/github/downloads/rednoah/java-installer/total.svg)](https://github.com/rednoah/java-installer/releases)
 [![GitHub release](https://img.shields.io/github/release/rednoah/java-installer.svg)](https://jdk.java.net/)
 
 
 ## Introduction
-Synology DSM package for installing the latest Oracle Java binaries on Synology NAS devices.
+This repository maintains packages for installing the latest OpenJDK binaries on Synology NAS and QNAP NAS.
 
 
-## Installation on Synology NAS
+## Installation on Synology DSM
 Add the following __Package Source__ to Synology DSM ► Package Center ► Settings ► Package Sources:
-
+```
 https://get.filebot.net/syno/
+```
 
-On install, the package will download the latest [OpenJDK](https://jdk.java.net/) (250 MB) for your platform. This may take a while.
+
+## Installation on QNAP QTS
+Add the following __App Repository__ to QNAP QTS ► App Center ► Settings ► App Repository ► Add:
+```
+https://get.filebot.net/qnap/index.xml
+```
 
 
 ## Installation on Linux
