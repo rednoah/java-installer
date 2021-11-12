@@ -1,8 +1,9 @@
 // OpenJDK for x64 Windows / Linux / Mac
 def openjdk = [
-	[os: 'windows', arch: 'x64', pkg: 'windows-x64_bin.zip'],
-	[os: 'mac',     arch: 'x64', pkg: 'osx-x64_bin.tar.gz'],
-	[os: 'linux',   arch: 'x64', pkg: 'linux-x64_bin.tar.gz'],
+	[os: 'windows', arch: 'x64',     pkg: 'windows-x64_bin.zip'],
+	[os: 'mac',     arch: 'x64',     pkg: 'macos-x64_bin.tar.gz'],
+	[os: 'mac',     arch: 'aarch64', pkg: 'macos-aarch64_bin.tar.gz'],
+	[os: 'linux',   arch: 'x64',     pkg: 'linux-x64_bin.tar.gz'],
 	[os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64_bin.tar.gz']
 ]
 
@@ -12,15 +13,17 @@ def liberica = [
 	[type: 'jdk', os: 'linux',   arch: 'armv7l',  pkg: 'linux-arm32-vfp-hflt.tar.gz'],
 	[type: 'jdk', os: 'linux',   arch: 'ppc64le', pkg: 'linux-ppc64le.tar.gz'],
 	[type: 'jdk', os: 'linux',   arch: 'x86',     pkg: 'linux-i586.tar.gz'],
-	[type: 'jdk', os: 'windows', arch: 'x86',     pkg: 'windows-i586.zip'],
+	[type: 'jdk', os: 'windows', arch: 'x86',     pkg: 'windows-i586.zip']
 ]
 
 
 // Gluon JavaFX
 def javafx = [
-	[os: 'windows', arch: 'x64', pkg: 'windows-x64_bin-jmods.zip'],
-	[os: 'mac',     arch: 'x64', pkg: 'osx-x64_bin-jmods.zip'],
-	[os: 'linux',   arch: 'x64', pkg: 'linux-x64_bin-jmods.zip']
+	[os: 'windows', arch: 'x64',     pkg: 'windows-x64_bin-jmods.zip'],
+	[os: 'mac',     arch: 'x64',     pkg: 'osx-x64_bin-jmods.zip'],
+	[os: 'mac',     arch: 'aarch64', pkg: 'osx-aarch64_bin-jmods.zip'],
+	[os: 'linux',   arch: 'x64',     pkg: 'linux-x64_bin-jmods.zip'],
+	[os: 'linux',   arch: 'aarch64', pkg: 'linux-aarch64_bin-jmods.zip']
 ]
 
 
