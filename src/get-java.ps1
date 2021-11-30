@@ -39,7 +39,7 @@ Switch ("$os $arch $type") {
 		$JDK_URL = "@{jdk.mac.x64.url}"
 		$JDK_SHA256 = "@{jdk.mac.x64.sha256}"
 	}
-	"Darwin aarch64 jdk" {
+	"Darwin arm64 jdk" {
 		$JDK_URL = "@{jdk.mac.aarch64.url}"
 		$JDK_SHA256 = "@{jdk.mac.aarch64.sha256}"
 	}
@@ -66,7 +66,7 @@ Switch ("$os $arch $type") {
 		$JDK_URL = "@{jfx.mac.x64.url}"
 		$JDK_SHA256 = "@{jfx.mac.x64.sha256}"
 	}
-	"Darwin aarch64 jfx" {
+	"Darwin arm64 jfx" {
 		$JDK_URL = "@{jfx.mac.aarch64.url}"
 		$JDK_SHA256 = "@{jfx.mac.aarch64.sha256}"
 	}
