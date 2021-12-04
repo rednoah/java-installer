@@ -6,6 +6,7 @@
 	<property file="build-jdk.properties" />
 
 	<property name="dir.source" location="${basedir}/src" />
+	<property name="dir.bin" location="${basedir}/bin" />
 	<property name="dir.lib" location="${basedir}/lib" />
 	<property name="dir.build" location="${basedir}/build" />
 	<property name="dir.dist" location="${basedir}/dist" />
@@ -119,14 +120,16 @@
 
 
 	<target name="build">
+		<copy-replace todir="${dir.bin}">
+			<fileset dir="${dir.source}" />
+		</copy-replace>
+		<chmod perm="+x" type="file">
+			<fileset dir="${dir.bin}" includes="*.sh, *.ps1" />
+		</chmod>
+
 		<copy-replace todir="${dir.release}">
 			<fileset dir="${dir.source}" />
 		</copy-replace>
-
-		<chmod perm="+x" type="file">
-			<fileset dir="${dir.release}" includes="*.sh, *.ps1" />
-		</chmod>
-
 		<release-sign>
 			<fileset dir="${dir.release}" includes="*.sh, *.ps1" />
 		</release-sign>
