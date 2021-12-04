@@ -27,8 +27,8 @@ Switch ("$os $arch $type") {
 		$JDK_SHA256 = "@{jdk.linux.aarch64.sha256}"
 	}
 	"Linux armv7l jdk" {
-		$JDK_URL = "@{jdk.linux.armv7l.url}"
-		$JDK_SHA256 = "@{jdk.linux.armv7l.sha256}"
+		$JDK_URL = "@{jdk.linux.arm.url}"
+		$JDK_SHA256 = "@{jdk.linux.arm.sha256}"
 	}
 	"Linux ppc64le jdk" {
 		$JDK_URL = "@{jdk.linux.ppc64le.url}"
@@ -49,8 +49,8 @@ Switch ("$os $arch $type") {
 		$JDK_SHA256 = "@{jdk.windows.x64.sha256}"
 	}
 	"Windows x86 jdk" {
-		$JDK_URL = "@{jdk.windows.x86.url}"
-		$JDK_SHA256 = "@{jdk.windows.x86.sha256}"
+		$JDK_URL = "@{jdk.windows.x32.url}"
+		$JDK_SHA256 = "@{jdk.windows.x32.sha256}"
 	}
 
 	"Linux x86_64 jfx" {
