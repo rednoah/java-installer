@@ -41,6 +41,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 	adoptium.each{ jdk ->
 		jdk.with {
 			def pkg = assets[0].binaries.find{ a -> os == a.os && arch == a.architecture && 'jdk' == a.image_type }
+			println pkg.package.link
 
 			entry(key:"jdk.${os}.${arch}.url", value: pkg.package.link)
 			entry(key:"jdk.${os}.${arch}.sha256", value: pkg.package.checksum)
@@ -51,6 +52,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 		def build = properties.liberica_release
 		jdk.with {
 			def url = "https://download.bell-sw.com/java/${build}/bellsoft-${type}${build}-${pkg}"
+			println  url
 
 			def file = new File('cache', url.tokenize('/').last())
 			new AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
@@ -66,6 +68,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 		jfx.with {
 			def url = "https://download2.gluonhq.com/openjfx/${release}/openjfx-${release}_${pkg}"
 			def checksum = new URL("${url}.sha256").text.tokenize().first()
+			println url
 
 			entry(key:"jfx.${os}.${arch}.url", value: url)
 			entry(key:"jfx.${os}.${arch}.sha256", value: checksum)
