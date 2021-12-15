@@ -43,13 +43,9 @@ The script uses `7z` to extract the `*.tar.gz` archive, but it will _not_ modify
 
 
 ## Supported Platforms
-* Linux ARM v6/v7 Hard Float ABI (`armv7l`)
-* Linux ARM v8 Hard Float ABI (`armv8`)
-* Linux x86 (`i686`)
-* Linux x64 (`x86_64`)
-* Windows x86	(`x86`)
-* Windows x64	(`AMD64`)
-* macOS x64(`x86_64`)
+* Linux (`x86_64`, `aarch64`, `armv7l`, `i686`, `ppc64le`)
+* Windows (`x86_64`, `x86`)
+* macOS (`x86_64`, `arm64`)
 
 
 ## Package Sources
