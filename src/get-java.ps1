@@ -77,7 +77,7 @@ Switch ("$os $arch $type") {
 	}
 
 	default {
-		throw "CPU architecture not supported."
+		throw "Architecture not supported: $os $arch $type"
 	}
 }
 
