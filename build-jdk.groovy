@@ -41,6 +41,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 	adoptium.each{ jdk ->
 		jdk.with {
 			def pkg = assets[0].binaries.find{ a -> os == a.os && arch == a.architecture && 'jdk' == a.image_type }
+			println jdk
 			println pkg.package.link
 
 			entry(key:"jdk.${os}.${arch}.url", value: pkg.package.link)
