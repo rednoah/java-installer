@@ -41,11 +41,13 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 	adoptium.each{ jdk ->
 		jdk.with {
 			def pkg = assets[0].binaries.find{ a -> os == a.os && arch == a.architecture && 'jdk' == a.image_type }
-			println jdk
-			println pkg.package.link
-
-			entry(key:"jdk.${os}.${arch}.url", value: pkg.package.link)
-			entry(key:"jdk.${os}.${arch}.sha256", value: pkg.package.checksum)
+			if (pkg) {
+				println pkg.package.link
+				entry(key:"jdk.${os}.${arch}.url", value: pkg.package.link)
+				entry(key:"jdk.${os}.${arch}.sha256", value: pkg.package.checksum)
+			} else {
+				println "$jdk not found"
+			}
 		}
 	}
 
@@ -53,7 +55,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 		def build = properties.liberica_release
 		jdk.with {
 			def url = "https://download.bell-sw.com/java/${build}/bellsoft-${type}${build}-${pkg}"
-			println  url
+			println url
 
 			def file = new File('cache', url.tokenize('/').last())
 			new AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
