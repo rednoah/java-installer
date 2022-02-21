@@ -2,7 +2,7 @@
     "packages": [
         {
             "package": "java-installer",
-            "version": "2.16",
+            "version": "2.17",
             "dname": "Java Installer",
             "desc": "Java Installer will help you install and update Java. Supported platforms include armv7l, aarch64, i586 and x86_64 models. During the install, this package will download the latest OpenJDK binaries (180 MB) for your platform. This may take a while.",
             "maintainer": "rednoah",
@@ -16,10 +16,10 @@
             "thumbnail": [
                 "https://www.filebot.net/syno/java-installer-thumbnail.png"
             ],
-            "link": "https://github.com/rednoah/java-installer/releases/download/2.16/java-installer_2.16.spk",
-            "download_count": "41734",
-            "md5": "c7daa00301fe9dea2be8d3fb60e86973",
-            "sha256": "7408425cc67ea728428402da08ce3c7f25dd6be81d1f102cf7eb21624e797056",
+            "link": "https://github.com/rednoah/java-installer/releases/download/2.17/java-installer_2.17.spk",
+            "download_count": "63474",
+            "md5": "7bab008751b38245497193be45b8be2b",
+            "sha256": "d566e7bac3ed68ce207b356ceb7fb6652589d0083059e6c0188642b3a6b9c25a",
             "size": 40960
         }
     ]
