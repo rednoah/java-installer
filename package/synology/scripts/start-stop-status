@@ -40,7 +40,7 @@ case "$1" in
 		fi
 
 		# make sure that `java` is working
-		if "$SYNOPKG_PKGDEST/bin/java" > "$SYNOPKG_PKGDEST/version" 2>&1; then
+		if "$SYNOPKG_PKGDEST/bin/java" -version > "$SYNOPKG_PKGDEST/version" 2>&1; then
 			# display success message
 			(
 				echo '<p style="color:#0090D9">The latest OpenJDK has been installed successfully.</p><br>'

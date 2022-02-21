@@ -49,13 +49,18 @@ case "$1" in
 
 		if gpg --homedir "$SIGNATURE_GPG_HOME" --keyring "$SIGNATURE_PUBLIC_KEY" --trusted-key "$SIGNATURE_PUBLIC_KEY_ID" --status-fd 1 --verify "$SIGNATURE_FILE" "$INSTALLER_FILE" | tail -n 1 | grep "TRUST_ULTIMATE"; then
 			cd "$QPKG_ROOT"
-			chmod +x "$INSTALLER_FILE"
-			"$INSTALLER_FILE" install jdk
+			# fetch java binaries
+			chmod +x "$INSTALLER_FILE" && "$INSTALLER_FILE" fetch jdk
+			# remove existing java binaries
+			rm -rv bin include jmods lib conf legal man
+			# extract java binaries
+			tar --strip-components=1 -vxzf *.tar.gz && rm -v *.tar.gz
 		fi
 
-		if [ -x "$SYMLINK_JAVA" ]; then
+		# make sure that `java` is working
+		if "$QPKG_ROOT/bin/java" -version > "$QPKG_ROOT/version" 2>&1; then
 			# display success message
-			INFO="$("$SYMLINK_JAVA" -version 2>&1 | head -n1)"
+			INFO="$("$QPKG_ROOT/bin/java" -version 2>&1 | head -n1)"
 			/sbin/log_tool -t0 -uSystem -p127.0.0.1 -mlocalhost -a "[Java Installer] $INFO"
 		else
 			# display error message
@@ -78,7 +83,7 @@ case "$1" in
 		fi
 
 		# add additional symlinks in more persistent folders
-		JAVA_EXE=$(find $QPKG_ROOT -name java -type f | grep -v /jre/ | sort | tail -n 1)
+		JAVA_EXE=$(find $QPKG_ROOT -name java -type f | head -n1)
 		JAVA_BIN=$(dirname $JAVA_EXE)
 		JAVA_HOME=$(dirname $JAVA_BIN)
 
