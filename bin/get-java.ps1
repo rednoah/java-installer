@@ -49,8 +49,8 @@ Switch ("$os $arch $type") {
 		$JDK_SHA256 = "d083479ca927dce2f586f779373d895e8bf668c632505740279390384edf03fa"
 	}
 	"Windows x86 jdk" {
-		$JDK_URL = "@{jdk.windows.x32.url}"
-		$JDK_SHA256 = "@{jdk.windows.x32.sha256}"
+		$JDK_URL = "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_x86-32_windows_hotspot_17.0.1_12.zip"
+		$JDK_SHA256 = "604919b02caa5506e8c68888d6410384234e9a9fb0dbc6a0d97eb7652da4cf66"
 	}
 
 	"Linux x86_64 jfx" {
