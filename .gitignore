@@ -4,3 +4,5 @@ release
 cache
 
 *.properties
+
+.DS_Store
