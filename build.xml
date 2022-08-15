@@ -121,6 +121,7 @@
 
 
 	<target name="build">
+		<delete dir="${dir.bin}" />
 		<copy-replace todir="${dir.bin}">
 			<fileset dir="${dir.source}" />
 		</copy-replace>
@@ -128,10 +129,10 @@
 			<fileset dir="${dir.bin}" includes="*.sh, *.ps1" />
 		</chmod>
 
+		<delete dir="${dir.release}" />
 		<copy-replace todir="${dir.release}">
 			<fileset dir="${dir.source}" />
 		</copy-replace>
-
 		<release-sign dir="${dir.release}" />
 	</target>
 
