@@ -8,6 +8,7 @@
 	<property name="dir.source" location="${basedir}/src" />
 	<property name="dir.bin" location="${basedir}/bin" />
 	<property name="dir.lib" location="${basedir}/lib" />
+	<property name="dir.gpg" location="${basedir}/gpg" />
 	<property name="dir.build" location="${basedir}/build" />
 	<property name="dir.dist" location="${basedir}/dist" />
 	<property name="dir.package" location="${basedir}/package" />
@@ -130,9 +131,8 @@
 		<copy-replace todir="${dir.release}">
 			<fileset dir="${dir.source}" />
 		</copy-replace>
-		<release-sign>
-			<fileset dir="${dir.release}" includes="*.sh, *.ps1" />
-		</release-sign>
+
+		<release-sign dir="${dir.release}" />
 	</target>
 
 
@@ -210,12 +210,16 @@
 
 
 	<macrodef name="release-sign" description="Sign files with GnuPG">
-		<element name="filesets" implicit="yes" />
+		<attribute name="dir" />
+		<element name="includes" implicit="yes" optional="yes" />
 		<sequential>
-			<apply executable="gpg" verbose="yes" failonerror="yes">
-				<arg line="--armor --detach-sign --verbose --batch --yes --local-user ${maintainer}" />
+			<apply executable="docker" verbose="yes" failonerror="yes">
+				<arg line="run --rm -v @{dir}:@{dir} -v ${dir.gpg}:/root/.gnupg fedora:36" />
+				<arg line="gpg --armor --detach-sign --verbose --batch --yes --local-user ${maintainer}" />
 				<srcfile />
-				<filesets />
+				<fileset dir="@{dir}">
+					<includes />
+				</fileset>
 			</apply>
 		</sequential>
 	</macrodef>

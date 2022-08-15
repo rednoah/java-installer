@@ -1,8 +1,9 @@
-cache
 lib
 build
 dist
 release
+cache
+gpg
 
 *.properties
 
