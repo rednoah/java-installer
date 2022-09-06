@@ -57,9 +57,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 			def url = "https://download.bell-sw.com/java/${build}/bellsoft-${type}${build}-${pkg}"
 			println url
 
-			def file = new File('cache', url.tokenize('/').last())
-			new AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
-			def checksum = file.bytes.digest('SHA-256').padLeft(64, '0')
+			def checksum = new URL(url).bytes.digest('SHA-256').padLeft(64, '0')
 
 			entry(key:"${type}.${os}.${arch}.url", value: url)
 			entry(key:"${type}.${os}.${arch}.sha256", value: checksum)

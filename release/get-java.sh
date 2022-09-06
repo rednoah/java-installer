@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Java Installer for OpenJDK 18.0.2
+# Java Installer for OpenJDK 18.0.2.1
 
 COMMAND=${1:-get}        # get | install
 TYPE=${2:-jdk}           # jre | jdk
@@ -9,42 +9,42 @@ OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
 case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2%2B9/OpenJDK18U-jdk_x64_linux_hotspot_18.0.2_9.tar.gz"
-		JDK_SHA256="5e5dbf6f1308829528778e00631ec83e252d90fc444503091e71a66465e88941"
+		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2.1%2B1/OpenJDK18U-jdk_x64_linux_hotspot_18.0.2.1_1.tar.gz"
+		JDK_SHA256="7d6beba8cfc0a8347f278f7414351191a95a707d46b6586e9a786f2669af0f8b"
 	;;
 	"Linux i686 jdk")
-		JDK_URL="https://download.bell-sw.com/java/18.0.2+10/bellsoft-jdk18.0.2+10-linux-i586.tar.gz"
-		JDK_SHA256="e163f16eea369d40ad24e45d0b129063ca01a7dc725e5e1e703923292d8a419d"
+		JDK_URL="https://download.bell-sw.com/java/18.0.2.1+1/bellsoft-jdk18.0.2.1+1-linux-i586.tar.gz"
+		JDK_SHA256="1764b595ffc8cec36b4b6a895b2de3bb7fc3a69b1cc9360056659e9641c249c0"
 	;;
 	"Linux aarch64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2%2B9/OpenJDK18U-jdk_aarch64_linux_hotspot_18.0.2_9.tar.gz"
-		JDK_SHA256="f4aca720bfcea4df7f02b59de1f68648632070c492f210b9e41e69170ee5e48f"
+		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2.1%2B1/OpenJDK18U-jdk_aarch64_linux_hotspot_18.0.2.1_1.tar.gz"
+		JDK_SHA256="262be608e266fd76d7496af83b2832be853c3aaf7460d6a4da198cd40db74553"
 	;;
 	"Linux armv7l jdk")
-		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2%2B9/OpenJDK18U-jdk_arm_linux_hotspot_18.0.2_9.tar.gz"
-		JDK_SHA256="52ec0ddee9ff16397de2c9f614ff6b5464220bd5c3d705e8b89d28fd478feb60"
+		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2.1%2B1/OpenJDK18U-jdk_arm_linux_hotspot_18.0.2.1_1.tar.gz"
+		JDK_SHA256="4cd49b92d13847bfad7b3bf635cca349e2c89c7641748c5288bc40d612cdbbd6"
 	;;
 	"Linux ppc64le jdk")
-		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2%2B9/OpenJDK18U-jdk_ppc64le_linux_hotspot_18.0.2_9.tar.gz"
-		JDK_SHA256="4262677f8b6054d26f1c0042ac47dfbaab6a18d7dc73fa807b15ee03cdcbdece"
+		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2.1%2B1/OpenJDK18U-jdk_ppc64le_linux_hotspot_18.0.2.1_1.tar.gz"
+		JDK_SHA256="030261a2189a8f773fda543a85ab9beb4c430bf81ca5be37cf6cb970b5ccbb03"
 	;;
 
 	"Darwin x86_64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2%2B9/OpenJDK18U-jdk_x64_mac_hotspot_18.0.2_9.tar.gz"
-		JDK_SHA256="f96196e9eddad09544733af46d33ac5d5a44178316248e0b907c7f6cd4955bcb"
+		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2.1%2B1/OpenJDK18U-jdk_x64_mac_hotspot_18.0.2.1_1.tar.gz"
+		JDK_SHA256="2ed916b0c9d197a6bf71b76e84d94125023c2609e0a9b22c64553eff5c9c29c1"
 	;;
 	"Darwin arm64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2%2B9/OpenJDK18U-jdk_aarch64_mac_hotspot_18.0.2_9.tar.gz"
-		JDK_SHA256="d84ec85a9e6b5e22f6bac7e96cc764f5369da393ab233149bfbcbacf1e7de9b7"
+		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2.1%2B1/OpenJDK18U-jdk_aarch64_mac_hotspot_18.0.2.1_1.tar.gz"
+		JDK_SHA256="c5ec423f52d8f3aa632941f29fd289f2e31dce5fe6f3abed9b72bd374f54cd41"
 	;;
 
 	"Windows x86_64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2%2B9/OpenJDK18U-jdk_x64_windows_hotspot_18.0.2_9.zip"
-		JDK_SHA256="09cfeba06d41637afaf29a92964d61e9a2c98fe70a10e5648846104c8714ff75"
+		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2.1%2B1/OpenJDK18U-jdk_x64_windows_hotspot_18.0.2.1_1.zip"
+		JDK_SHA256="0846e98eaecc62aeba57bc1a522048fe3517177e36654f5d727abf8ce174c9b7"
 	;;
 	"Windows x86 jdk")
-		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2%2B9/OpenJDK18U-jdk_x86-32_windows_hotspot_18.0.2_9.zip"
-		JDK_SHA256="fbaa6fdbf4b6878682282337f55f8487c8198b8e4599ab60ed0c5ec88e626627"
+		JDK_URL="https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2.1%2B1/OpenJDK18U-jdk_x86-32_windows_hotspot_18.0.2.1_1.zip"
+		JDK_SHA256="2b3dfe42fe94946d2eced5da9354ae093de06c28797924e9597da37969cc5861"
 	;;
 
 	"Linux x86_64 jfx")
