@@ -53,11 +53,13 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 
 	liberica.each{ jdk ->
 		def build = properties.liberica_release
+		def cache = properties.'dir.cache'
+
 		jdk.with {
 			def url = "https://download.bell-sw.com/java/${build}/bellsoft-${type}${build}-${pkg}"
 			println url
 
-			def file = new File('cache', url.tokenize('/').last())
+			def file = new File(cache, url.tokenize('/').last())
 			new AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
 			def checksum = file.bytes.digest('SHA-256').padLeft(64, '0')
 

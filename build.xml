@@ -9,6 +9,7 @@
 	<property name="dir.bin" location="${basedir}/bin" />
 	<property name="dir.lib" location="${basedir}/lib" />
 	<property name="dir.gpg" location="${basedir}/gpg" />
+	<property name="dir.cache" location="${basedir}/cache" />
 	<property name="dir.build" location="${basedir}/build" />
 	<property name="dir.dist" location="${basedir}/dist" />
 	<property name="dir.package" location="${basedir}/package" />
@@ -150,6 +151,7 @@
 
 
 	<target name="update-jdk" description="Update JDK build properties">
+		<mkdir dir="${dir.cache}" />
 		<delete file="build-jdk.properties" />
 		<groovy:groovy src="build-jdk.groovy" />
 	</target>
