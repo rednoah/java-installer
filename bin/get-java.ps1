@@ -1,4 +1,4 @@
-# Java Installer for OpenJDK 19
+# Java Installer for OpenJDK 19.0.1
 
 
 param (
@@ -15,42 +15,42 @@ $ErrorActionPreference = "Stop"
 
 Switch ("$os $arch $type") {
 	"Linux x86_64 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19%2B36/OpenJDK19U-jdk_x64_linux_hotspot_19_36.tar.gz"
-		$JDK_SHA256 = "d10becfc1ea6586180246455ee8d462875f97655416a7d7c5a1c60d0570dbc8f"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.1%2B10/OpenJDK19U-jdk_x64_linux_hotspot_19.0.1_10.tar.gz"
+		$JDK_SHA256 = "163da7ea140210bae97c6a4590c757858ab4520a78af0e3e33129863d4087552"
 	}
 	"Linux i686 jdk" {
 		$JDK_URL = "https://download.bell-sw.com/java/19.0.1+11/bellsoft-jdk19.0.1+11-linux-i586.tar.gz"
 		$JDK_SHA256 = "f452cd7f8b8b83a528f32c53970c6a7047323eb9a10cb5fc357ca7a062892da9"
 	}
 	"Linux aarch64 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19%2B36/OpenJDK19U-jdk_aarch64_linux_hotspot_19_36.tar.gz"
-		$JDK_SHA256 = "9b5de40b0f6fe0ab32e8d035720dbbc87bf41b758ed67351ad781ca6505f5294"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.1%2B10/OpenJDK19U-jdk_aarch64_linux_hotspot_19.0.1_10.tar.gz"
+		$JDK_SHA256 = "5e8d7b3189364afd78d936bad140dbe1e7025d4b96d530ed5536d035c21afb7c"
 	}
 	"Linux armv7l jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19%2B36/OpenJDK19U-jdk_arm_linux_hotspot_19_36.tar.gz"
-		$JDK_SHA256 = "34a786548033391de80b857fe02a9c7bd42fcb94243e7273e89012df73f1adef"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.1%2B10/OpenJDK19U-jdk_arm_linux_hotspot_19.0.1_10.tar.gz"
+		$JDK_SHA256 = "5f404ae08d7c49f22fe04c04ec39d7e7b17cae2007b9513ad1a7a1164174898b"
 	}
 	"Linux ppc64le jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19%2B36/OpenJDK19U-jdk_ppc64le_linux_hotspot_19_36.tar.gz"
-		$JDK_SHA256 = "55cc9382227433fa7cc1486a12af59d5bcbea9c40eaeae9608278e056b7d86db"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.1%2B10/OpenJDK19U-jdk_ppc64le_linux_hotspot_19.0.1_10.tar.gz"
+		$JDK_SHA256 = "79320712bbef13825a0aa308621006f32e54f503142737fb21ff085185a61a96"
 	}
 
 	"Darwin x86_64 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19%2B36/OpenJDK19U-jdk_x64_mac_hotspot_19_36.tar.gz"
-		$JDK_SHA256 = "6ee7e6b7efa083ef7a1f206807230a0c5c1ab79609b1b27e0c97211cb01c4556"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.1%2B10/OpenJDK19U-jdk_x64_mac_hotspot_19.0.1_10.tar.gz"
+		$JDK_SHA256 = "0d80a8787fa97f5fc2f0000a849b54f4d41c5b87726c29ea1de215e382c8380c"
 	}
 	"Darwin arm64 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19%2B36/OpenJDK19U-jdk_aarch64_mac_hotspot_19_36.tar.gz"
-		$JDK_SHA256 = "8ab27c4038dce4be7b0f73d3e4c6c9271f8f11e7e5d9c0a0bf37505986420ccf"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.1%2B10/OpenJDK19U-jdk_aarch64_mac_hotspot_19.0.1_10.tar.gz"
+		$JDK_SHA256 = "2be4ffbf7c59b3148886b48ecf3f7d7edb7c745917ceae2a6be145a4678bf014"
 	}
 
 	"Windows x86_64 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19%2B36/OpenJDK19U-jdk_x64_windows_hotspot_19_36.zip"
-		$JDK_SHA256 = "4384f2dbe0e6a213172f2737475ce68728281cdeb30df2b571b1429bb56c6561"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.1%2B10/OpenJDK19U-jdk_x64_windows_hotspot_19.0.1_10.zip"
+		$JDK_SHA256 = "03f72bd4a14d9b4f54e27d43be06510ca5d71c51329d7b5e0637bb9715f2f6c8"
 	}
 	"Windows x86 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19%2B36/OpenJDK19U-jdk_x86-32_windows_hotspot_19_36.zip"
-		$JDK_SHA256 = "9977ecc923e79a7ad3c1177243d047415faa174b79f9b2eaf1783023f0c9a4ab"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.1%2B10/OpenJDK19U-jdk_x86-32_windows_hotspot_19.0.1_10.zip"
+		$JDK_SHA256 = "2e70bb41b21a290abefbf2e34fce793ed2558421c221f610fedd552cac6df4b4"
 	}
 
 	"Linux x86_64 jfx" {
