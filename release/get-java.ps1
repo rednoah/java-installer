@@ -1,4 +1,4 @@
-# Java Installer for OpenJDK 17.0.5
+# Java Installer for OpenJDK 19.0.2
 
 
 param (
@@ -15,65 +15,65 @@ $ErrorActionPreference = "Stop"
 
 Switch ("$os $arch $type") {
 	"Linux x86_64 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.5%2B8/OpenJDK17U-jdk_x64_linux_hotspot_17.0.5_8.tar.gz"
-		$JDK_SHA256 = "482180725ceca472e12a8e6d1a4af23d608d78287a77d963335e2a0156a020af"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_x64_linux_hotspot_19.0.2_7.tar.gz"
+		$JDK_SHA256 = "3a3ba7a3f8c3a5999e2c91ea1dca843435a0d1c43737bd2f6822b2f02fc52165"
 	}
 	"Linux i686 jdk" {
-		$JDK_URL = "https://download.bell-sw.com/java/17.0.5+8/bellsoft-jdk17.0.5+8-linux-i586.tar.gz"
-		$JDK_SHA256 = "0edf4722b22154882f049becf6a5924f3228754462dc96d4d78129186cb747eb"
+		$JDK_URL = "https://download.bell-sw.com/java/19.0.2+9/bellsoft-jdk19.0.2+9-linux-i586.tar.gz"
+		$JDK_SHA256 = "c962d5c501f19072c4961a6413225e99e433112adc8459c954b994224e824b55"
 	}
 	"Linux aarch64 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.5%2B8/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.5_8.tar.gz"
-		$JDK_SHA256 = "1c26c0e09f1641a666d6740d802beb81e12180abaea07b47c409d30c7f368109"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_aarch64_linux_hotspot_19.0.2_7.tar.gz"
+		$JDK_SHA256 = "1c4be9aa173cb0deb0d215643d9509c8900e5497290b29eee4bee335fa57984f"
 	}
 	"Linux armv7l jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.5%2B8/OpenJDK17U-jdk_arm_linux_hotspot_17.0.5_8.tar.gz"
-		$JDK_SHA256 = "e7c81596f67b6325036e9182d012f2266ced5663c5d4b0de0540ce62dcc67718"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_arm_linux_hotspot_19.0.2_7.tar.gz"
+		$JDK_SHA256 = "6a51cb3868b5a3b81848a0d276267230ff3f8639f20ba9ae9ef1d386440bf1fd"
 	}
 	"Linux ppc64le jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.5%2B8/OpenJDK17U-jdk_ppc64le_linux_hotspot_17.0.5_8.tar.gz"
-		$JDK_SHA256 = "a426a4e2cbc29f46fa686bea8b26613f7b7a9a772a77fed0d40dfe05295be883"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_ppc64le_linux_hotspot_19.0.2_7.tar.gz"
+		$JDK_SHA256 = "173d1256dfb9d13d309b5390e6bdf72d143b512201b0868f9d349d5ed3d64072"
 	}
 
 	"Darwin x86_64 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.5%2B8/OpenJDK17U-jdk_x64_mac_hotspot_17.0.5_8.tar.gz"
-		$JDK_SHA256 = "94fe50982b09a179e603a096e83fd8e59fd12c0ae4bcb37ae35f00ef30a75d64"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_x64_mac_hotspot_19.0.2_7.tar.gz"
+		$JDK_SHA256 = "f59d4157b3b53a35e72db283659d47f14aecae0ff5936d5f8078000504299da6"
 	}
 	"Darwin arm64 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.5%2B8/OpenJDK17U-jdk_aarch64_mac_hotspot_17.0.5_8.tar.gz"
-		$JDK_SHA256 = "2dc3e425b52d1cd2915d93af5e468596b9e6a90112056abdcebac8b65bf57049"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_aarch64_mac_hotspot_19.0.2_7.tar.gz"
+		$JDK_SHA256 = "c419330cc8d6b9974d3bf1937f8f0e747c34c469afd5c546831d35aa19e03d49"
 	}
 
 	"Windows x86_64 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.5%2B8/OpenJDK17U-jdk_x64_windows_hotspot_17.0.5_8.zip"
-		$JDK_SHA256 = "3cdcd859c8421a0681e260dc4fbf46b37fb1211f47beb2326a00398ecc52fde0"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_x64_windows_hotspot_19.0.2_7.zip"
+		$JDK_SHA256 = "78406ce8ca86909634b5d07b511f6e4b5c3f91fa1b841411ae1b64f0f7761839"
 	}
 	"Windows x86 jdk" {
-		$JDK_URL = "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.5%2B8/OpenJDK17U-jdk_x86-32_windows_hotspot_17.0.5_8.zip"
-		$JDK_SHA256 = "a8bb5b5e56b8ab91d4f3d40f193ca97dd16df270e3a3256b38d825fad6c4ef38"
+		$JDK_URL = "https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_x86-32_windows_hotspot_19.0.2_7.zip"
+		$JDK_SHA256 = "48a35009f4a3cf3ccb3006e0a72da57c1aaf3b98a635d0d8e55fc2237da3e08a"
 	}
 
 	"Linux x86_64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/19/openjfx-19_linux-x64_bin-jmods.zip"
-		$JDK_SHA256 = "452d030213b4df3047a5a542fc3858d4f96cba73941c5386b4b2759c4d56ba46"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/19.0.2.1/openjfx-19.0.2.1_linux-x64_bin-jmods.zip"
+		$JDK_SHA256 = "252325b8265fe6c658d6532f6a3f7c0cd49102a67e376f76ab4afc22f1b3535f"
 	}
 	"Linux aarch64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/19/openjfx-19_linux-aarch64_bin-jmods.zip"
-		$JDK_SHA256 = "b85a760c1f5b6c04587d89aaf97fe8e74af615495b9e90195b4b4ff6ddc7ab03"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/19.0.2.1/openjfx-19.0.2.1_linux-aarch64_bin-jmods.zip"
+		$JDK_SHA256 = "b50d460f3d4acfbc97138fa1416ac981c4773f5732cdd005ddc083010b5a8f03"
 	}
 
 	"Darwin x86_64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/19/openjfx-19_osx-x64_bin-jmods.zip"
-		$JDK_SHA256 = "52295b26fca577bb1147417d47cb72fc8f97f86282a0d7ac78710e9eb37a0534"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/19.0.2.1/openjfx-19.0.2.1_osx-x64_bin-jmods.zip"
+		$JDK_SHA256 = "13cc638345c8eaf69d0ec3992e900fecba6220250b7793da87067c239abb2b12"
 	}
 	"Darwin arm64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/19/openjfx-19_osx-aarch64_bin-jmods.zip"
-		$JDK_SHA256 = "95ea7c89df852fd86c2ebadf4d2c654efec759f577d6fa9e452b41dd0a25b586"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/19.0.2.1/openjfx-19.0.2.1_osx-aarch64_bin-jmods.zip"
+		$JDK_SHA256 = "5f638128c29a22880e63c998070b1a5e094dec12234713698f98ed646557fca4"
 	}
 
 	"Windows x86_64 jfx" {
-		$JDK_URL = "https://download2.gluonhq.com/openjfx/19/openjfx-19_windows-x64_bin-jmods.zip"
-		$JDK_SHA256 = "fe41ccb96866cdc92e08043520bf58689ba808d6418bae6f77ca48960dc1317f"
+		$JDK_URL = "https://download2.gluonhq.com/openjfx/19.0.2.1/openjfx-19.0.2.1_windows-x64_bin-jmods.zip"
+		$JDK_SHA256 = "b7cf2cad2468842b3b78d99f6c0555771499a36fa1f1ee3dd1b9a4597f1fab86"
 	}
 
 	default {
