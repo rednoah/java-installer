@@ -29,32 +29,41 @@ case "$1" in
 	install)
 		curl -fsSL -o "$SIGNATURE_FILE.latest" -z "$SIGNATURE_FILE" --retry 5 "$SIGNATURE_URL"
 
-		# update timestamp
-		touch "$SIGNATURE_FILE"
+		# curl may have failed due to a network error
+		if [ -f "$SIGNATURE_FILE.latest" ]; then
+			# update timestamp
+			touch "$SIGNATURE_FILE"
 
-		# check if signature file has changed, since GitHub doesn't support If-Modified-Since HTTP requests
-		if cmp "$SIGNATURE_FILE.latest" "$SIGNATURE_FILE"; then
-			echo "$(date): NO UPDATE"
-			exit 0
-		else
-			echo "[$(date): AUTO UPDATE"
-			mv "$SIGNATURE_FILE.latest" "$SIGNATURE_FILE"
-		fi
+			# check if signature file has changed, since GitHub doesn't support If-Modified-Since HTTP requests
+			if cmp "$SIGNATURE_FILE.latest" "$SIGNATURE_FILE"; then
+				echo "$(date): NO UPDATE"
+				exit 0
+			else
+				echo "[$(date): AUTO UPDATE"
+				mv "$SIGNATURE_FILE.latest" "$SIGNATURE_FILE"
+			fi
 
-		# fetch installer
-		curl -fsSL -o "$INSTALLER_FILE" -z "$INSTALLER_FILE" --retry 5 "$INSTALLER_URL"
+			# fetch installer
+			curl -fsSL -o "$INSTALLER_FILE" -z "$INSTALLER_FILE" --retry 5 "$INSTALLER_URL"
 
-		# verify signature and run installer
-		mkdir -p -m 700 "$SIGNATURE_GPG_HOME"
+			# verify signature and run installer
+			mkdir -p -m 700 "$SIGNATURE_GPG_HOME"
 
-		if gpg --homedir "$SIGNATURE_GPG_HOME" --keyring "$SIGNATURE_PUBLIC_KEY" --trusted-key "$SIGNATURE_PUBLIC_KEY_ID" --status-fd 1 --verify "$SIGNATURE_FILE" "$INSTALLER_FILE" | tail -n 1 | grep "TRUST_ULTIMATE"; then
-			cd "$QPKG_ROOT"
-			# fetch java binaries
-			chmod +x "$INSTALLER_FILE" && "$INSTALLER_FILE" fetch jdk
-			# remove existing java binaries
-			rm -rv bin include jmods lib conf legal man
-			# extract java binaries
-			tar --strip-components=1 -vxzf *.tar.gz && rm -v *.tar.gz
+			if gpg --homedir "$SIGNATURE_GPG_HOME" --keyring "$SIGNATURE_PUBLIC_KEY" --trusted-key "$SIGNATURE_PUBLIC_KEY_ID" --status-fd 1 --verify "$SIGNATURE_FILE" "$INSTALLER_FILE" | tail -n 1 | grep "TRUST_ULTIMATE"; then
+				cd "$QPKG_ROOT"
+				# fetch java binaries
+				chmod +x "$INSTALLER_FILE" && "$INSTALLER_FILE" fetch jdk
+				# extract java binaries
+				for TAR_FILE in *.tar.gz; do
+					# curl may have failed due to a network error
+					if [ -f "$TAR_FILE" ]; then
+						# remove existing java binaries
+						rm -rv bin include jmods lib conf legal man
+						# extract java binaries
+						tar --strip-components=1 -vxzf "$TAR_FILE" && rm -v "$TAR_FILE"
+					fi
+				done
+			fi
 		fi
 
 		# make sure that `java` is working
