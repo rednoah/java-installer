@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Java Installer for OpenJDK 17.0.8
+# Java Installer for OpenJDK 17.0.10
 
 COMMAND=${1:-get}        # get | install
 TYPE=${2:-jdk}           # jre | jdk
@@ -9,42 +9,42 @@ OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
 case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8%2B7/OpenJDK17U-jdk_x64_linux_hotspot_17.0.8_7.tar.gz"
-		JDK_SHA256="aa5fc7d388fe544e5d85902e68399d5299e931f9b280d358a3cbee218d6017b0"
+		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10%2B7/OpenJDK17U-jdk_x64_linux_hotspot_17.0.10_7.tar.gz"
+		JDK_SHA256="a8fd07e1e97352e97e330beb20f1c6b351ba064ca7878e974c7d68b8a5c1b378"
 	;;
 	"Linux i686 jdk")
-		JDK_URL="https://download.bell-sw.com/java/17.0.8+7/bellsoft-jdk17.0.8+7-linux-i586.tar.gz"
-		JDK_SHA256="0a14bcdbbaec3c0d6f03491335689aa2445f773936ebb9bcca33e96a37ca1a47"
+		JDK_URL="https://download.bell-sw.com/java/17.0.10+13/bellsoft-jdk17.0.10+13-linux-i586.tar.gz"
+		JDK_SHA256="9715485192eb120c97e2e98ae662274218451a99bad11d6d33bfd311abe58f62"
 	;;
 	"Linux aarch64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8%2B7/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.8_7.tar.gz"
-		JDK_SHA256="c43688163cfdcb1a6e6fe202cc06a51891df746b954c55dbd01430e7d7326d00"
+		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10%2B7/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.10_7.tar.gz"
+		JDK_SHA256="6e4201abfb3b020c1fb899b7ac063083c271250bf081f3aa7e63d91291a90b74"
 	;;
 	"Linux armv7l jdk")
-		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8%2B7/OpenJDK17U-jdk_arm_linux_hotspot_17.0.8_7.tar.gz"
-		JDK_SHA256="33d972efd78b70a07aed793a6ebcb52a5129707e8c62268e478d1c2df15898e1"
+		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10%2B7/OpenJDK17U-jdk_arm_linux_hotspot_17.0.10_7.tar.gz"
+		JDK_SHA256="9bb8ccb9993f85d07ca3d834354ce426857793262bea8dab861b0aebb152d89c"
 	;;
 	"Linux ppc64le jdk")
-		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8%2B7/OpenJDK17U-jdk_ppc64le_linux_hotspot_17.0.8_7.tar.gz"
-		JDK_SHA256="88f5d14cc84a4bcfe50aa275092ae97a0edf7205269ed12c1972bf613bc52b1e"
+		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10%2B7/OpenJDK17U-jdk_ppc64le_linux_hotspot_17.0.10_7.tar.gz"
+		JDK_SHA256="f5fc5c9273b722ad73241a5e84feb4eba21697a57ba718dd16cfbddda45a6a4b"
 	;;
 
 	"Darwin x86_64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8%2B7/OpenJDK17U-jdk_x64_mac_hotspot_17.0.8_7.tar.gz"
-		JDK_SHA256="6fea89cea64a0f56ecb9e5d746b4921d2b0a80aa65c92b265ee9db52b44f4d93"
+		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10%2B7/OpenJDK17U-jdk_x64_mac_hotspot_17.0.10_7.tar.gz"
+		JDK_SHA256="e16ee89d3304bb2ba706f9a7b0ba279725c2aea55d5468336f8de4bb859f300d"
 	;;
 	"Darwin arm64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8%2B7/OpenJDK17U-jdk_aarch64_mac_hotspot_17.0.8_7.tar.gz"
-		JDK_SHA256="105d1ada42927fccde215e8c80b43221cd5aad42e6183819c367234ac062fc10"
+		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10%2B7/OpenJDK17U-jdk_aarch64_mac_hotspot_17.0.10_7.tar.gz"
+		JDK_SHA256="a6ec3b94f61695e8f445ee508411c56a2ce0cabc16ea4c4296ff062d13559d92"
 	;;
 
 	"Windows x86_64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8%2B7/OpenJDK17U-jdk_x64_windows_hotspot_17.0.8_7.zip"
-		JDK_SHA256="341a7243778802019a100ba7ae32a05a3f4ae5fd64dbf2a970d02f07c7d1c804"
+		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10%2B7/OpenJDK17U-jdk_x64_windows_hotspot_17.0.10_7.zip"
+		JDK_SHA256="fa963bc6fa54c3537c663d444c7bb4aa8ae9939cba8fadaf672311f352835060"
 	;;
 	"Windows x86 jdk")
-		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8%2B7/OpenJDK17U-jdk_x86-32_windows_hotspot_17.0.8_7.zip"
-		JDK_SHA256="12f210d6beb3c3573c14525242144aae15cdc27f29401698a065375eab0c91d0"
+		JDK_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10%2B7/OpenJDK17U-jdk_x86-32_windows_hotspot_17.0.10_7.zip"
+		JDK_SHA256="11667e9e7bbcb980430d6cc630553162a0c18a4238c4b040bb671cd806077106"
 	;;
 
 	"Linux x86_64 jfx")
