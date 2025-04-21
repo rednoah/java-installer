@@ -61,7 +61,7 @@ ant.propertyfile(file: 'build-jdk.properties', comment: "${name} ${version} bina
 			println url
 
 			def file = new File(cache, url.tokenize('/').last())
-			new AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
+			new groovy.ant.AntBuilder().get(src: url, dest: file, skipExisting: 'yes')
 			def checksum = file.bytes.digest('SHA-256').padLeft(64, '0')
 
 			entry(key:"${type}.${os}.${arch}.url", value: url)
