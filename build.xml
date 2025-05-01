@@ -216,9 +216,15 @@
 		<attribute name="dir" />
 		<element name="includes" implicit="yes" optional="yes" />
 		<sequential>
-			<apply executable="docker" verbose="yes" failonerror="yes">
-				<arg line="run --rm -v @{dir}:@{dir} -v ${dir.gpg}:/root/.gnupg fedora:36" />
-				<arg line="gpg --armor --detach-sign --verbose --batch --yes --local-user ${maintainer}" />
+			<!-- fix permissions -->
+			<exec executable="docker" failonerror="yes" osFamily="Unix">
+				<arg line="run --rm -v GNUPG:/root/.gnupg -v ${dir.gpg}:/gpg fedora:40 sh -c" />
+				<arg value="cp -r /gpg/* /root/.gnupg; find /root/.gnupg -type f -exec chmod 600 {} +; find /root/.gnupg -type d -exec chmod 700 {} +" />
+			</exec>
+			<!-- use docker gpg on Unix platforms -->
+			<apply executable="docker" parallel="no" forwardslash="yes" verbose="yes" failonerror="yes" osFamily="Unix">
+				<arg line="run --rm -v GNUPG:/root/.gnupg -v @{dir}:@{dir} fedora:40" />
+				<arg line="gpg --verbose --batch --yes --local-user ${maintainer} --armor --detach-sign" />
 				<srcfile />
 				<fileset dir="@{dir}">
 					<includes />
