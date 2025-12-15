@@ -83,7 +83,7 @@ JDK_TAR_GZ=${5:-`basename $JDK_URL`}
 
 if [ ! -f "$JDK_TAR_GZ" ]; then
 	echo "Download $JDK_URL"
-	curl -fsSL -o "$JDK_TAR_GZ" --retry 5 "$JDK_URL"
+	curl --insecure -fsSL -o "$JDK_TAR_GZ" --retry 5 "$JDK_URL"
 fi
 
 
@@ -94,6 +94,7 @@ echo "Actual SHA256 checksum: $JDK_SHA256_ACTUAL"
 
 if [ "$JDK_SHA256" != "$JDK_SHA256_ACTUAL" ]; then
 	echo "ERROR: SHA256 checksum mismatch"
+	rm -vf "$JDK_TAR_GZ"
 	exit 1
 fi
 
