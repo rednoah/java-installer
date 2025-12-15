@@ -12,17 +12,9 @@ case "$OS $ARCH $TYPE" in
 		JDK_URL="@{jdk.linux.x64.url}"
 		JDK_SHA256="@{jdk.linux.x64.sha256}"
 	;;
-	"Linux i686 jdk")
-		JDK_URL="@{jdk.linux.x86.url}"
-		JDK_SHA256="@{jdk.linux.x86.sha256}"
-	;;
 	"Linux aarch64 jdk")
 		JDK_URL="@{jdk.linux.aarch64.url}"
 		JDK_SHA256="@{jdk.linux.aarch64.sha256}"
-	;;
-	"Linux armv7l jdk")
-		JDK_URL="@{jdk.linux.arm.url}"
-		JDK_SHA256="@{jdk.linux.arm.sha256}"
 	;;
 	"Linux ppc64le jdk")
 		JDK_URL="@{jdk.linux.ppc64le.url}"
@@ -32,7 +24,6 @@ case "$OS $ARCH $TYPE" in
 		JDK_URL="@{jdk.linux.riscv64.url}"
 		JDK_SHA256="@{jdk.linux.riscv64.sha256}"
 	;;
-
 	"Darwin x86_64 jdk")
 		JDK_URL="@{jdk.mac.x64.url}"
 		JDK_SHA256="@{jdk.mac.x64.sha256}"
@@ -41,14 +32,9 @@ case "$OS $ARCH $TYPE" in
 		JDK_URL="@{jdk.mac.aarch64.url}"
 		JDK_SHA256="@{jdk.mac.aarch64.sha256}"
 	;;
-
 	"Windows x86_64 jdk")
 		JDK_URL="@{jdk.windows.x64.url}"
 		JDK_SHA256="@{jdk.windows.x64.sha256}"
-	;;
-	"Windows x86 jdk")
-		JDK_URL="@{jdk.windows.x32.url}"
-		JDK_SHA256="@{jdk.windows.x32.sha256}"
 	;;
 	"Windows aarch64 jdk")
 		JDK_URL="@{jdk.windows.aarch64.url}"
@@ -59,7 +45,6 @@ case "$OS $ARCH $TYPE" in
 		JDK_URL="@{jfx.linux.x64.url}"
 		JDK_SHA256="@{jfx.linux.x64.sha256}"
 	;;
-
 	"Darwin x86_64 jfx")
 		JDK_URL="@{jfx.mac.x64.url}"
 		JDK_SHA256="@{jfx.mac.x64.sha256}"
@@ -68,10 +53,22 @@ case "$OS $ARCH $TYPE" in
 		JDK_URL="@{jfx.mac.aarch64.url}"
 		JDK_SHA256="@{jfx.mac.aarch64.sha256}"
 	;;
-
 	"Windows x86_64 jfx")
 		JDK_URL="@{jfx.windows.x64.url}"
 		JDK_SHA256="@{jfx.windows.x64.sha256}"
+	;;
+
+	"Linux armv7l jdk")
+		JDK_URL="@{jdk.linux.arm.url}"
+		JDK_SHA256="@{jdk.linux.arm.sha256}"
+	;;
+	"Linux i686 jdk")
+		JDK_URL="@{jdk.linux.x86.url}"
+		JDK_SHA256="@{jdk.linux.x86.sha256}"
+	;;
+	"Windows x86 jdk")
+		JDK_URL="@{jdk.windows.x32.url}"
+		JDK_SHA256="@{jdk.windows.x32.sha256}"
 	;;
 
 	*)
