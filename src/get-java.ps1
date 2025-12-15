@@ -103,6 +103,7 @@ Write-Output "Expected SHA256 checksum: $JDK_SHA256"
 Write-Output "Actual SHA256 checksum: $JDK_SHA256_ACTUAL"
 
 if ($JDK_SHA256 -ne $JDK_SHA256_ACTUAL) {
+	Remove-Item -Path $JDK_TAR_GZ
 	throw "ERROR: SHA256 checksum mismatch"
 }
 
