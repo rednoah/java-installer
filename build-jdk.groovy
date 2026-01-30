@@ -1,20 +1,20 @@
 // Eclipse Adoptium OpenJDK for all platforms
 def adoptium = [
 	[os: 'windows', arch: 'x64'],
+	[os: 'windows', arch: 'aarch64'],
 	[os: 'mac',     arch: 'x64'],
 	[os: 'mac',     arch: 'aarch64'],
 	[os: 'linux',   arch: 'x64'],
 	[os: 'linux',   arch: 'aarch64'],
 	[os: 'linux',   arch: 'ppc64le'],
-	[os: 'linux',   arch: 'riscv64']
+	[os: 'linux',   arch: 'riscv64'],
 ]
 
 // BellSoft Liberica JDK for embedded devices
 def liberica = [
-	[type: 'jdk', os: 'linux',   arch: 'x86',     pkg: 'linux-i586.tar.gz'],
-	[type: 'jdk', os: 'linux',   arch: 'arm',     pkg: 'linux-arm32-vfp-hflt.tar.gz'],
-	[type: 'jdk', os: 'windows', arch: 'x32',     pkg: 'windows-i586.zip'],
-	[type: 'jdk', os: 'windows', arch: 'aarch64', pkg: 'windows-aarch64.zip']
+	[type: 'jdk', os: 'linux',   arch: 'x86',     pkg: 'linux-i586.tar.gz'],              // NOT available via Adoptium at all
+	[type: 'jdk', os: 'linux',   arch: 'arm',     pkg: 'linux-arm32-vfp-hflt.tar.gz'],    // ONLY available up to JDK 17
+	[type: 'jdk', os: 'windows', arch: 'x32',     pkg: 'windows-i586.zip'],               // ONLY available up to JDK 17
 ]
 
 // Gluon OpenJFX
@@ -22,7 +22,7 @@ def javafx = [
 	[os: 'windows', arch: 'x64',     pkg: 'windows-x64_bin-jmods.zip'],
 	[os: 'linux',   arch: 'x64',     pkg: 'linux-x64_bin-jmods.zip'],
 	[os: 'mac',     arch: 'x64',     pkg: 'osx-x64_bin-jmods.zip'],
-	[os: 'mac',     arch: 'aarch64', pkg: 'osx-aarch64_bin-jmods.zip']
+	[os: 'mac',     arch: 'aarch64', pkg: 'osx-aarch64_bin-jmods.zip'],
 ]
 
 
