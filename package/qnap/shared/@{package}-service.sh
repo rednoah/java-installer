@@ -58,7 +58,7 @@ case "$1" in
 					# curl may have failed due to a network error
 					if [ -f "$TAR_FILE" ]; then
 						# remove existing java binaries
-						rm -rv bin conf include jmods legal lib man NOTICE release version
+						rm -rv bin conf include jmods legal lib LICENSE man NOTICE readme.txt release version
 						# extract java binaries
 						tar --strip-components=1 -vxzf "$TAR_FILE" && rm -v "$TAR_FILE"
 					fi
