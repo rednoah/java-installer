@@ -87,7 +87,7 @@ case "$1" in
 		fi
 
 		# check for updates once per month
-		if [ ! -x "$INSTALLER_FILE" ] || [ $(find "$QPKG_ROOT" -type f -name '*.asc' -maxdepth 1 -mtime +30 | wc -l) -gt 0 ]; then
+		if [ ! -x "$INSTALLER_FILE" ] || [ $(find "$QPKG_ROOT" -maxdepth 1 -type f -name '*.asc' -mtime +30 | wc -l) -gt 0 ]; then
 			$0 install 2>&1 | tee -a "$PKG_LOG"
 		fi
 
