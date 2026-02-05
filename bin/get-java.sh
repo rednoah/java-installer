@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Java Installer for OpenJDK 21.0.9
+# Java Installer for OpenJDK 21.0.10
 
 COMMAND=${1:-get}        # get | install
 TYPE=${2:-jdk}           # jre | jdk
@@ -9,66 +9,66 @@ OS=${4:-`uname -s`}      # Linux | Darwin | Windows | etc
 
 case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jdk_x64_linux_hotspot_21.0.9_10.tar.gz"
-		JDK_SHA256="810d3773df7e0d6c4394e4e244b264c8b30e0b05a0acf542d065fd78a6b65c2f"
+		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_x64_linux_hotspot_21.0.10_7.tar.gz"
+		JDK_SHA256="ea3b9bd464d6dd253e9a7accf59f7ccd2a36e4aa69640b7251e3370caef896a4"
 	;;
 	"Linux aarch64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.9_10.tar.gz"
-		JDK_SHA256="edf0da4debe7cf475dbe320d174d6eed81479eb363f41e38a2efb740428c603a"
+		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.10_7.tar.gz"
+		JDK_SHA256="357fee29fb0d5c079f6730db98b28942df13a6eed426f6c61cd4ad703ab27b9a"
 	;;
 	"Linux ppc64le jdk")
-		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jdk_ppc64le_linux_hotspot_21.0.9_10.tar.gz"
-		JDK_SHA256="ac5a0394a234269b4e20459649ac93cb702cde29b3e46a0bcf3aa53958f2d4a4"
+		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_ppc64le_linux_hotspot_21.0.10_7.tar.gz"
+		JDK_SHA256="33bdaec351f40cc70d44e251a54c23e4dd15fed8adc041e35c57461c706cf948"
 	;;
 	"Linux riscv64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jdk_riscv64_linux_hotspot_21.0.9_10.tar.gz"
-		JDK_SHA256="ac411d52862fe8a4a48a6c3546bebced8f4879cd728746fc4ee4b06151aa9f8b"
+		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_riscv64_linux_hotspot_21.0.10_7.tar.gz"
+		JDK_SHA256="a57fd486c3c24ed615eb91ef9421ddd38c720e7398df5a161872fb26ad825936"
 	;;
 	"Darwin x86_64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jdk_x64_mac_hotspot_21.0.9_10.tar.gz"
-		JDK_SHA256="f803a3f5bce141f23ac699dfcda06a721f4b74f53bacb0f4bbe9bfcad54427d8"
+		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_x64_mac_hotspot_21.0.10_7.tar.gz"
+		JDK_SHA256="7484d5d4cdb02fc17a842ab86ddac2524a0365066659c46b2e258c64152379cd"
 	;;
 	"Darwin arm64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jdk_aarch64_mac_hotspot_21.0.9_10.tar.gz"
-		JDK_SHA256="55a40abeb0e174fdc70f769b34b50b70c3967e0b12a643e6a3e23f9a582aac16"
+		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_aarch64_mac_hotspot_21.0.10_7.tar.gz"
+		JDK_SHA256="01ca390455216ca27bdddf8cfad51aaedb4f90e1e23aad9bfd9e90caaa2c5f1b"
 	;;
 	"Windows x86_64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jdk_x64_windows_hotspot_21.0.9_10.zip"
-		JDK_SHA256="1c67df516e9795c0b09f5714bfe151da2e3cc988082042f5bbb60d75e4e63fb5"
+		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_x64_windows_hotspot_21.0.10_7.zip"
+		JDK_SHA256="08cae782814f027f8b159d6b68823f0f87422eb475c1a0ea1abc7a4357aaf11f"
 	;;
 	"Windows aarch64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jdk_aarch64_windows_hotspot_21.0.9_10.zip"
-		JDK_SHA256="260a71ee94cdefba0937fad3f88ae017d5d37a9474ae91798bc8dffb8f308a83"
+		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_aarch64_windows_hotspot_21.0.10_7.zip"
+		JDK_SHA256="0e1f016cd74c05ab4fe2b2a839f6439e3dc516c9bb201bfb75d12b3fb2a63334"
 	;;
 
 	"Linux x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/21.0.9/openjfx-21.0.9_linux-x64_bin-jmods.zip"
-		JDK_SHA256="44d718a6118815aadfa2510454e8fd9cd71af4796499477820272daa970dbfd5"
+		JDK_URL="https://download2.gluonhq.com/openjfx/21.0.10/openjfx-21.0.10_linux-x64_bin-jmods.zip"
+		JDK_SHA256="4f75b172da0512b7d561124830fa40dafd9421f4a36a70551a42a43729444bb1"
 	;;
 	"Darwin x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/21.0.9/openjfx-21.0.9_osx-x64_bin-jmods.zip"
-		JDK_SHA256="a1d4cea780dbe8a51b48a5bf4caa4b5f6cfd40b40db61ac25005c9db44d30af4"
+		JDK_URL="https://download2.gluonhq.com/openjfx/21.0.10/openjfx-21.0.10_osx-x64_bin-jmods.zip"
+		JDK_SHA256="ce717216a584e4d7cadc8f97fdf845029ece159fe9a652ff8c303ce42c476e3b"
 	;;
 	"Darwin arm64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/21.0.9/openjfx-21.0.9_osx-aarch64_bin-jmods.zip"
-		JDK_SHA256="f64d4e65f51f7d6b302608fb04814d981c07d369fe55e99d14e0b16941f6399b"
+		JDK_URL="https://download2.gluonhq.com/openjfx/21.0.10/openjfx-21.0.10_osx-aarch64_bin-jmods.zip"
+		JDK_SHA256="5e1d388a3676106c53a099e4909ea3e32796738674740eb4b7f0065de6405e03"
 	;;
 	"Windows x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/21.0.9/openjfx-21.0.9_windows-x64_bin-jmods.zip"
-		JDK_SHA256="ece676af80d7408e0a130dd77495acb61c70434ea42bd29380df32bcf9d8354b"
+		JDK_URL="https://download2.gluonhq.com/openjfx/21.0.10/openjfx-21.0.10_windows-x64_bin-jmods.zip"
+		JDK_SHA256="d118241b342d47bf50ef959dff1a89490783115579877da92c24edd178c4d273"
 	;;
 
 	"Linux armv7l jdk")
-		JDK_URL="https://download.bell-sw.com/java/21.0.9+11/bellsoft-jdk21.0.9+11-linux-arm32-vfp-hflt.tar.gz"
-		JDK_SHA256="ae2d3e750496da6d5fd467c5c7e0d2146bdcdd8ad9aa902a09fbdfc3cb542e86"
+		JDK_URL="https://download.bell-sw.com/java/21.0.10+10/bellsoft-jdk21.0.10+10-linux-arm32-vfp-hflt.tar.gz"
+		JDK_SHA256="e3ed2d5aa469b4eb2f0ada0bbbad294152fb609929c25203904b49405ea7096a"
 	;;
 	"Linux i686 jdk")
-		JDK_URL="https://download.bell-sw.com/java/21.0.9+11/bellsoft-jdk21.0.9+11-linux-i586.tar.gz"
-		JDK_SHA256="8f1f883a4dcc9076367a89f290eb69a0249943bd540ce046982846aa54bea51c"
+		JDK_URL="https://download.bell-sw.com/java/21.0.10+10/bellsoft-jdk21.0.10+10-linux-i586.tar.gz"
+		JDK_SHA256="73505e53a4ebd382ee77b501956e4730614fa1d29c55ebb9c7e5068c3ac97c52"
 	;;
 	"Windows x86 jdk")
-		JDK_URL="https://download.bell-sw.com/java/21.0.9+11/bellsoft-jdk21.0.9+11-windows-i586.zip"
-		JDK_SHA256="3d1d25c234fb53dcca94fc9a13f821e0b314232e7d854e174e3770879cf25908"
+		JDK_URL="https://download.bell-sw.com/java/21.0.10+10/bellsoft-jdk21.0.10+10-windows-i586.zip"
+		JDK_SHA256="424439c5942e1ebf5ae0d3aeb6f7a97ec54c4d7eacc6278a30b707c917ab3a54"
 	;;
 
 	*)
