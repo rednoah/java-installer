@@ -1,0 +1,9 @@
+# Intel macOS build is locked at OpenJDK 21.0.3 because more recent builds break on macOS Catalina
+jdk.mac.x64.url=https\://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk_x64_mac_hotspot_21.0.3_9.tar.gz
+jdk.mac.x64.sha256=f777103aab94330d14a29bd99f3a26d60abbab8e2c375cec9602746096721a7c
+jfx.mac.x64.url=https\://download2.gluonhq.com/openjfx/21.0.3/openjfx-21.0.3_osx-x64_bin-jmods.zip
+jfx.mac.x64.sha256=0a12ad01d8450437be3608175428b336f94bc8446123e804ae99d2d09a158a76
+
+# ARM64 Windows build is locked at OpenJDK 21.0.12 because newer builds do not pass the TCK
+jdk.windows.aarch64.url=https\://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jdk_aarch64_windows_hotspot_21.0.12.1_1.zip
+jdk.windows.aarch64.sha256=ccf2e51f527d542a70ba5794a600d3aac04b4e967950e227834c7566cb1bec7b

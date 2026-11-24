@@ -3,6 +3,7 @@
 	<property file="package.properties" />
 	<property file="profile.properties" />
 
+	<property file="build-jdk.properties.locked" />
 	<property file="build-jdk.properties" />
 
 	<property name="dir.source" location="${basedir}/src" />

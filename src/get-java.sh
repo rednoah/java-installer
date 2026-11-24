@@ -24,6 +24,10 @@ case "$OS $ARCH $TYPE" in
 		JDK_URL="@{jdk.linux.riscv64.url}"
 		JDK_SHA256="@{jdk.linux.riscv64.sha256}"
 	;;
+	"Darwin x86_64 jdk")
+		JDK_URL="@{jdk.mac.x64.url}"
+		JDK_SHA256="@{jdk.mac.x64.sha256}"
+	;;
 	"Darwin arm64 jdk")
 		JDK_URL="@{jdk.mac.aarch64.url}"
 		JDK_SHA256="@{jdk.mac.aarch64.sha256}"
@@ -40,6 +44,10 @@ case "$OS $ARCH $TYPE" in
 	"Linux x86_64 jfx")
 		JDK_URL="@{jfx.linux.x64.url}"
 		JDK_SHA256="@{jfx.linux.x64.sha256}"
+	;;
+	"Darwin x86_64 jfx")
+		JDK_URL="@{jfx.mac.x64.url}"
+		JDK_SHA256="@{jfx.mac.x64.sha256}"
 	;;
 	"Darwin arm64 jfx")
 		JDK_URL="@{jfx.mac.aarch64.url}"
@@ -61,16 +69,6 @@ case "$OS $ARCH $TYPE" in
 	"Windows x86 jdk")
 		JDK_URL="@{jdk.windows.x32.url}"
 		JDK_SHA256="@{jdk.windows.x32.sha256}"
-	;;
-
-	# Intel macOS builds are locked at OpenJDK 21.0.3 since more recent builds break on macOS Catalina
-	"Darwin x86_64 jdk")
-		JDK_URL="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk_x64_mac_hotspot_21.0.3_9.tar.gz"
-		JDK_SHA256="f777103aab94330d14a29bd99f3a26d60abbab8e2c375cec9602746096721a7c"
-	;;
-	"Darwin x86_64 jfx")
-		JDK_URL="https://download2.gluonhq.com/openjfx/21.0.3/openjfx-21.0.3_osx-x64_bin-jmods.zip"
-		JDK_SHA256="0a12ad01d8450437be3608175428b336f94bc8446123e804ae99d2d09a158a76"
 	;;
 
 	*)
